@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BaseDatos.Controlador;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,8 @@ namespace BeLife
         public MainWindow()
         {
             InitializeComponent();
+            Con_Comuna controlador = new Con_Comuna();
+            cb_comunas.ItemsSource = controlador.listarComunas();
         }
     }
 }
