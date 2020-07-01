@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BaseDatos.Controlador;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,12 @@ namespace BeLife
         public MainWindow()
         {
             InitializeComponent();
+            
+        }
+
+        private void btn_salir_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
