@@ -24,8 +24,12 @@ namespace BeLife
         public MainWindow()
         {
             InitializeComponent();
-            Con_Comuna controlador = new Con_Comuna();
-            cb_comunas.ItemsSource = controlador.listarComunas();
+            
+        }
+
+        private void btn_salir_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
