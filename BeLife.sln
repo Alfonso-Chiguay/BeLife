@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29418.71
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeLife", "BeLife\BeLife.csproj", "{014E3834-FA7F-4718-8097-02DA81A4A7E8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentacion", "BeLife\Presentacion.csproj", "{014E3834-FA7F-4718-8097-02DA81A4A7E8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseDatos", "BaseDatos\BaseDatos.csproj", "{D30AD83D-C13C-4A2C-B4E7-8C5AE335319D}"
 EndProject

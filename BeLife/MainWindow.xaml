@@ -18,12 +18,10 @@
         <Label Grid.ColumnSpan="2" Content="Be" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Black" FontSize="48" Background="#00000000" Foreground="#FF828285"/>
         <Label Grid.ColumnSpan="2" Content="Life" HorizontalAlignment="Left" Margin="69,10,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Black" FontSize="48" Background="#00000000" Foreground="#FF9F68C5"/>
         <Frame Grid.ColumnSpan="2" Content="" HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="35" Background="#FF828285" Margin="666,0,0,0"/>
-        <Image Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="100" Margin="490,293,0,0" VerticalAlignment="Top" Width="100">
-            <Image.OpacityMask>
-                <ImageBrush/>
-            </Image.OpacityMask>
-        </Image>
-        <Button Grid.ColumnSpan="2" Content="" HorizontalAlignment="Left" Margin="727,356,0,0" VerticalAlignment="Top" Width="38" Height="37" BorderBrush="Transparent">
+        <Button x:Name="btn_salir" Grid.ColumnSpan="2" Content="" HorizontalAlignment="Left" Margin="727,356,0,0" VerticalAlignment="Top" Width="38" Height="37" BorderBrush="Transparent" Style="{DynamicResource boton_salida}" Click="btn_salir_Click">
+            <Button.Foreground>
+                <ImageBrush ImageSource="img/exit.png" Stretch="Uniform"/>
+            </Button.Foreground>
             <Button.Background>
                 <ImageBrush ImageSource="img/exit.png" Stretch="Uniform"/>
             </Button.Background>
