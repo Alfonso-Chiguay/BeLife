@@ -38,8 +38,7 @@ namespace BeLife.Vistas
             if (txt_rut.Text.Equals("Ej: 12345678"))
             {
                 txt_rut.Text = "";
-                
-                    
+                txt_rut.Foreground = new SolidColorBrush(Colors.Black);
             }
                 
 
@@ -48,7 +47,29 @@ namespace BeLife.Vistas
         private void txt_rut_LostFocus(object sender, RoutedEventArgs e)
         {
             if (txt_rut.Text.Equals(""))
+            {
+                txt_rut.Foreground = new SolidColorBrush(Colors.Gray);
                 txt_rut.Text = "Ej: 12345678";
+            }
+                
+        }
+
+        private void txt_dv_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_dv.Text.Equals("N"))
+            {
+                txt_dv.Text = "";
+                txt_dv.Foreground = new SolidColorBrush(Colors.Black);
+            }
+        }
+
+        private void txt_dv_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_dv.Text.Equals(""))
+            {
+                txt_dv.Foreground = new SolidColorBrush(Colors.Gray);
+                txt_dv.Text = "N";
+            }
         }
     }
 }

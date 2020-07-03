@@ -23,7 +23,7 @@
         <Label Content="RUT" HorizontalAlignment="Left" Margin="23,87,0,0" VerticalAlignment="Top" Width="87" FontFamily="Perpetua Titling MT" FontWeight="Bold" FontSize="16"/>
         <TextBox x:Name="txt_rut" HorizontalAlignment="Left" Height="30" Margin="23,116,0,0" TextWrapping="Wrap" Text="Ej: 12345678" VerticalAlignment="Top" Width="109" FontSize="16" BorderThickness="2" SnapsToDevicePixels="True" BorderBrush="Black" Foreground="#FFAAA4A4" GotFocus="txt_rut_GotFocus" LostFocus="txt_rut_LostFocus"/>
         <Label Content="-" HorizontalAlignment="Left" Margin="132,117,0,0" VerticalAlignment="Top" Width="27" FontFamily="Perpetua Titling MT" FontWeight="Bold" FontSize="16"/>
-        <TextBox x:Name="txt_dv" HorizontalAlignment="Left" Height="30" Margin="150,116,0,0" TextWrapping="Wrap" Text="K" VerticalAlignment="Top" Width="24" FontSize="16" BorderThickness="2" SnapsToDevicePixels="True" BorderBrush="Black" Foreground="#FFAAA4A4"/>
+        <TextBox x:Name="txt_dv" HorizontalAlignment="Left" Height="30" Margin="150,116,0,0" TextWrapping="Wrap" Text="N" VerticalAlignment="Top" Width="24" FontSize="16" BorderThickness="2" SnapsToDevicePixels="True" BorderBrush="Black" Foreground="#FFAAA4A4" GotFocus="txt_dv_GotFocus" LostFocus="txt_dv_LostFocus"/>
 
     </Grid>
 </Window>
