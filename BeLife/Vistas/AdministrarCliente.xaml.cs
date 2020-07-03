@@ -71,5 +71,41 @@ namespace BeLife.Vistas
                 txt_dv.Text = "N";
             }
         }
+
+        private void txt_nombres_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_nombres.Text.Equals("Ej: Juan Jose"))
+            {
+                txt_nombres.Text = "";
+                txt_nombres.Foreground = new SolidColorBrush(Colors.Black);
+            }
+        }
+
+        private void txt_nombres_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_nombres.Text.Equals(""))
+            {
+                txt_nombres.Foreground = new SolidColorBrush(Colors.Gray);
+                txt_nombres.Text = "Ej: Juan Jose";
+            }
+        }
+
+        private void txt_apellidos_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_apellidos.Text.Equals(""))
+            {
+                txt_apellidos.Foreground = new SolidColorBrush(Colors.Gray);
+                txt_apellidos.Text = "Ej: Perez Gonzalez";
+            }
+        }
+
+        private void txt_apellidos_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_apellidos.Text.Equals("Ej: Perez Gonzalez"))
+            {
+                txt_apellidos.Text = "";
+                txt_apellidos.Foreground = new SolidColorBrush(Colors.Black);
+            }
+        }
     }
 }

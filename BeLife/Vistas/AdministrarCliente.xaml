@@ -24,6 +24,14 @@
         <TextBox x:Name="txt_rut" HorizontalAlignment="Left" Height="30" Margin="23,116,0,0" TextWrapping="Wrap" Text="Ej: 12345678" VerticalAlignment="Top" Width="109" FontSize="16" BorderThickness="2" SnapsToDevicePixels="True" BorderBrush="Black" Foreground="#FFAAA4A4" GotFocus="txt_rut_GotFocus" LostFocus="txt_rut_LostFocus"/>
         <Label Content="-" HorizontalAlignment="Left" Margin="132,117,0,0" VerticalAlignment="Top" Width="27" FontFamily="Perpetua Titling MT" FontWeight="Bold" FontSize="16"/>
         <TextBox x:Name="txt_dv" HorizontalAlignment="Left" Height="30" Margin="150,116,0,0" TextWrapping="Wrap" Text="N" VerticalAlignment="Top" Width="24" FontSize="16" BorderThickness="2" SnapsToDevicePixels="True" BorderBrush="Black" Foreground="#FFAAA4A4" GotFocus="txt_dv_GotFocus" LostFocus="txt_dv_LostFocus"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="192,117,0,0" VerticalAlignment="Top" Width="36" Height="29"/>
+        <Button Content="Buscar en lista" HorizontalAlignment="Left" Margin="246,117,0,0" VerticalAlignment="Top" Width="98" Height="29"/>
+        <Label Content="NOMBRES" HorizontalAlignment="Left" Margin="23,162,0,0" VerticalAlignment="Top" Width="109" FontFamily="Perpetua Titling MT" FontWeight="Bold" FontSize="16"/>
+        <TextBox x:Name="txt_nombres" HorizontalAlignment="Left" Height="30" Margin="23,191,0,0" TextWrapping="Wrap" Text="Ej: Juan Jose" VerticalAlignment="Top" Width="205" FontSize="16" BorderThickness="2" SnapsToDevicePixels="True" BorderBrush="Black" Foreground="#FFAAA4A4" GotFocus="txt_nombres_GotFocus" LostFocus="txt_nombres_LostFocus"/>
+        <Label Content="Apellidos" HorizontalAlignment="Left" Margin="246,162,0,0" VerticalAlignment="Top" Width="109" FontFamily="Perpetua Titling MT" FontWeight="Bold" FontSize="16"/>
+        <TextBox x:Name="txt_apellidos" HorizontalAlignment="Left" Height="30" Margin="246,191,0,0" TextWrapping="Wrap" Text="Ej: Perez Gonzalez" VerticalAlignment="Top" Width="205" FontSize="16" BorderThickness="2" SnapsToDevicePixels="True" BorderBrush="Black" Foreground="#FFAAA4A4" LostFocus="txt_apellidos_LostFocus" GotFocus="txt_apellidos_GotFocus"/>
+        <Label Content="FECHA NACIMIENTO" HorizontalAlignment="Left" Margin="23,226,0,0" VerticalAlignment="Top" Width="194" FontFamily="Perpetua Titling MT" FontWeight="Bold" FontSize="16"/>
+        <DatePicker x:Name="dp_fecha_nacimiento" HorizontalAlignment="Left" Margin="23,255,0,0" VerticalAlignment="Top" Height="30" FontSize="16" Width="205"/>
 
     </Grid>
 </Window>
