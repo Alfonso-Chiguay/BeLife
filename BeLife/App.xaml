@@ -7,6 +7,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Estilos\BotonSalida.xaml"/>
+                <ResourceDictionary Source="Estilos\Clientes.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
          

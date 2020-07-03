@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BeLife"
         mc:Ignorable="d"
         Title="BeLife | Ventana principal" Height="450" Width="800">
-    <Grid>
+    <Grid RenderTransformOrigin="0.501,0.463">
         <Grid.Background>
             <ImageBrush/>
         </Grid.Background>
@@ -26,6 +26,38 @@
                 <ImageBrush ImageSource="img/exit.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
+        <Button Grid.ColumnSpan="2" Content="Clientes" HorizontalAlignment="Left" Margin="93,157,0,0" VerticalAlignment="Top" Width="160" Height="144" Style="{DynamicResource boton_clientes}" Foreground="#FFFBF8F8" FontFamily="Global User Interface" FontSize="36" FontWeight="Bold"/>
+        <Button Grid.ColumnSpan="2" Content="Vida" HorizontalAlignment="Left" Margin="311,157,0,0" VerticalAlignment="Top" Width="211" Height="63" Style="{DynamicResource boton_clientes}" Foreground="#FFFBF8F8" FontFamily="Global User Interface" FontSize="36" FontWeight="Bold"/>
+        <Button Grid.ColumnSpan="2" Content="    Vehículos" HorizontalAlignment="Left" Margin="311,238,0,0" VerticalAlignment="Top" Width="211" Height="62" Style="{DynamicResource boton_clientes}" Foreground="#FFFBF8F8" FontFamily="Global User Interface" FontSize="36" FontWeight="Bold" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.16"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="0.247"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Label Grid.ColumnSpan="2" Content="SEGUROS" HorizontalAlignment="Left" Margin="207,203,0,0" VerticalAlignment="Top" Width="157" Height="54" FontFamily="Dubai" FontSize="33" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" Foreground="#FF828285">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-89.149"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label Grid.ColumnSpan="2" Content="" HorizontalAlignment="Left" Margin="315,168,0,0" VerticalAlignment="Top" Height="38" Width="34">
+            <Label.Background>
+                <ImageBrush ImageSource="img/heart.png" Stretch="Uniform"/>
+            </Label.Background>
+        </Label>
+        <Label Grid.ColumnSpan="2" Content="" HorizontalAlignment="Left" Margin="312,249,0,0" VerticalAlignment="Top" Height="39" Width="42">
+            <Label.Background>
+                <ImageBrush ImageSource="img/car.png" Stretch="Uniform"/>
+            </Label.Background>
+        </Label>
 
     </Grid>
 </Window>
