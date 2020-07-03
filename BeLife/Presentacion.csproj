@@ -139,7 +139,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="img\search.png" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BaseDatos\BaseDatos.csproj">
       <Project>{d30ad83d-c13c-4a2c-b4e7-8c5ae335319d}</Project>

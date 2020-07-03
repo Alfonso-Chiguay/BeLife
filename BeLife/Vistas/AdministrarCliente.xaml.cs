@@ -107,5 +107,17 @@ namespace BeLife.Vistas
                 txt_apellidos.Foreground = new SolidColorBrush(Colors.Black);
             }
         }
+
+
+
+        private void lbl_buscar_MouseEnter(object sender, MouseEventArgs e)
+        {
+            btn_buscar.Background = new SolidColorBrush(Colors.DarkViolet);
+        }
+
+        private void lbl_buscar_MouseLeave(object sender, MouseEventArgs e)
+        {
+            btn_buscar.Background = new SolidColorBrush(Colors.Transparent);
+        }
     }
 }
