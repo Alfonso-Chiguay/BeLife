@@ -25,7 +25,7 @@
         <Label Content="-" HorizontalAlignment="Left" Margin="132,117,0,0" VerticalAlignment="Top" Width="27" FontFamily="Perpetua Titling MT" FontWeight="Bold" FontSize="16"/>
         <TextBox x:Name="txt_dv" HorizontalAlignment="Left" Height="30" Margin="150,116,0,0" TextWrapping="Wrap" Text="N" VerticalAlignment="Top" Width="24" FontSize="16" BorderThickness="2" SnapsToDevicePixels="True" BorderBrush="Black" Foreground="#FFAAA4A4" GotFocus="txt_dv_GotFocus" LostFocus="txt_dv_LostFocus"/>
         <Button x:Name="btn_buscar" Content="" HorizontalAlignment="Left" Margin="192,117,0,0" VerticalAlignment="Top" Width="36" Height="29" Background="{x:Null}" BorderBrush="#FF0C0C0C"/>
-        <Button Content="Buscar en lista" HorizontalAlignment="Left" Margin="246,117,0,0" VerticalAlignment="Top" Width="98" Height="29"/>
+        <Button x:Name="btn_buscar_lista" Content="" HorizontalAlignment="Left" Margin="246,117,0,0" VerticalAlignment="Top" Width="88" Height="29" Background="{x:Null}" BorderBrush="Black" UseLayoutRounding="False" MouseEnter="btn_buscar_lista_MouseEnter" MouseLeave="btn_buscar_lista_MouseLeave"/>
         <Label Content="NOMBRES" HorizontalAlignment="Left" Margin="23,162,0,0" VerticalAlignment="Top" Width="109" FontFamily="Perpetua Titling MT" FontWeight="Bold" FontSize="16"/>
         <TextBox x:Name="txt_nombres" HorizontalAlignment="Left" Height="30" Margin="23,191,0,0" TextWrapping="Wrap" Text="Ej: Juan Jose" VerticalAlignment="Top" Width="205" FontSize="16" BorderThickness="2" SnapsToDevicePixels="True" BorderBrush="Black" Foreground="#FFAAA4A4" GotFocus="txt_nombres_GotFocus" LostFocus="txt_nombres_LostFocus"/>
         <Label Content="Apellidos" HorizontalAlignment="Left" Margin="246,162,0,0" VerticalAlignment="Top" Width="109" FontFamily="Perpetua Titling MT" FontWeight="Bold" FontSize="16"/>
@@ -37,6 +37,12 @@
                 <ImageBrush Stretch="Uniform" ImageSource="/BeLife;component/img/search.png"/>
             </Label.Background>
         </Label>
+        <Label x:Name="lbl_buscar_lista" Content="Buscar en lista" HorizontalAlignment="Left" Margin="246,117,0,0" VerticalAlignment="Top" Height="29" Width="88" MouseEnter="lbl_buscar_lista_MouseEnter" MouseLeave="lbl_buscar_lista_MouseLeave" FontWeight="Bold" FontSize="11"/>
+        <Rectangle x:Name="rec_seguros" HorizontalAlignment="Left" Height="294" Margin="23,310,0,0" Stroke="Black" VerticalAlignment="Top" Width="428" StrokeThickness="2"/>
+        <Button x:Name="btn_guardar" Content="" HorizontalAlignment="Left" Margin="100,627,0,0" VerticalAlignment="Top" Width="90" Height="33" Background="{x:Null}" BorderBrush="Black" BorderThickness="2"/>
+        <Button x:Name="btn_actualizar" Content="" HorizontalAlignment="Left" Margin="265,627,0,0" VerticalAlignment="Top" Width="90" Height="33" Background="{x:Null}" BorderBrush="#FF040404" BorderThickness="4"/>
+        <Label x:Name="lbl_guardar" Content="  Guardar" HorizontalAlignment="Left" Margin="100,627,0,0" VerticalAlignment="Top" Height="33" Width="90" FontSize="16" FontFamily="Dubai" FontWeight="Bold" MouseEnter="lbl_guardar_MouseEnter" MouseLeave="lbl_guardar_MouseLeave"/>
+        <Label x:Name="lbl_actualizar" Content=" Actualizar" HorizontalAlignment="Left" Margin="265,627,0,0" VerticalAlignment="Top" Height="33" Width="90" FontSize="16" FontFamily="Dubai" FontWeight="Bold" RenderTransformOrigin="0.404,0.525" MouseEnter="lbl_actualizar_MouseEnter" MouseLeave="lbl_actualizar_MouseLeave"/>
 
     </Grid>
 </Window>
