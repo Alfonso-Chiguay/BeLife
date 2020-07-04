@@ -26,11 +26,16 @@ namespace BeLife.Vistas
         public AdministrarCliente()
         {
             InitializeComponent();
+            
+
+
         }
 
+        
         private void btn_salir_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            var morado_standar = panelmorado.Background;
         }
 
         private void txt_rut_GotFocus(object sender, RoutedEventArgs e)
@@ -112,56 +117,24 @@ namespace BeLife.Vistas
 
         private void lbl_buscar_MouseEnter(object sender, MouseEventArgs e)
         {
-            btn_buscar.Background = new SolidColorBrush(Colors.DarkViolet);
+            var moradooscuro = morado_oscuro.Background;
+            btn_buscar.Background = new SolidColorBrush(Colors.MediumPurple);
             btn_buscar.Foreground = new SolidColorBrush(Colors.White);
-           
+            
+
         }
 
         private void lbl_buscar_MouseLeave(object sender, MouseEventArgs e)
         {
-            btn_buscar.Background = new SolidColorBrush(Colors.Transparent);
+            var morado_standar = panelmorado.Background;
+            btn_buscar.Background = morado_standar;
             btn_buscar.Foreground = new SolidColorBrush(Colors.Black);
         }
 
-        private void btn_buscar_lista_MouseEnter(object sender, MouseEventArgs e)
+        private void lbl_buscar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            btn_buscar_lista.Background = new SolidColorBrush(Colors.DarkViolet);          
-        }
-
-        private void btn_buscar_lista_MouseLeave(object sender, MouseEventArgs e)
-        {
-            btn_buscar_lista.Background = new SolidColorBrush(Colors.Transparent);           
-        }
-
-        private void lbl_buscar_lista_MouseEnter(object sender, MouseEventArgs e)
-        {
-            btn_buscar_lista.Background = new SolidColorBrush(Colors.DarkViolet);            
-        }
-
-        private void lbl_buscar_lista_MouseLeave(object sender, MouseEventArgs e)
-        {
-            btn_buscar_lista.Background = new SolidColorBrush(Colors.Transparent);
-            
-        }
-
-        private void lbl_guardar_MouseEnter(object sender, MouseEventArgs e)
-        {
-            btn_guardar.Background = new SolidColorBrush(Colors.DarkViolet);
-        }
-
-        private void lbl_guardar_MouseLeave(object sender, MouseEventArgs e)
-        {
-            btn_guardar.Background = new SolidColorBrush(Colors.Transparent);
-        }
-
-        private void lbl_actualizar_MouseEnter(object sender, MouseEventArgs e)
-        {
-            btn_actualizar.Background = new SolidColorBrush(Colors.DarkViolet);
-        }
-
-        private void lbl_actualizar_MouseLeave(object sender, MouseEventArgs e)
-        {
-            btn_actualizar.Background = new SolidColorBrush(Colors.Transparent);
+            var click_color = morado_click.Background;
+            btn_buscar.Background = click_color;
         }
     }
 }

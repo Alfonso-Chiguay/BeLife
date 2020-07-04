@@ -14,14 +14,13 @@
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="136*"/>
             <ColumnDefinition Width="199*"/>
-            <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="457*"/>
         </Grid.ColumnDefinitions>
-        <Frame Content="" HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="90" Background="#FF9F68C5" Margin="367,0,0,0" Grid.Column="4"/>
-        <Label Grid.ColumnSpan="2" Content="Be" HorizontalAlignment="Left" Margin="10,19,0,0" VerticalAlignment="Top" FontFamily="dubai" FontSize="48" Background="#00000000" Foreground="#FF828285" FontWeight="Bold" Height="68" Width="67"/>
-        <Label Content="Life" HorizontalAlignment="Left" Margin="64,10,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Black" FontSize="48" Background="#00000000" Foreground="#FF9F68C5" FontWeight="Bold" Height="74" Width="92" Grid.Column="1" Grid.ColumnSpan="2"/>
-        <Frame Content="" HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="36" Background="#FF828285" Margin="331,0,0,0" Grid.Column="4"/>
-        <Button x:Name="btn_salir" Content="" HorizontalAlignment="Left" Margin="393,356,0,0" VerticalAlignment="Top" Width="38" Height="37" BorderBrush="Transparent" Style="{DynamicResource boton_salida}" Click="btn_salir_Click" Grid.Column="4">
+        <Frame Content="" HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="90" Background="#FF9F68C5" Margin="367,0,0,0" Grid.Column="3"/>
+        <Label Grid.ColumnSpan="2" Content="Be" HorizontalAlignment="Left" Margin="10,19,0,0" VerticalAlignment="Top" FontFamily="Dubai" FontSize="48" Background="#00000000" Foreground="#FF828285" FontWeight="Bold" Height="68" Width="67"/>
+        <Label Content="Life" HorizontalAlignment="Left" Margin="64,19,0,0" VerticalAlignment="Top" FontFamily="Dubai" FontSize="48" Background="#00000000" Foreground="#FF9F68C5" Height="74" Width="101" Grid.Column="1" Grid.ColumnSpan="2" FontWeight="Bold"/>
+        <Frame Content="" HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="36" Background="#FF828285" Margin="331,0,0,0" Grid.Column="3"/>
+        <Button x:Name="btn_salir" Content="" HorizontalAlignment="Left" Margin="393,356,0,0" VerticalAlignment="Top" Width="38" Height="37" BorderBrush="Transparent" Style="{DynamicResource boton_salida}" Click="btn_salir_Click" Grid.Column="3">
             <Button.Foreground>
                 <ImageBrush ImageSource="img/exit.png" Stretch="Uniform"/>
             </Button.Foreground>
@@ -30,8 +29,8 @@
             </Button.Background>
         </Button>
         <Button x:Name="btn_clientes" Content="Clientes" HorizontalAlignment="Left" Margin="3,156,0,0" VerticalAlignment="Top" Width="160" Height="144" Style="{DynamicResource boton_clientes}" Foreground="#FFFBF8F8" FontFamily="Global User Interface" FontSize="36" FontWeight="Bold" Grid.Column="2" Click="btn_clientes_Click"/>
-        <Button x:Name="btn_seguros" Content="Seguros" HorizontalAlignment="Left" Margin="10,156,0,0" VerticalAlignment="Top" Width="160" Height="144" Style="{DynamicResource boton_clientes}" Foreground="#FFFBF8F8" FontFamily="Global User Interface" FontSize="36" FontWeight="Bold" Grid.Column="3" Grid.ColumnSpan="2"/>
-        <Label Content="Salir" Grid.Column="4" HorizontalAlignment="Left" Margin="393,330,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btn_seguros" Content="Seguros" HorizontalAlignment="Left" Margin="10,156,0,0" VerticalAlignment="Top" Width="160" Height="144" Style="{DynamicResource boton_clientes}" Foreground="#FFFBF8F8" FontFamily="Global User Interface" FontSize="36" FontWeight="Bold" Grid.Column="3"/>
+        <Label Content="Salir" Grid.Column="3" HorizontalAlignment="Left" Margin="393,330,0,0" VerticalAlignment="Top" FontFamily="Dubai" FontWeight="Bold"/>
 
     </Grid>
 </Window>
