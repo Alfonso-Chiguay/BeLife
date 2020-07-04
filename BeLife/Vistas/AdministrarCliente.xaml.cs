@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Drawing;
+using BaseDatos.Controlador;
+using Negocio.Funciones;
 
 namespace BeLife.Vistas
 {
@@ -26,6 +28,7 @@ namespace BeLife.Vistas
         public AdministrarCliente()
         {
             InitializeComponent();
+            
             
 
 
@@ -133,8 +136,96 @@ namespace BeLife.Vistas
 
         private void lbl_buscar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var click_color = morado_click.Background;
-            btn_buscar.Background = click_color;
+            btn_buscar.Background = morado_click.Background;
+            Validacion validacion = new Validacion();
+            if (validacion.rutValido(txt_rut.Text, txt_dv.Text))
+            {
+                MessageBox.Show("Todo bien", "Campo: RUT", MessageBoxButton.OK, MessageBoxImage.Information);
+                Con_EstadoCivil c_estadoCivil = new Con_EstadoCivil();
+                Con_Sexo c_sexo = new Con_Sexo();
+                cb_sexo.ItemsSource = c_sexo.listarSexos();
+                cb_estado_civil.ItemsSource = c_estadoCivil.listarEstadoCivil();
+            }
+            else
+            {
+                MessageBox.Show("RUT invalido", "Campo: RUT", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+
         }
+
+        private void btn_verificar_Click(object sender, RoutedEventArgs e)
+        {
+            Validacion validacion = new Validacion();
+            bool todo_bien = true;
+            if(txt_nombres.Text.Length == 0 || txt_nombres.Text.Equals("Ej: Juan Jose")){
+                MessageBox.Show("Ingrese los nombres","Campo: Nombres",MessageBoxButton.OK,MessageBoxImage.Error);
+                todo_bien = false;
+            }
+            if(txt_apellidos.Text.Length == 0 || txt_apellidos.Text.Equals("Ej: Perez Gonzalez"))
+            {
+                MessageBox.Show("Ingrese los apellidos", "Campo: Apellidos", MessageBoxButton.OK, MessageBoxImage.Error);
+                todo_bien = false;
+            }
+
+            if (lbl_edad.Content.Equals("Ingrese una edad"))
+            {
+                MessageBox.Show("Debe seleccionar una fecha de nacimiento", "Campo: Fecha de nacimiento", MessageBoxButton.OK, MessageBoxImage.Error);
+                todo_bien = false;
+            }
+            
+            if (lbl_edad.Content.Equals("El cliente debe tener 18 años o mas") ||
+                lbl_edad.Content.Equals("Año incorrecto") ||
+                lbl_edad.Content.Equals("Mes incorrecto") )
+            {
+                MessageBox.Show("Verifique la edad del cliente", "Campo: Fecha de nacimiento", MessageBoxButton.OK, MessageBoxImage.Error);
+                todo_bien = false;
+            }
+            if (cb_sexo.SelectedIndex == -1)
+            {
+                MessageBox.Show("Seleccione un sexo", "Campo: Sexo", MessageBoxButton.OK, MessageBoxImage.Error);
+                todo_bien = false;
+            }
+            if (cb_estado_civil.SelectedIndex == -1)
+            {
+                MessageBox.Show("Seleccione un estado civil", "Campo: Estado Civil", MessageBoxButton.OK, MessageBoxImage.Error);
+                todo_bien = false;
+            }
+            if(todo_bien) 
+                MessageBox.Show("La información es correcta", "Informacion verificada", MessageBoxButton.OK, MessageBoxImage.Information);
+
+        }
+
+        private void dp_fecha_nacimiento_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Validacion validacion = new Validacion();
+            DateTime fecha_elegida = dp_fecha_nacimiento.SelectedDate.Value;
+            if (!validacion.MayorEdad(fecha_elegida)) {
+                if(fecha_elegida.Year> DateTime.Today.Year)
+                {
+                    lbl_edad.Content = "Año incorrecto";
+                    lbl_edad.Foreground = new SolidColorBrush(Colors.Red);
+                }
+                else if(fecha_elegida.Month > DateTime.Today.Month)
+                {
+                    lbl_edad.Content = "Mes incorrecto";
+                    lbl_edad.Foreground = new SolidColorBrush(Colors.Red);
+                }
+                else
+                {
+                    lbl_edad.Content = "El cliente debe tener 18 años o mas";
+                    lbl_edad.Foreground = new SolidColorBrush(Colors.Red);
+                }
+                
+            }
+            else
+            {
+
+                lbl_edad.Foreground = new SolidColorBrush(Colors.Transparent);
+                lbl_edad.Content = "Todo bien";
+            }
+        }
+
+       
     }
 }

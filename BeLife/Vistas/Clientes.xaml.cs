@@ -29,7 +29,7 @@ namespace BeLife.Vistas
             this.Close();
         }
 
-        private void btn_clientes_Click(object sender, RoutedEventArgs e)
+        private void btn_seguros_Copy_Click(object sender, RoutedEventArgs e)
         {
             AdministrarCliente ventana = new AdministrarCliente();
             ventana.ShowDialog();
