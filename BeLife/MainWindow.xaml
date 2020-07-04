@@ -31,7 +31,6 @@
         <Button x:Name="btn_clientes" Content="Clientes" HorizontalAlignment="Left" Margin="3,156,0,0" VerticalAlignment="Top" Width="160" Height="144" Style="{DynamicResource boton_clientes}" Foreground="#FFFBF8F8" FontFamily="Global User Interface" FontSize="36" FontWeight="Bold" Grid.Column="2" Click="btn_clientes_Click"/>
         <Button x:Name="btn_seguros" Content="Seguros" HorizontalAlignment="Left" Margin="10,156,0,0" VerticalAlignment="Top" Width="160" Height="144" Style="{DynamicResource boton_clientes}" Foreground="#FFFBF8F8" FontFamily="Global User Interface" FontSize="36" FontWeight="Bold" Grid.Column="3" Click="btn_seguros_Click"/>
         <Label Content="Salir" Grid.Column="3" HorizontalAlignment="Left" Margin="393,330,0,0" VerticalAlignment="Top" FontFamily="Dubai" FontWeight="Bold"/>
-        <Button Content="Button" Grid.Column="3" HorizontalAlignment="Left" Margin="83,76,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>
