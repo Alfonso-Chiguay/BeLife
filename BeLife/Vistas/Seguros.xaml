@@ -58,6 +58,7 @@
         <Label Grid.ColumnSpan="2" Content="VIDA" HorizontalAlignment="Left" Margin="117,299,0,0" VerticalAlignment="Top" FontFamily="Dubai" FontSize="25" FontWeight="Bold" Foreground="#FF31066E" Width="65"/>
         <Label Grid.ColumnSpan="2" Content="VEHICULOS" HorizontalAlignment="Left" Margin="255,297,0,0" VerticalAlignment="Top" FontFamily="Dubai" FontSize="25" FontWeight="Bold" Foreground="#FF31066E" Width="143"/>
         <Label Grid.ColumnSpan="2" Content="HOGAR" HorizontalAlignment="Left" Margin="450,297,0,0" VerticalAlignment="Top" FontFamily="Dubai" FontSize="25" FontWeight="Bold" Foreground="#FF31066E" Width="99"/>
+        <Button Grid.ColumnSpan="2" Content="Button" HorizontalAlignment="Left" Margin="525,98,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>
