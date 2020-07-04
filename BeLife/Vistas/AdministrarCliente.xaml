@@ -1,0 +1,47 @@
+﻿<Window x:Class="BeLife.Vistas.AdministrarCliente"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BeLife.Vistas"
+        mc:Ignorable="d"
+        Title="Seguros BeLife | Administrar Clientes" Height="739.676" Width="636.032" WindowStartupLocation="CenterScreen" OpacityMask="#FFB42D9B">
+    <Grid Margin="0,0,0,1">
+        <Label Content="Be" HorizontalAlignment="Left" Margin="10,19,0,0" VerticalAlignment="Top" FontFamily="Dubai" FontSize="48" Background="#00000000" Foreground="#FF828285" FontWeight="Bold" Height="68" Width="67"/>
+        <Label Content="Life" HorizontalAlignment="Left" Margin="61,19,0,0" VerticalAlignment="Top" FontFamily="Dubai" FontSize="48" Background="#00000000" Foreground="#FF9F68C5" FontWeight="Bold" Height="74" Width="92"/>
+        <Frame x:Name="panelmorado" Content="" HorizontalAlignment="Left" Height="708" VerticalAlignment="Top" Width="90" Background="#FF9F68C5" Margin="538,0,0,0"/>
+        <Frame Content="" HorizontalAlignment="Left" Height="708" VerticalAlignment="Top" Width="36" Background="#FF828285" Margin="502,0,0,0"/>
+        <Button x:Name="btn_volver" Content="" HorizontalAlignment="Left" Margin="564,653,0,0" VerticalAlignment="Top" Width="38" Height="37" BorderBrush="Transparent" Style="{DynamicResource boton_salida}" Click="btn_salir_Click">
+            <Button.Foreground>
+                <ImageBrush ImageSource="/BeLife;component/img/exit.png" Stretch="Uniform"/>
+            </Button.Foreground>
+            <Button.Background>
+                <ImageBrush ImageSource="/BeLife;component/img/exit.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+        <Label Content="Volver" HorizontalAlignment="Left" Margin="558,627,0,0" VerticalAlignment="Top" FontFamily="Dubai" FontWeight="Bold"/>
+        <Label Content="RUT" HorizontalAlignment="Left" Margin="23,87,0,0" VerticalAlignment="Top" Width="87" FontFamily="Perpetua Titling MT" FontWeight="Bold" FontSize="16"/>
+        <TextBox x:Name="txt_rut" HorizontalAlignment="Left" Height="30" Margin="23,116,0,0" TextWrapping="Wrap" Text="Ej: 12345678" VerticalAlignment="Top" Width="109" FontSize="16" BorderThickness="2" SnapsToDevicePixels="True" BorderBrush="Black" Foreground="#FFAAA4A4" GotFocus="txt_rut_GotFocus" LostFocus="txt_rut_LostFocus"/>
+        <Label Content="-" HorizontalAlignment="Left" Margin="132,117,0,0" VerticalAlignment="Top" Width="27" FontFamily="Perpetua Titling MT" FontWeight="Bold" FontSize="16"/>
+        <TextBox x:Name="txt_dv" HorizontalAlignment="Left" Height="30" Margin="150,116,0,0" TextWrapping="Wrap" Text="N" VerticalAlignment="Top" Width="24" FontSize="16" BorderThickness="2" SnapsToDevicePixels="True" BorderBrush="Black" Foreground="#FFAAA4A4" GotFocus="txt_dv_GotFocus" LostFocus="txt_dv_LostFocus"/>
+        <Button x:Name="btn_buscar" Content="" HorizontalAlignment="Left" Style="{DynamicResource boton_clientes}" Margin="192,117,0,0" VerticalAlignment="Top" Width="36" Height="29" Background="#FF9F68C5" BorderBrush="#FF0C0C0C"/>
+        <Button x:Name="btn_buscar_lista" Content="Buscar en lista" HorizontalAlignment="Left" Margin="246,117,0,0" VerticalAlignment="Top" Width="88" Height="29" Background="#FF9F68C5" BorderBrush="Black" UseLayoutRounding="False" Style="{DynamicResource boton_clientes}" FontFamily="Dubai" FontSize="13" FontWeight="Bold"/>
+        <Label Content="NOMBRES" HorizontalAlignment="Left" Margin="23,162,0,0" VerticalAlignment="Top" Width="109" FontFamily="Perpetua Titling MT" FontWeight="Bold" FontSize="16"/>
+        <TextBox x:Name="txt_nombres" HorizontalAlignment="Left" Height="30" Margin="23,191,0,0" TextWrapping="Wrap" Text="Ej: Juan Jose" VerticalAlignment="Top" Width="205" FontSize="16" BorderThickness="2" SnapsToDevicePixels="True" BorderBrush="Black" Foreground="#FFAAA4A4" GotFocus="txt_nombres_GotFocus" LostFocus="txt_nombres_LostFocus"/>
+        <Label Content="Apellidos" HorizontalAlignment="Left" Margin="246,162,0,0" VerticalAlignment="Top" Width="109" FontFamily="Perpetua Titling MT" FontWeight="Bold" FontSize="16"/>
+        <TextBox x:Name="txt_apellidos" HorizontalAlignment="Left" Height="30" Margin="246,191,0,0" TextWrapping="Wrap" Text="Ej: Perez Gonzalez" VerticalAlignment="Top" Width="205" FontSize="16" BorderThickness="2" SnapsToDevicePixels="True" BorderBrush="Black" Foreground="#FFAAA4A4" LostFocus="txt_apellidos_LostFocus" GotFocus="txt_apellidos_GotFocus"/>
+        <Label Content="FECHA NACIMIENTO" HorizontalAlignment="Left" Margin="23,226,0,0" VerticalAlignment="Top" Width="194" FontFamily="Perpetua Titling MT" FontWeight="Bold" FontSize="16"/>
+        <DatePicker x:Name="dp_fecha_nacimiento" HorizontalAlignment="Left" Margin="23,255,0,0" VerticalAlignment="Top" Height="30" FontSize="16" Width="205"/>
+        <Label x:Name="lbl_buscar" Content="" HorizontalAlignment="Left" Margin="192,117,0,0" VerticalAlignment="Top" Width="36" Foreground="{x:Null}" Height="29" MouseEnter="lbl_buscar_MouseEnter" MouseLeave="lbl_buscar_MouseLeave" MouseLeftButtonDown="lbl_buscar_MouseLeftButtonDown">
+            <Label.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/BeLife;component/img/search.png"/>
+            </Label.Background>
+        </Label>
+        <Rectangle x:Name="rec_seguros" HorizontalAlignment="Left" Height="294" Margin="23,310,0,0" Stroke="Black" VerticalAlignment="Top" Width="428" StrokeThickness="2"/>
+        <Button x:Name="btn_guardar" Content="Guardar" HorizontalAlignment="Left" Margin="100,627,0,0" VerticalAlignment="Top" Width="90" Height="33" Background="#FF9F68C5" BorderBrush="Black" BorderThickness="2" Style="{DynamicResource boton_clientes}" FontFamily="Dubai" FontSize="16" FontWeight="Bold"/>
+        <Button x:Name="btn_actualizar" Content="Actualizar" HorizontalAlignment="Left" Margin="265,627,0,0" VerticalAlignment="Top" Width="90" Height="33" Background="#FF9F68C5" BorderBrush="#FF040404" BorderThickness="2" Style="{DynamicResource boton_clientes}" FontSize="16" FontFamily="Dubai" FontWeight="Bold"/>
+        <Frame x:Name="morado_oscuro" Content="" HorizontalAlignment="Left" Height="100" Margin="291,727,0,-119" VerticalAlignment="Top" Width="100" Background="#FF793AA4"/>
+        <Frame x:Name="morado_click" Content="" HorizontalAlignment="Left" Height="100" Margin="406,727,0,-119" VerticalAlignment="Top" Width="100" Background="#FF2D153E"/>
+
+    </Grid>
+</Window>
