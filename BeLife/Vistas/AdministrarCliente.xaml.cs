@@ -14,6 +14,8 @@ using System.Windows.Shapes;
 using System.Drawing;
 using BaseDatos.Controlador;
 using Negocio.Funciones;
+using BaseDatos;
+using System.Data;
 
 namespace BeLife.Vistas
 {
@@ -28,8 +30,11 @@ namespace BeLife.Vistas
         public AdministrarCliente()
         {
             InitializeComponent();
-            
-            
+            cb_tipo_contrato.IsEnabled = true;
+            Con_TipoContrato controlador_contrato = new Con_TipoContrato();
+            cb_tipo_contrato.ItemsSource = controlador_contrato.listarTiposContrato();
+
+
 
 
         }
@@ -138,13 +143,57 @@ namespace BeLife.Vistas
         {
             btn_buscar.Background = morado_click.Background;
             Validacion validacion = new Validacion();
+            Con_Cliente controlador_cliente = new Con_Cliente();
+            Con_Sexo controlador_sexo = new Con_Sexo();
+            Con_EstadoCivil controlador_eCivil = new Con_EstadoCivil();
             if (validacion.rutValido(txt_rut.Text, txt_dv.Text))
             {
-                MessageBox.Show("Todo bien", "Campo: RUT", MessageBoxButton.OK, MessageBoxImage.Information);
                 Con_EstadoCivil c_estadoCivil = new Con_EstadoCivil();
                 Con_Sexo c_sexo = new Con_Sexo();
                 cb_sexo.ItemsSource = c_sexo.listarSexos();
                 cb_estado_civil.ItemsSource = c_estadoCivil.listarEstadoCivil();
+
+
+                if (controlador_cliente.existeCliente(txt_rut.Text, txt_dv.Text))
+                {
+                    Cliente cliente = controlador_cliente.obtenerCliente(txt_rut.Text, txt_dv.Text);
+
+                    txt_nombres.Text = cliente.Nombres;
+                    txt_apellidos.Text = cliente.Apellidos;
+                    dp_fecha_nacimiento.SelectedDate = cliente.FechaNacimiento;
+                    cb_sexo.SelectedItem = controlador_sexo.sexoPorId(cliente.IdEstadoCivil);
+                    cb_estado_civil.SelectedItem = controlador_eCivil.ecivilPorId(cliente.IdEstadoCivil);
+
+                }
+
+                else
+                {
+                    var pregunta_agregar = MessageBox.Show("Cliente no existe, ¿desea agregarlo?", "¿Ingresar nuevo cliente?", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    if(pregunta_agregar == MessageBoxResult.Yes)
+                    {
+                        txt_nombres.IsEnabled = true;
+                        txt_apellidos.IsEnabled = true;
+                        dp_fecha_nacimiento.IsEnabled = true;
+                        cb_sexo.IsEnabled = true;
+                        cb_estado_civil.IsEnabled = true;
+                        lbl_buscar.IsEnabled = false;
+                        btn_buscar.IsEnabled = false;
+                        btn_buscar_lista.IsEnabled = false;
+                        btn_verificar.IsEnabled = true;
+                        txt_rut.IsEnabled = false;
+                        txt_dv.IsEnabled = false;
+
+                    }
+
+                    else
+                    {
+                        txt_rut.Text = "Ej: 12345678";
+                        txt_dv.Text = "N";
+                    }
+
+                }
+                
+                
             }
             else
             {
@@ -191,8 +240,14 @@ namespace BeLife.Vistas
                 MessageBox.Show("Seleccione un estado civil", "Campo: Estado Civil", MessageBoxButton.OK, MessageBoxImage.Error);
                 todo_bien = false;
             }
-            if(todo_bien) 
+            if (todo_bien)
+            {
                 MessageBox.Show("La información es correcta", "Informacion verificada", MessageBoxButton.OK, MessageBoxImage.Information);
+                cb_tipo_contrato.IsEnabled = true;
+                Con_TipoContrato controlador_contrato = new Con_TipoContrato();
+                cb_tipo_contrato.ItemsSource = controlador_contrato.listarTiposContrato();
+            } 
+                
 
         }
 
@@ -216,7 +271,7 @@ namespace BeLife.Vistas
                     lbl_edad.Content = "El cliente debe tener 18 años o mas";
                     lbl_edad.Foreground = new SolidColorBrush(Colors.Red);
                 }
-                
+               
             }
             else
             {
@@ -226,6 +281,15 @@ namespace BeLife.Vistas
             }
         }
 
-       
+        private void cb_tipo_contrato_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+            //AGREGAR FUNCIONALIDAD
+
+
+
+
+
+        }
     }
 }

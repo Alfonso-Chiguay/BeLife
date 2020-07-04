@@ -21,5 +21,14 @@ namespace BaseDatos.Controlador
                 return lista;
             }
         }
+
+        public string sexoPorId(int id)
+        {
+            using (BeLifeEntities entidades = new BeLifeEntities())
+            {
+                var consulta = entidades.Sexo.Where(x => x.IdSexo == id).FirstOrDefault();
+                return consulta.Descripcion.ToUpper();
+            }
+        }
     }
 }

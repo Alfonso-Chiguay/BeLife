@@ -21,5 +21,14 @@ namespace BaseDatos.Controlador
                 return lista;
             }
         }
+
+        public string ecivilPorId(int id)
+        {
+            using (BeLifeEntities entidades = new BeLifeEntities())
+            {
+                var consulta = entidades.EstadoCivil.Where(x => x.IdEstadoCivil == id).FirstOrDefault();
+                return consulta.Descripcion.ToUpper();
+            }
+        }
     }
 }
