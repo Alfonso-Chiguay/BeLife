@@ -1,0 +1,63 @@
+﻿<Window x:Class="BeLife.Vistas.Seguros"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BeLife.Vistas"
+        mc:Ignorable="d"
+        Title="Seguros BeLife | Seguros" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Frame x:Name="panelmorado" Content="" HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="90" Background="#FF9F68C5" Margin="702,0,0,0" Grid.Column="1"/>
+        <Label Content="Be" HorizontalAlignment="Left" Margin="0,3,0,0" VerticalAlignment="Top" FontFamily="Dubai" FontSize="48" Background="#00000000" Foreground="#FF828285" FontWeight="Bold" Height="68" Width="67" Grid.Column="1"/>
+        <Label Content="Life" HorizontalAlignment="Left" Margin="51,3,0,0" VerticalAlignment="Top" FontFamily="Dubai" FontSize="48" Background="#00000000" Foreground="#FF9F68C5" Height="74" Width="101" FontWeight="Bold" Grid.Column="1"/>
+        <Frame Content="" HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="36" Background="#FF828285" Margin="666,0,0,0" Grid.Column="1"/>
+        <Button x:Name="btn_salir" Content="" HorizontalAlignment="Left" Margin="726,356,0,0" VerticalAlignment="Top" Width="38" Height="37" BorderBrush="Transparent" Style="{DynamicResource boton_salida}" Grid.Column="1" Click="btn_salir_Click">
+            <Button.Foreground>
+                <ImageBrush ImageSource="/BeLife;component/img/exit.png" Stretch="Uniform"/>
+            </Button.Foreground>
+            <Button.Background>
+                <ImageBrush ImageSource="/BeLife;component/img/exit.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+        <Label Content="Volver" HorizontalAlignment="Left" Margin="721,330,0,0" VerticalAlignment="Top" FontFamily="Dubai" FontWeight="Bold" Grid.Column="1" Height="30" Width="43"/>
+        <Button x:Name="btn_vida" Content="" HorizontalAlignment="Left" Margin="68,155,0,0" VerticalAlignment="Top" Width="160" Height="144" Style="{DynamicResource boton_clientes}" Foreground="#FFFBF8F8" FontFamily="Global User Interface" FontSize="36" FontWeight="Bold" Grid.Column="1"/>
+        <Button x:Name="btn_vehiculos" HorizontalAlignment="Left" Margin="244,155,0,0" VerticalAlignment="Top" Width="160" Height="144" Style="{DynamicResource boton_clientes}" Foreground="#FFFBF8F8" FontFamily="Global User Interface" FontSize="36" FontWeight="Bold" Grid.Column="1">
+            <Label x:Name="lbl_vehiculo" Content="" RenderTransformOrigin="0.5,0.5" Height="77" Width="80" Foreground="Black">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleY="1.807" AngleX="-0.887"/>
+                        <RotateTransform Angle="-1.498"/>
+                        <TranslateTransform X="0.563" Y="-1.258"/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+                <Label.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/BeLife;component/img/car.png"/>
+                </Label.Background>
+            </Label>
+        </Button>
+        <Button x:Name="btn_hogar" HorizontalAlignment="Left" Margin="419,155,0,0" VerticalAlignment="Top" Width="160" Height="144" Style="{DynamicResource boton_clientes}" Foreground="#FFFBF8F8" FontFamily="Global User Interface" FontSize="36" FontWeight="Bold" Grid.Column="1">
+            <Label x:Name="lbl_hogar" Content="" Height="86" Width="84">
+                <Label.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/BeLife;component/img/casa.png"/>
+                </Label.Background>
+            </Label>
+        </Button>
+        <Frame x:Name="morado_oscuro" Content="" HorizontalAlignment="Left" Height="100" Margin="-268,64,0,0" VerticalAlignment="Top" Width="100" Background="#FF793AA4"/>
+        <Label x:Name="lbl_vida" Grid.ColumnSpan="2" Content="" HorizontalAlignment="Left" Margin="102,183,0,0" VerticalAlignment="Top" Width="94" Height="81" MouseEnter="lbl_vida_MouseEnter" MouseLeave="lbl_vida_MouseLeave" MouseLeftButtonDown="lbl_vida_MouseLeftButtonDown" MouseLeftButtonUp="lbl_vida_MouseLeftButtonUp">
+            <Label.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/BeLife;component/img/corazon.png"/>
+            </Label.Background>
+        </Label>
+        <Frame x:Name="morado_click" Content="" HorizontalAlignment="Left" Height="100" Margin="-153,64,0,0" VerticalAlignment="Top" Width="100" Background="#FF2D153E"/>
+        <Label Grid.ColumnSpan="2" Content="TIPOS DE SEGURO" HorizontalAlignment="Left" Margin="228,98,0,0" VerticalAlignment="Top" FontFamily="Dubai" FontSize="25" FontWeight="Bold" Foreground="#FF31066E"/>
+        <Label Grid.ColumnSpan="2" Content="VIDA" HorizontalAlignment="Left" Margin="117,299,0,0" VerticalAlignment="Top" FontFamily="Dubai" FontSize="25" FontWeight="Bold" Foreground="#FF31066E" Width="65"/>
+        <Label Grid.ColumnSpan="2" Content="VEHICULOS" HorizontalAlignment="Left" Margin="255,297,0,0" VerticalAlignment="Top" FontFamily="Dubai" FontSize="25" FontWeight="Bold" Foreground="#FF31066E" Width="143"/>
+        <Label Grid.ColumnSpan="2" Content="HOGAR" HorizontalAlignment="Left" Margin="450,297,0,0" VerticalAlignment="Top" FontFamily="Dubai" FontSize="25" FontWeight="Bold" Foreground="#FF31066E" Width="99"/>
+
+    </Grid>
+</Window>

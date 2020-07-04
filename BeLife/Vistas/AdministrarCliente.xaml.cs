@@ -117,8 +117,8 @@ namespace BeLife.Vistas
 
         private void lbl_buscar_MouseEnter(object sender, MouseEventArgs e)
         {
-            var moradooscuro = morado_oscuro.Background;
-            btn_buscar.Background = new SolidColorBrush(Colors.MediumPurple);
+            
+            btn_buscar.Background = morado_oscuro.Background;
             btn_buscar.Foreground = new SolidColorBrush(Colors.White);
             
 
@@ -126,8 +126,8 @@ namespace BeLife.Vistas
 
         private void lbl_buscar_MouseLeave(object sender, MouseEventArgs e)
         {
-            var morado_standar = panelmorado.Background;
-            btn_buscar.Background = morado_standar;
+            
+            btn_buscar.Background = panelmorado.Background;
             btn_buscar.Foreground = new SolidColorBrush(Colors.Black);
         }
 

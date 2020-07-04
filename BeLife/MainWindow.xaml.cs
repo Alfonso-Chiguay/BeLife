@@ -38,5 +38,11 @@ namespace BeLife
             Clientes ventana = new Clientes();
             ventana.ShowDialog();
         }
+
+        private void btn_seguros_Click(object sender, RoutedEventArgs e)
+        {
+            Seguros ventana = new Seguros();
+            ventana.ShowDialog();
+        }
     }
 }
