@@ -34,5 +34,11 @@ namespace BeLife.Vistas
             AdministrarCliente ventana = new AdministrarCliente();
             ventana.ShowDialog();
         }
+
+        private void btn_seguros_Click(object sender, RoutedEventArgs e)
+        {
+            ListarClientes ventana = new ListarClientes();
+            ventana.ShowDialog();
+        }
     }
 }

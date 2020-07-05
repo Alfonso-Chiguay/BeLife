@@ -20,7 +20,7 @@
             </Button.Background>
         </Button>
         <Label Content="Volver" HorizontalAlignment="Left" Margin="722,330,0,0" VerticalAlignment="Top" FontFamily="Dubai" FontWeight="Bold"/>
-        <Button x:Name="btn_seguros" Content="Lista de&#xA;clientes" HorizontalAlignment="Left" Margin="342,140,0,0" VerticalAlignment="Top" Width="210" Height="182" Style="{DynamicResource boton_clientes}" Foreground="#FFFBF8F8" FontFamily="Dubai" FontSize="36" FontWeight="Bold"/>
+        <Button x:Name="btn_seguros" Content="Lista de&#xA;clientes" HorizontalAlignment="Left" Margin="342,140,0,0" VerticalAlignment="Top" Width="210" Height="182" Style="{DynamicResource boton_clientes}" Foreground="#FFFBF8F8" FontFamily="Dubai" FontSize="36" FontWeight="Bold" Click="btn_seguros_Click"/>
         <Button x:Name="btn_adm_clientes" Content="Administrar&#xD;&#xA;clientes" HorizontalAlignment="Left" Margin="92,140,0,0" VerticalAlignment="Top" Width="210" Height="182" Style="{DynamicResource boton_clientes}" Foreground="#FFFBF8F8" FontFamily="Dubai" FontSize="36" FontWeight="Bold" Click="btn_seguros_Copy_Click"/>
 
     </Grid>

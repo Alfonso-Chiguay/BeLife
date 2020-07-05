@@ -8,8 +8,8 @@
         mc:Ignorable="d"
         Title="Seguros BeLife | Administrar Clientes" Height="739.676" Width="636.032" WindowStartupLocation="CenterScreen" OpacityMask="#FFB42D9B">
     <Grid Margin="0,0,0,1">
-        <Label Content="Be" HorizontalAlignment="Left" Margin="10,19,0,0" VerticalAlignment="Top" FontFamily="Dubai" FontSize="48" Background="#00000000" Foreground="#FF828285" FontWeight="Bold" Height="68" Width="67"/>
-        <Label Content="Life" HorizontalAlignment="Left" Margin="61,19,0,0" VerticalAlignment="Top" FontFamily="Dubai" FontSize="48" Background="#00000000" Foreground="#FF9F68C5" FontWeight="Bold" Height="74" Width="92"/>
+        <Label Content="Be" HorizontalAlignment="Left" Margin="2,-16,0,0" VerticalAlignment="Top" FontFamily="Dubai" FontSize="48" Background="#00000000" Foreground="#FF828285" FontWeight="Bold" Height="68" Width="67"/>
+        <Label Content="Life" HorizontalAlignment="Left" Margin="53,-16,0,0" VerticalAlignment="Top" FontFamily="Dubai" FontSize="48" Background="#00000000" Foreground="#FF9F68C5" FontWeight="Bold" Height="74" Width="92"/>
         <Frame x:Name="panelmorado" Content="" HorizontalAlignment="Left" Height="708" VerticalAlignment="Top" Width="90" Background="#FF9F68C5" Margin="538,0,0,0"/>
         <Frame Content="" HorizontalAlignment="Left" Height="708" VerticalAlignment="Top" Width="36" Background="#FF828285" Margin="502,0,0,0"/>
         <Button x:Name="btn_volver" Content="" HorizontalAlignment="Left" Margin="564,653,0,0" VerticalAlignment="Top" Width="38" Height="37" BorderBrush="Transparent" Style="{DynamicResource boton_salida}" Click="btn_salir_Click">
@@ -38,7 +38,7 @@
                 <ImageBrush Stretch="Uniform" ImageSource="/BeLife;component/img/search.png"/>
             </Label.Background>
         </Label>
-        <Rectangle x:Name="rec_seguros" HorizontalAlignment="Left" Height="208" Margin="23,396,0,0" Stroke="Black" VerticalAlignment="Top" Width="428" StrokeThickness="2"/>
+        <Rectangle x:Name="rec_seguros" HorizontalAlignment="Left" Height="208" Margin="23,396,0,0" Stroke="Black" VerticalAlignment="Top" Width="460" StrokeThickness="2"/>
         <Button x:Name="btn_guardar" Content="Guardar" HorizontalAlignment="Left" Margin="84,627,0,0" VerticalAlignment="Top" Width="133" Height="33" Background="#FF9F68C5" BorderBrush="Black" BorderThickness="2" Style="{DynamicResource boton_clientes}" FontFamily="Dubai" FontSize="16" FontWeight="Bold" IsEnabled="False"/>
         <Button x:Name="btn_actualizar" Content="Actualizar" HorizontalAlignment="Left" Margin="258,627,0,0" VerticalAlignment="Top" Width="133" Height="33" Background="#FF9F68C5" BorderBrush="#FF040404" BorderThickness="2" Style="{DynamicResource boton_clientes}" FontSize="16" FontFamily="Dubai" FontWeight="Bold" IsEnabled="False"/>
         <Frame x:Name="morado_oscuro" Content="" HorizontalAlignment="Left" Height="100" Margin="291,727,0,-119" VerticalAlignment="Top" Width="100" Background="#FF793AA4"/>
@@ -52,7 +52,7 @@
         <Label Content="TIPO DE CONTRATO" HorizontalAlignment="Left" Margin="34,396,0,0" VerticalAlignment="Top" Width="194" FontFamily="Perpetua Titling MT" FontWeight="Bold" FontSize="16"/>
         <ComboBox x:Name="cb_tipo_contrato" HorizontalAlignment="Left" Margin="36,425,0,0" VerticalAlignment="Top" Width="181" Height="30" Background="{x:Null}" BorderBrush="#FF020000" IsEnabled="False" FontFamily="Dubai" FontSize="16" SelectionChanged="cb_tipo_contrato_SelectionChanged"/>
         <Label Content="TIPO DE PLAN" HorizontalAlignment="Left" Margin="244,396,0,0" VerticalAlignment="Top" Width="194" FontFamily="Perpetua Titling MT" FontWeight="Bold" FontSize="16"/>
-        <ComboBox x:Name="cb_tipo_plan" HorizontalAlignment="Left" Margin="246,425,0,0" VerticalAlignment="Top" Width="181" Height="30" Background="{x:Null}" BorderBrush="#FF020000" IsEnabled="False" FontFamily="Dubai" FontSize="16" SelectionChanged="cb_tipo_contrato_SelectionChanged"/>
+        <ComboBox x:Name="cb_tipo_plan" HorizontalAlignment="Left" Margin="246,425,0,0" VerticalAlignment="Top" Width="224" Height="30" Background="{x:Null}" BorderBrush="#FF020000" IsEnabled="False" FontFamily="Dubai" FontSize="16" SelectionChanged="cb_tipo_contrato_SelectionChanged"/>
 
     </Grid>
 </Window>

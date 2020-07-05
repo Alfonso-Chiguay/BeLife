@@ -83,6 +83,9 @@
     <Compile Include="Vistas\Clientes.xaml.cs">
       <DependentUpon>Clientes.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\ListarClientes.xaml.cs">
+      <DependentUpon>ListarClientes.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\Seguros.xaml.cs">
       <DependentUpon>Seguros.xaml</DependentUpon>
     </Compile>
@@ -111,6 +114,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Vistas\Clientes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vistas\ListarClientes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

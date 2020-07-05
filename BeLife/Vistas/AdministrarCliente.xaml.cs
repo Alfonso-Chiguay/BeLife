@@ -30,13 +30,6 @@ namespace BeLife.Vistas
         public AdministrarCliente()
         {
             InitializeComponent();
-            cb_tipo_contrato.IsEnabled = true;
-            Con_TipoContrato controlador_contrato = new Con_TipoContrato();
-            cb_tipo_contrato.ItemsSource = controlador_contrato.listarTiposContrato();
-
-
-
-
         }
 
         
@@ -157,13 +150,11 @@ namespace BeLife.Vistas
                 if (controlador_cliente.existeCliente(txt_rut.Text, txt_dv.Text))
                 {
                     Cliente cliente = controlador_cliente.obtenerCliente(txt_rut.Text, txt_dv.Text);
-
                     txt_nombres.Text = cliente.Nombres;
                     txt_apellidos.Text = cliente.Apellidos;
                     dp_fecha_nacimiento.SelectedDate = cliente.FechaNacimiento;
                     cb_sexo.SelectedItem = controlador_sexo.sexoPorId(cliente.IdEstadoCivil);
                     cb_estado_civil.SelectedItem = controlador_eCivil.ecivilPorId(cliente.IdEstadoCivil);
-
                 }
 
                 else
@@ -182,23 +173,22 @@ namespace BeLife.Vistas
                         btn_verificar.IsEnabled = true;
                         txt_rut.IsEnabled = false;
                         txt_dv.IsEnabled = false;
-
                     }
 
                     else
                     {
                         txt_rut.Text = "Ej: 12345678";
                         txt_dv.Text = "N";
+                        txt_rut.Foreground = new SolidColorBrush(Colors.Gray);
+                        txt_dv.Foreground = new SolidColorBrush(Colors.Gray);
                     }
 
-                }
-                
+                }               
                 
             }
             else
-            {
                 MessageBox.Show("RUT invalido", "Campo: RUT", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            
 
 
         }
@@ -220,6 +210,7 @@ namespace BeLife.Vistas
             if (lbl_edad.Content.Equals("Ingrese una edad"))
             {
                 MessageBox.Show("Debe seleccionar una fecha de nacimiento", "Campo: Fecha de nacimiento", MessageBoxButton.OK, MessageBoxImage.Error);
+                lbl_edad.Foreground = new SolidColorBrush(Colors.Red);
                 todo_bien = false;
             }
             
@@ -283,8 +274,9 @@ namespace BeLife.Vistas
 
         private void cb_tipo_contrato_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
-            //AGREGAR FUNCIONALIDAD
+            cb_tipo_plan.IsEnabled = true;
+            Con_Plan controlador = new Con_Plan();
+            cb_tipo_plan.ItemsSource = controlador.listarPlanPorContrato(cb_tipo_contrato.SelectedItem.ToString());
 
 
 

@@ -30,5 +30,15 @@ namespace BaseDatos.Controlador
                 return consulta.Descripcion.ToUpper();
             }
         }
+
+        public int obtenerId(string descripcion)
+        {
+            using (BeLifeEntities entidades = new BeLifeEntities())
+            {
+                var consulta = entidades.Sexo.Where(x => x.Descripcion.ToUpper().Equals(descripcion.ToUpper())).FirstOrDefault();
+                return consulta.IdSexo;
+            }
+
+        }
     }
 }
