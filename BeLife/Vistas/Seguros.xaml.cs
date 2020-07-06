@@ -24,6 +24,7 @@ namespace BeLife.Vistas
             InitializeComponent();
         }
 
+
         private void btn_salir_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -50,6 +51,12 @@ namespace BeLife.Vistas
         {
             btn_vida.Background = panelmorado.Background;
             btn_vida.BorderBrush = new SolidColorBrush(Colors.Transparent);
+        }
+
+        private void btn_vehiculos_Click(object sender, RoutedEventArgs e)
+        {            
+            Seguros_auto ventana = new Seguros_auto();
+            ventana.ShowDialog();
         }
     }
 }
