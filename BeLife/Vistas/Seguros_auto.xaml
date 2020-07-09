@@ -5,29 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BeLife.Vistas"
         mc:Ignorable="d"
-        Title="Seguros_auto" Height="450" Width="800">
+        Title="Seguros_auto" Height="450" Width="384.524">
     <Grid>
         <Label Content="Numero de contrato" HorizontalAlignment="Left" Margin="28,58,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txt_fecha" HorizontalAlignment="Left" Height="23" Margin="28,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143"/>
+        <TextBox x:Name="txt_fecha" HorizontalAlignment="Left" Height="23" Margin="28,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" Text="yyyyMMddhhmmss" GotFocus="txt_fecha_GotFocus" LostFocus="txt_fecha_LostFocus" Foreground="Gray"/>
         <Label Content="CONTRATO DE " HorizontalAlignment="Left" Margin="26,15,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbl_tipo_seguro" Content="Vehiculo" HorizontalAlignment="Left" Margin="122,15,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btn_buscar_en_lista" Content="Buscar en lista" HorizontalAlignment="Left" Margin="228,92,0,0" VerticalAlignment="Top" Width="93" Click="btn_buscar_en_lista_Click"/>
         <Button x:Name="btn_guardado" Content="Guardar" HorizontalAlignment="Left" Margin="228,344,0,0" VerticalAlignment="Top" Width="93" Click="btn_guardado_Click"/>
-        <Button x:Name="btn_buscarContrato" Content="" HorizontalAlignment="Left" Margin="183,92,0,0" VerticalAlignment="Top" Width="37" Click="btn_buscarContrato_Click">
-            <Button.Background>
-                <ImageBrush ImageSource="/BeLife;component/img/search.png"/>
-            </Button.Background>
-        </Button>
         <Label Content="Rut" HorizontalAlignment="Left" Margin="28,126,0,0" VerticalAlignment="Top"/>
-        <Label Content="Nombre" HorizontalAlignment="Left" Margin="28,184,0,0" VerticalAlignment="Top"/>
-        <Label Content="Apellidos" HorizontalAlignment="Left" Margin="162,184,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txt_rut" HorizontalAlignment="Left" Height="23" Margin="28,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89"/>
-        <Button x:Name="btn_buscarRut" Content="" HorizontalAlignment="Left" Margin="183,153,0,0" VerticalAlignment="Top" Width="37">
+        <Label Content="Nombre" HorizontalAlignment="Left" Margin="26,166,0,0" VerticalAlignment="Top"/>
+        <Label Content="Apellidos" HorizontalAlignment="Left" Margin="162,166,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_rut" HorizontalAlignment="Left" Height="23" Margin="26,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" Foreground="Gray" Text="Ej :12345678" GotFocus="txt_rut_GotFocus" LostFocus="txt_rut_LostFocus"/>
+        <Button x:Name="asd" Content="" HorizontalAlignment="Left" Margin="186,89,0,0" VerticalAlignment="Top" Width="37">
             <Button.Background>
                 <ImageBrush ImageSource="/BeLife;component/img/search.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btn_buscarCliente" Content="Buscar Cliente" HorizontalAlignment="Left" Margin="235,153,0,0" VerticalAlignment="Top" Width="87" RenderTransformOrigin="0.5,0.5">
+        <Button x:Name="btn_buscarCliente" Content="Buscar Cliente" HorizontalAlignment="Left" Margin="234,129,0,0" VerticalAlignment="Top" Width="87" RenderTransformOrigin="0.5,0.5" Click="btn_buscarCliente_Click">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -37,12 +32,17 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <TextBox x:Name="txt_dv" HorizontalAlignment="Left" Height="23" Margin="142,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="29"/>
-        <Label Content="-" HorizontalAlignment="Left" Margin="122,150,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txt_nombre" HorizontalAlignment="Left" Height="23" Margin="28,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89"/>
-        <TextBox x:Name="txt_apellidos" HorizontalAlignment="Left" Height="23" Margin="162,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159"/>
-        <ComboBox x:Name="cb_marca" HorizontalAlignment="Left" Margin="28,273,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cb_marca_SelectionChanged"/>
-        <ComboBox x:Name="cb_modelo" HorizontalAlignment="Left" Margin="201,273,0,0" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <TextBox x:Name="txt_dv" HorizontalAlignment="Left" Height="23" Margin="142,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="29" Text="N" Foreground="Gray" GotFocus="txt_dv_GotFocus" LostFocus="txt_dv_LostFocus"/>
+        <Label Content="-" HorizontalAlignment="Left" Margin="120,123,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.171,0.822"/>
+        <TextBox x:Name="txt_nombre" HorizontalAlignment="Left" Height="23" Margin="28,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" IsEnabled="False"/>
+        <TextBox x:Name="txt_apellidos" HorizontalAlignment="Left" Height="23" Margin="162,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" IsEnabled="False"/>
+        <ComboBox x:Name="cb_marca" HorizontalAlignment="Left" Margin="26,246,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cb_marca_SelectionChanged" IsEnabled="False"/>
+        <ComboBox x:Name="cb_modelo" HorizontalAlignment="Left" Margin="201,246,0,0" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <Button x:Name="btn_buscarRut" Content="" HorizontalAlignment="Left" Margin="184,128,0,0" VerticalAlignment="Top" Width="39" Click="btn_buscarRut_Click" Height="21">
+            <Button.Background>
+                <ImageBrush ImageSource="/BeLife;component/img/search.png"/>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </Window>

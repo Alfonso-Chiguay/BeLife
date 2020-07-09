@@ -15,12 +15,12 @@ namespace BaseDatos.Controlador
             int id_marca_vehiculo = vehiculo.idTipoModelo(marca);
             using (BeLifeEntities entidades = new BeLifeEntities())
             {
-                var consulta = entidades.MarcaModeloVehiculo.Where(x => x.IdMarca == id_marca_vehiculo).ToList();                
+                var consulta = entidades.MarcaModeloVehiculo.Where(x => x.IdMarca == id_marca_vehiculo).ToList();
                 List<string> lista = new List<string>();
                 foreach (MarcaModeloVehiculo MaMoVe in consulta)
-                {             
-                    string retorno = MaMoVe.IdModelo.ToString();
-                    lista.Add(retorno);
+                {
+                    string retorno_1 = MaMoVe.ModeloVehiculo.Descripcion;
+                    lista.Add(retorno_1);
                 }
                 return lista;
             }
