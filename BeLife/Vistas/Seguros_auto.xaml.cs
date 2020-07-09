@@ -14,6 +14,7 @@ using BaseDatos;
 using BaseDatos.Controlador;
 using System.Windows.Shapes;
 using Negocio.Funciones;
+using System.Text.RegularExpressions;
 
 namespace BeLife.Vistas
 {
@@ -43,7 +44,22 @@ namespace BeLife.Vistas
             txt_fecha.IsEnabled = false;
             Con_vehiculo vehiculo = new Con_vehiculo();
             cb_marca.ItemsSource = vehiculo.listarMarca();
-            MessageBox.Show("HOLA");
+            if (Regex.IsMatch(txt_patente.Text, "^[a-z-A-Z]{4}[0-9]{2}$"))
+            {
+                MessageBox.Show("TIPO DE PATENTE AAAA-99");
+                //https://social.msdn.microsoft.com/Forums/es-ES/d2941e3c-81cc-40d2-9a59-f8716c1ca5ae/validar-patente-vehiculo?forum=vcses
+            }
+            else if (Regex.IsMatch(txt_patente.Text, "^[a-z-A-Z]{3}[0-9]{3}$"))
+            {
+                MessageBox.Show("TIPO DE PATENTE AAA-999");
+            }
+            else if (Regex.IsMatch(txt_patente.Text, "^[a-z-A-Z]{2}[0-9]{4}$"))
+            {
+                MessageBox.Show("TIPO DE PATENTE AA-9999");
+            }
+            else
+                MessageBox.Show("NI IDEA ");
+
         }
 
         private void cb_marca_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -139,6 +155,31 @@ namespace BeLife.Vistas
         {
             ListarClientes ventana = new ListarClientes(true);
             ventana.ShowDialog();
+        }
+
+        private void dp_fechaVehiculo_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Validacion validacion = new Validacion();
+            DateTime fecha = dp_fechaVehiculo.SelectedDate.Value;
+            if (!validacion.VehiculoFecha(fecha))
+            {
+                if(fecha.Year > DateTime.Today.Year)
+                {
+                    lbl_fecha.Content = "AÑO INCORRECTO";
+                }
+                else if (fecha.Month > DateTime.Today.Month)
+                {
+                    lbl_fecha.Content = "MES INCORRECTO";
+                }
+                else
+                {
+                    lbl_fecha.Content = "HOLAAA?";
+                }
+            }
+            else
+            {
+                lbl_fecha.Content = "TAMOS BIEN";
+            }
         }
     }
 }

@@ -289,5 +289,6 @@ namespace BeLife.Vistas
         {
             txt_nombres.Text = cliente.Nombres;
         }
+
     }
 }

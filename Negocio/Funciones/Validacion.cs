@@ -37,6 +37,24 @@ namespace Negocio.Funciones
             }
         }
 
+        public bool VehiculoFecha(DateTime fechaVehiculo)
+        {
+            if(fechaVehiculo == null)
+            {
+                return false;
+            }
+            DateTime fechaActual = DateTime.Today;
+
+            if (fechaVehiculo > fechaActual)
+            {
+                return false;
+            }
+            else if (fechaVehiculo.Year < 1980 || fechaVehiculo.Year > fechaActual.Year)
+                return false;
+            else
+                return true;
+        }
+
         public bool rutValido(string rut, string dv)
         {
             int rut_numeros;

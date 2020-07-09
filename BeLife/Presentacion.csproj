@@ -95,6 +95,9 @@
     <Compile Include="Vistas\Seguros_auto.xaml.cs">
       <DependentUpon>Seguros_auto.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\Seguro_hogar.xaml.cs">
+      <DependentUpon>Seguro_hogar.xaml</DependentUpon>
+    </Compile>
     <Page Include="Estilos\BotonSalida.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -136,6 +139,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Vistas\Seguros_auto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vistas\Seguro_hogar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
