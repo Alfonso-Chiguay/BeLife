@@ -31,6 +31,17 @@ namespace BeLife.Vistas
             txt_filtro.Foreground = new SolidColorBrush(Colors.Gray);
         }
 
+        public ListarClientes(bool otra_ventana)
+        {
+            InitializeComponent();
+            cb_filtro.Items.Add("ESTADO CIVIL");
+            cb_filtro.Items.Add("RUT");
+            cb_filtro.Items.Add("SEXO");
+            cb_filtro.Items.Add("TODOS");
+            txt_filtro.Foreground = new SolidColorBrush(Colors.Gray);
+            btn_obtener.Visibility = Visibility.Visible;
+        }
+
         private void btn_salir_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -69,8 +80,7 @@ namespace BeLife.Vistas
                 txt_filtro.Visibility = Visibility.Hidden;
                 cb_filtro_seleccion.Visibility = Visibility.Hidden;
                 btn_filtrar.Content = "Filtrar todo";
-            }
-                
+            }                
         }
 
         private void txt_filtro_GotFocus(object sender, RoutedEventArgs e)
@@ -91,8 +101,18 @@ namespace BeLife.Vistas
                 {
                     list_cliente.Items.Add(c.ToString());
                 }
-                //list_cliente.ItemsSource = lista;
             }
+        }
+
+        private void btn_obtener_Click(object sender, RoutedEventArgs e)
+        {
+            
+            Cliente cliente = new Cliente();
+            var futuro_cliente = list_cliente.SelectedItem.ToString().Split(',');
+            cliente.RutCliente = futuro_cliente[0];
+            cliente.Nombres = futuro_cliente[1].Split(' ')[0];
+            cliente.Apellidos = futuro_cliente[1].Split(' ')[1];
+            cliente.FechaNacimiento = DateTime.Parse(futuro_cliente[2]);
         }
     }
 }

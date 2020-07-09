@@ -23,9 +23,12 @@
         <Label Content="Filtrar por:" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Width="100" FontFamily="Perpetua Titling MT" FontWeight="Bold" FontSize="16"/>
         <ComboBox x:Name="cb_filtro" HorizontalAlignment="Left" Margin="110,66,0,0" VerticalAlignment="Top" Width="120" Background="{x:Null}" BorderBrush="{x:Null}" SelectionChanged="cb_filtro_SelectionChanged"/>
         <TextBox x:Name="txt_filtro" HorizontalAlignment="Left" Height="22" Margin="248,66,0,0" TextWrapping="Wrap" Text="Seleccione un filtro" VerticalAlignment="Top" Width="154" Background="{x:Null}" BorderBrush="Black" FontFamily="Dubai" GotFocus="txt_filtro_GotFocus" Visibility="Hidden"/>
-        <Button x:Name="btn_filtrar" Content="Filtrar" HorizontalAlignment="Left" Style="{DynamicResource boton_clientes}" Margin="414,66,0,0" VerticalAlignment="Top" Width="97" Height="22" Click="btn_filtrar_Click"/>
+        <Button x:Name="btn_filtrar" Content="Filtrar" HorizontalAlignment="Left" Style="{DynamicResource boton_clientes}" Margin="414,66,0,0" VerticalAlignment="Top" Width="97" Height="22" Click="btn_filtrar_Click" FontFamily="Dubai"/>
         <ComboBox x:Name="cb_filtro_seleccion" HorizontalAlignment="Left" Margin="248,66,0,0" VerticalAlignment="Top" Width="154" Visibility="Hidden"/>
-        <ListBox x:Name="list_cliente" HorizontalAlignment="Left" Height="190" Margin="10,113,0,0" VerticalAlignment="Top" Width="501"/>
+        <ListBox x:Name="list_cliente" HorizontalAlignment="Left" Height="182" Margin="10,132,0,0" VerticalAlignment="Top" Width="501"/>
+        <Button x:Name="btn_obtener" Content="Obtener" HorizontalAlignment="Left" Style="{DynamicResource boton_clientes}" Margin="414,330,0,0" VerticalAlignment="Top" Width="97" Height="29" FontFamily="Dubai" Click="btn_obtener_Click"/>
+        <TextBox x:Name="txt_busca_nombre" HorizontalAlignment="Left" Height="20" Margin="141,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="153"/>
+        <Label Content="Buscar por nombre:" HorizontalAlignment="Left" Margin="10,101,0,0" VerticalAlignment="Top" Width="135" FontFamily="Perpetua Titling MT" FontWeight="Bold" FontSize="13"/>
 
     </Grid>
 </Window>

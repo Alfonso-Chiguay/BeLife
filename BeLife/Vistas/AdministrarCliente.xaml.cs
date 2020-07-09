@@ -36,7 +36,6 @@ namespace BeLife.Vistas
         private void btn_salir_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            var morado_standar = panelmorado.Background;
         }
 
         private void txt_rut_GotFocus(object sender, RoutedEventArgs e)
@@ -145,18 +144,23 @@ namespace BeLife.Vistas
                 Con_Sexo c_sexo = new Con_Sexo();
                 cb_sexo.ItemsSource = c_sexo.listarSexos();
                 cb_estado_civil.ItemsSource = c_estadoCivil.listarEstadoCivil();
-
-
                 if (controlador_cliente.existeCliente(txt_rut.Text, txt_dv.Text))
                 {
                     Cliente cliente = controlador_cliente.obtenerCliente(txt_rut.Text, txt_dv.Text);
                     txt_nombres.Text = cliente.Nombres;
                     txt_apellidos.Text = cliente.Apellidos;
                     dp_fecha_nacimiento.SelectedDate = cliente.FechaNacimiento;
-                    cb_sexo.SelectedItem = controlador_sexo.sexoPorId(cliente.IdEstadoCivil);
+                    cb_sexo.SelectedItem = controlador_sexo.sexoPorId(cliente.IdSexo);
                     cb_estado_civil.SelectedItem = controlador_eCivil.ecivilPorId(cliente.IdEstadoCivil);
+                    btn_buscar.IsEnabled = false;
+                    lbl_buscar.IsEnabled = false;
+                    btn_buscar_lista.IsEnabled = false;
+                    txt_rut.IsEnabled = false;
+                    txt_dv.IsEnabled = false;
+                    cb_tipo_contrato.IsEnabled = true;                    
+                    Con_TipoContrato controlador_contrato = new Con_TipoContrato();
+                    cb_tipo_contrato.ItemsSource = controlador_contrato.listarTiposContrato();
                 }
-
                 else
                 {
                     var pregunta_agregar = MessageBox.Show("Cliente no existe, ¿desea agregarlo?", "¿Ingresar nuevo cliente?", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -188,9 +192,6 @@ namespace BeLife.Vistas
             }
             else
                 MessageBox.Show("RUT invalido", "Campo: RUT", MessageBoxButton.OK, MessageBoxImage.Error);
-            
-
-
         }
 
         private void btn_verificar_Click(object sender, RoutedEventArgs e)
@@ -266,7 +267,6 @@ namespace BeLife.Vistas
             }
             else
             {
-
                 lbl_edad.Foreground = new SolidColorBrush(Colors.Transparent);
                 lbl_edad.Content = "Todo bien";
             }
@@ -277,11 +277,17 @@ namespace BeLife.Vistas
             cb_tipo_plan.IsEnabled = true;
             Con_Plan controlador = new Con_Plan();
             cb_tipo_plan.ItemsSource = controlador.listarPlanPorContrato(cb_tipo_contrato.SelectedItem.ToString());
+        }
 
+        private void btn_buscar_lista_Click(object sender, RoutedEventArgs e)
+        {
+            ListarClientes ventana = new ListarClientes(true);
+            ventana.ShowDialog();
+        }
 
-
-
-
+        public void llenar_formulario(Cliente cliente)
+        {
+            txt_nombres.Text = cliente.Nombres;
         }
     }
 }
