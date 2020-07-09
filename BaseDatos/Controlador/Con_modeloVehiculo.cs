@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BaseDatos.Controlador
 {
-    class Con_modeloVehiculo
+    public class Con_modeloVehiculo
     {
         public List<string> listarModeloPorVehiculo()
         {
@@ -25,8 +25,8 @@ namespace BaseDatos.Controlador
         {
             using (BeLifeEntities entidades = new BeLifeEntities())
             {
-                var consulta = entidades.ModeloVehiculo.Where(x => x.Descripcion.ToUpper().Equals(descripcion.ToUpper())).FirstOrDefault();
-                return consulta.IdModelo;
+                var consulta = entidades.MarcaVehiculo.Where(x => x.Descripcion.ToUpper().Equals(descripcion.ToUpper())).FirstOrDefault();
+                return consulta.IdMarca;
             }
         }
     }

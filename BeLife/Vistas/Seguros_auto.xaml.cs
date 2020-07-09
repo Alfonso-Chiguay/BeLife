@@ -53,6 +53,8 @@ namespace BeLife.Vistas
         private void cb_marca_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             cb_modelo.IsEnabled = true;
+            Con_enlace vehiculo = new Con_enlace();
+            cb_modelo.ItemsSource = vehiculo.listarModeloPorMarca(cb_marca.SelectedItem.ToString());
         }
     }
 }
