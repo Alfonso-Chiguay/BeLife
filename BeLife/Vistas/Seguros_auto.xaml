@@ -1,0 +1,46 @@
+﻿<Window x:Class="BeLife.Vistas.Seguros_auto"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BeLife.Vistas"
+        mc:Ignorable="d"
+        Title="Seguros_auto" Height="450" Width="800">
+    <Grid>
+        <Label Content="Numero de contrato" HorizontalAlignment="Left" Margin="28,58,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_fecha" HorizontalAlignment="Left" Height="23" Margin="28,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" IsEnabled="False"/>
+        <Label Content="CONTRATO DE " HorizontalAlignment="Left" Margin="26,15,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbl_tipo_seguro" Content="Vehiculo" HorizontalAlignment="Left" Margin="122,10,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btn_buscar_en_lista" Content="Buscar en lista" HorizontalAlignment="Left" Margin="228,92,0,0" VerticalAlignment="Top" Width="93" Click="btn_buscar_en_lista_Click"/>
+        <Button x:Name="btn_guardado" Content="Guardar" HorizontalAlignment="Left" Margin="228,344,0,0" VerticalAlignment="Top" Width="93" Click="btn_guardado_Click"/>
+        <Button x:Name="btn_buscarContrato" Content="" HorizontalAlignment="Left" Margin="183,92,0,0" VerticalAlignment="Top" Width="37" Click="btn_buscarContrato_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/BeLife;component/img/search.png"/>
+            </Button.Background>
+        </Button>
+        <Label Content="Rut" HorizontalAlignment="Left" Margin="28,126,0,0" VerticalAlignment="Top"/>
+        <Label Content="Nombre" HorizontalAlignment="Left" Margin="28,184,0,0" VerticalAlignment="Top"/>
+        <Label Content="Apellidos" HorizontalAlignment="Left" Margin="162,184,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="28,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89"/>
+        <Button x:Name="btn_buscarRut" Content="" HorizontalAlignment="Left" Margin="183,153,0,0" VerticalAlignment="Top" Width="37">
+            <Button.Background>
+                <ImageBrush ImageSource="/BeLife;component/img/search.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btn_buscarCliente" Content="Buscar Cliente" HorizontalAlignment="Left" Margin="235,153,0,0" VerticalAlignment="Top" Width="87" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.318"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="142,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="29"/>
+        <Label Content="-" HorizontalAlignment="Left" Margin="122,150,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="28,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="162,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159"/>
+
+    </Grid>
+</Window>
