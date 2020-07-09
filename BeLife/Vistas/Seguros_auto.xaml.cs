@@ -10,6 +10,8 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using BaseDatos;
+using BaseDatos.Controlador;
 using System.Windows.Shapes;
 
 namespace BeLife.Vistas
@@ -26,6 +28,7 @@ namespace BeLife.Vistas
 
         DateTime fecha = DateTime.Now;
 
+        
         private void btn_buscar_en_lista_Click(object sender, RoutedEventArgs e)
         {
             Lista_contratos ventana = new Lista_contratos();
@@ -37,8 +40,19 @@ namespace BeLife.Vistas
         {
             txt_fecha.Text = fecha.ToString("yyyyMMddhhmmss");
             txt_fecha.IsEnabled = false;
+            Con_vehiculo vehiculo = new Con_vehiculo();
+            cb_marca.ItemsSource = vehiculo.listarMarca();
             MessageBox.Show("HOLA");
         }
 
+        private void btn_buscarContrato_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("BUSCAR SEGURO");
+        }
+
+        private void cb_marca_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            cb_modelo.IsEnabled = true;
+        }
     }
 }
