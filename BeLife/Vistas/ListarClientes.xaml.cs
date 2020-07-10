@@ -1,7 +1,9 @@
 ﻿using BaseDatos;
 using BaseDatos.Controlador;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -180,9 +182,18 @@ namespace BeLife.Vistas
         {
             
             Cliente cliente = new Cliente();
-            var futuro_cliente = dg_listaClientes.SelectedItem.ToString();
-            MessageBox.Show(futuro_cliente);
+            var fila = dg_listaClientes.SelectedItem as Carga;
             
+            if(fila != null)
+            {
+                Con_Cliente con = new Con_Cliente();
+                cliente = con.obtenerCliente(fila.Rut.Split('-')[0], fila.Rut.Split('-')[1]);
+                MessageBox.Show(cliente.ToString());
+            }
+            
+            
+            
+           
         }
 
         private class Carga
