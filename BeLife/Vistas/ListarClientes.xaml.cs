@@ -89,30 +89,107 @@ namespace BeLife.Vistas
             txt_filtro.Foreground = new SolidColorBrush(Colors.Black);
         }
 
+        Con_Cliente filtro = new Con_Cliente();
         private void btn_filtrar_Click(object sender, RoutedEventArgs e)
         {
-            list_cliente.Items.Clear();
-            var seleccion = cb_filtro.SelectedItem.ToString();
-            if (seleccion.Equals("SEXO"))
+
+            if (cb_filtro.SelectedIndex != -1)
             {
-                Con_Cliente filtro = new Con_Cliente();
-                List<Cliente> lista = filtro.filtarPorSexo(cb_filtro_seleccion.SelectedItem.ToString());
-                foreach(Cliente c in lista)
+                var seleccion = cb_filtro.SelectedItem.ToString();
+                if (seleccion.Equals("SEXO"))
                 {
-                    list_cliente.Items.Add(c.ToString());
+
+                    List<Cliente> lista = filtro.filtarPorSexo(cb_filtro_seleccion.SelectedItem.ToString());
+                    List<Carga> carga = new List<Carga>();
+                    foreach (Cliente c in lista)
+                    {
+                        Carga car = new Carga();
+                        car.Rut = c.RutCliente;
+                        car.Nombre = c.Nombres;
+                        car.F_Nacimiento = c.FechaNacimiento.ToShortDateString();
+                        carga.Add(car);
+
+                    }
+
+                    dg_listaClientes.ItemsSource = carga;
+                }
+                else if (seleccion.Equals("ESTADO CIVIL"))
+                {
+                    List<Cliente> lista = filtro.filtarPorECivil(cb_filtro_seleccion.SelectedItem.ToString());
+                    List<Carga> carga = new List<Carga>();
+                    foreach (Cliente c in lista)
+                    {
+                        Carga car = new Carga();
+                        car.Rut = c.RutCliente;
+                        car.Nombre = c.Nombres;
+                        car.F_Nacimiento = c.FechaNacimiento.ToShortDateString();
+                        carga.Add(car);
+
+                    }
+                    dg_listaClientes.ItemsSource = carga;
+                }
+
+                else if (seleccion.Equals("RUT"))
+                {
+                    string rut = txt_filtro.Text.Split('-')[0];
+                    string dv = txt_filtro.Text.Split('-')[1];
+                    Cliente cliente = filtro.obtenerCliente(rut, dv);
+                    List<Carga> carga = new List<Carga>();
+                    Carga car = new Carga();
+                    if (cliente.Nombres.Equals("No existe"))
+                    {
+
+                        car.Rut = "NO";
+                        car.Nombre = "HAY";
+                        car.F_Nacimiento = "DATOS";
+                        carga.Add(car);
+                    }
+                    else
+                    {
+
+                        car.Rut = cliente.RutCliente;
+                        car.Nombre = cliente.Nombres;
+                        car.F_Nacimiento = cliente.FechaNacimiento.ToShortDateString();
+                        carga.Add(car);
+
+                    }
+                    dg_listaClientes.ItemsSource = carga;
+                }
+                else
+                {
+                    List<Cliente> lista = filtro.filtarTodo();
+                    List<Carga> carga = new List<Carga>();
+                    foreach (Cliente c in lista)
+                    {
+                        Carga car = new Carga();
+                        car.Rut = c.RutCliente;
+                        car.Nombre = c.Nombres;
+                        car.F_Nacimiento = c.FechaNacimiento.ToShortDateString();
+                        carga.Add(car);
+
+                    }
+                    dg_listaClientes.ItemsSource = carga;
                 }
             }
+            
+
+
         }
 
         private void btn_obtener_Click(object sender, RoutedEventArgs e)
         {
             
             Cliente cliente = new Cliente();
-            var futuro_cliente = list_cliente.SelectedItem.ToString().Split(',');
-            cliente.RutCliente = futuro_cliente[0];
-            cliente.Nombres = futuro_cliente[1].Split(' ')[0];
-            cliente.Apellidos = futuro_cliente[1].Split(' ')[1];
-            cliente.FechaNacimiento = DateTime.Parse(futuro_cliente[2]);
+            var futuro_cliente = dg_listaClientes.SelectedItem.ToString();
+            MessageBox.Show(futuro_cliente);
+            
+        }
+
+        private class Carga
+        {
+            public string Rut { get; set; }
+            public string Nombre { get; set; }
+            public string F_Nacimiento { get; set; }
         }
     }
 }

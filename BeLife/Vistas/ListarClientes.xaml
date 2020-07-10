@@ -25,10 +25,14 @@
         <TextBox x:Name="txt_filtro" HorizontalAlignment="Left" Height="22" Margin="248,66,0,0" TextWrapping="Wrap" Text="Seleccione un filtro" VerticalAlignment="Top" Width="154" Background="{x:Null}" BorderBrush="Black" FontFamily="Dubai" GotFocus="txt_filtro_GotFocus" Visibility="Hidden"/>
         <Button x:Name="btn_filtrar" Content="Filtrar" HorizontalAlignment="Left" Style="{DynamicResource boton_clientes}" Margin="414,66,0,0" VerticalAlignment="Top" Width="97" Height="22" Click="btn_filtrar_Click" FontFamily="Dubai"/>
         <ComboBox x:Name="cb_filtro_seleccion" HorizontalAlignment="Left" Margin="248,66,0,0" VerticalAlignment="Top" Width="154" Visibility="Hidden"/>
-        <ListBox x:Name="list_cliente" HorizontalAlignment="Left" Height="182" Margin="10,132,0,0" VerticalAlignment="Top" Width="501"/>
-        <Button x:Name="btn_obtener" Content="Obtener" HorizontalAlignment="Left" Style="{DynamicResource boton_clientes}" Margin="414,330,0,0" VerticalAlignment="Top" Width="97" Height="29" FontFamily="Dubai" Click="btn_obtener_Click"/>
-        <TextBox x:Name="txt_busca_nombre" HorizontalAlignment="Left" Height="20" Margin="141,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="153"/>
-        <Label Content="Buscar por nombre:" HorizontalAlignment="Left" Margin="10,101,0,0" VerticalAlignment="Top" Width="135" FontFamily="Perpetua Titling MT" FontWeight="Bold" FontSize="13"/>
+        <Button x:Name="btn_obtener" Content="Obtener" HorizontalAlignment="Left" Style="{DynamicResource boton_clientes}" Margin="290,354,0,0" VerticalAlignment="Top" Width="97" Height="29" FontFamily="Dubai" Click="btn_obtener_Click"/>
+        <DataGrid x:Name="dg_listaClientes" HorizontalAlignment="Left" Height="Auto" Margin="10,109,0,0" VerticalAlignment="Top" Width="Auto" AutoGenerateColumns="False" ItemsSource="{Binding Source=list}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Rut}" Header="Rut" Width="Auto"/>
+                <DataGridTextColumn Binding="{Binding Nombre}" Header="Nombre" Width="Auto"/>
+                <DataGridTextColumn Binding="{Binding F_Nacimiento}" Header="F_Nac" Width="Auto"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </Window>

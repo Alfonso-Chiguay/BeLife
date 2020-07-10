@@ -35,11 +35,7 @@ namespace BaseDatos.Controlador
             }
         }
 
-        public List<Cliente> filtarPorRut(string rut)
-        {
-            return new List<Cliente>();
-        }
-
+        
         public List<Cliente> filtarPorSexo(string sexo)
         {
             using (BeLifeEntities entidades = new BeLifeEntities())
@@ -53,7 +49,21 @@ namespace BaseDatos.Controlador
 
         public List<Cliente> filtarPorECivil(string e_civil)
         {
-            return new List<Cliente>();
+            using (BeLifeEntities entidades = new BeLifeEntities())
+            {
+                Con_EstadoCivil c_ecivil = new Con_EstadoCivil();
+                int idcivil = c_ecivil.obtenerId(e_civil);
+                return entidades.Cliente.Where(x => x.IdEstadoCivil == idcivil).ToList();
+            }   
+        }
+
+        public List<Cliente> filtarTodo()
+        {
+            using (BeLifeEntities entidades = new BeLifeEntities())
+            {
+                
+                return entidades.Cliente.ToList();
+            }
         }
 
     }
