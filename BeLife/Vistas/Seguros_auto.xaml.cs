@@ -58,7 +58,7 @@ namespace BeLife.Vistas
                 MessageBox.Show("TIPO DE PATENTE AA-9999");
             }
             else
-                MessageBox.Show("NI IDEA ");
+                MessageBox.Show("PATENTE INVALIDA","ERROR PATENTE", MessageBoxButton.OK,MessageBoxImage.Error);
 
         }
 
@@ -137,6 +137,7 @@ namespace BeLife.Vistas
                     txt_nombre.Text = cliente.Nombres;
                     txt_apellidos.Text = cliente.Apellidos;
                     cb_marca.IsEnabled = true;
+                    txt_patente.IsEnabled = true;
                 //}
                 //else
                 //{
@@ -179,6 +180,24 @@ namespace BeLife.Vistas
             else
             {
                 lbl_fecha.Content = "TAMOS BIEN";
+            }
+        }
+
+        private void txt_patente_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_patente.Text.Equals("AAAA99"))
+            {
+                txt_patente.Text = "";
+                txt_patente.Foreground = new SolidColorBrush(Colors.Black);
+            }
+        }
+
+        private void txt_patente_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_patente.Text.Equals(""))
+            {
+                txt_patente.Foreground = new SolidColorBrush(Colors.Gray);
+                txt_patente.Text = "AAAA99";
             }
         }
     }

@@ -16,7 +16,7 @@
         <Label Content="Rut" HorizontalAlignment="Left" Margin="28,126,0,0" VerticalAlignment="Top"/>
         <Label Content="Nombre" HorizontalAlignment="Left" Margin="26,166,0,0" VerticalAlignment="Top"/>
         <Label Content="Apellidos" HorizontalAlignment="Left" Margin="162,166,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txt_rut" HorizontalAlignment="Left" Height="23" Margin="26,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" Foreground="Gray" Text="Ej :12345678" GotFocus="txt_rut_GotFocus" LostFocus="txt_rut_LostFocus"/>
+        <TextBox x:Name="txt_rut" HorizontalAlignment="Left" Height="23" Margin="26,126,0,0" MaxLength = "8" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" Foreground="Gray" Text="Ej :12345678" GotFocus="txt_rut_GotFocus" LostFocus="txt_rut_LostFocus"/>
         <Button x:Name="asd" Content="" HorizontalAlignment="Left" Margin="186,89,0,0" VerticalAlignment="Top" Width="37">
             <Button.Background>
                 <ImageBrush ImageSource="/BeLife;component/img/search.png"/>
@@ -32,7 +32,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <TextBox x:Name="txt_dv" HorizontalAlignment="Left" Height="23" Margin="142,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="29" Text="N" Foreground="Gray" GotFocus="txt_dv_GotFocus" LostFocus="txt_dv_LostFocus"/>
+        <TextBox x:Name="txt_dv" HorizontalAlignment="Left" Height="23" Margin="142,126,0,0" MaxLength = "1" TextWrapping="Wrap" VerticalAlignment="Top" Width="29" Text="N" Foreground="Gray" GotFocus="txt_dv_GotFocus" LostFocus="txt_dv_LostFocus"/>
         <Label Content="-" HorizontalAlignment="Left" Margin="120,123,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.171,0.822"/>
         <TextBox x:Name="txt_nombre" HorizontalAlignment="Left" Height="23" Margin="28,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" IsEnabled="False"/>
         <TextBox x:Name="txt_apellidos" HorizontalAlignment="Left" Height="23" Margin="162,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" IsEnabled="False"/>
@@ -44,7 +44,7 @@
             </Button.Background>
         </Button>
         <Label Content="Patente :" HorizontalAlignment="Left" Margin="28,283,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txt_patente" HorizontalAlignment="Left" Height="23" Margin="30,314,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="87"/>
+        <TextBox x:Name="txt_patente" HorizontalAlignment="Left" Height="23" Margin="30,314,0,0" TextWrapping="Wrap" MaxLength = "6" VerticalAlignment="Top" Width="87" Text="AAAA99" Foreground="Gray" GotFocus="txt_patente_GotFocus" LostFocus="txt_patente_LostFocus" IsEnabled="False"/>
         <Label Content="Año :" HorizontalAlignment="Left" Margin="159,282,0,0" VerticalAlignment="Top"/>
         <DatePicker x:Name="dp_fechaVehiculo" HorizontalAlignment="Left" Margin="176,314,0,0" VerticalAlignment="Top" SelectedDateChanged="dp_fechaVehiculo_SelectedDateChanged"/>
         <Label x:Name="lbl_fecha" Content="" HorizontalAlignment="Left" Margin="216,281,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="71">
