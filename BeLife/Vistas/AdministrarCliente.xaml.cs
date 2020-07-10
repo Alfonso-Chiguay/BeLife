@@ -16,6 +16,8 @@ using BaseDatos.Controlador;
 using Negocio.Funciones;
 using BaseDatos;
 using System.Data;
+using static BaseDatos.Controlador.Con_Plan;
+using BeLife.memento;
 
 namespace BeLife.Vistas
 {
@@ -27,11 +29,37 @@ namespace BeLife.Vistas
 
     public partial class AdministrarCliente : Window
     {
+        CareTakerUtil caretakerutil = new CareTakerUtil();
+        private int indice;
+        private string path;
+        List<planTipoContrato> listaCompleta;
         public AdministrarCliente()
         {
             InitializeComponent();
+            Con_Plan con = new Con_Plan();
+            listaCompleta = con.listarInfoJoin();
+            List<planGrid> cargar = new List<planGrid>();
+
+            foreach (planTipoContrato info in listaCompleta)
+            {
+                planGrid x = new planGrid();
+                x.NombreContrato = info.nombrePlan;
+                x.TipoContrato = info.descripcionContrato;
+                x.Tiene = true;
+                cargar.Add(x);
+            }
+
+            dg_contratos.ItemsSource = cargar;        
+
+
         }
 
+        public class planGrid
+        {
+            public string TipoContrato { get; set; }
+            public string NombreContrato { get; set; }
+            public bool Tiene { get; set; }
+        }
         
         private void btn_salir_Click(object sender, RoutedEventArgs e)
         {
@@ -157,9 +185,7 @@ namespace BeLife.Vistas
                     btn_buscar_lista.IsEnabled = false;
                     txt_rut.IsEnabled = false;
                     txt_dv.IsEnabled = false;
-                    cb_tipo_contrato.IsEnabled = true;                    
-                    Con_TipoContrato controlador_contrato = new Con_TipoContrato();
-                    cb_tipo_contrato.ItemsSource = controlador_contrato.listarTiposContrato();
+                   
                 }
                 else
                 {
@@ -235,9 +261,7 @@ namespace BeLife.Vistas
             if (todo_bien)
             {
                 MessageBox.Show("La información es correcta", "Informacion verificada", MessageBoxButton.OK, MessageBoxImage.Information);
-                cb_tipo_contrato.IsEnabled = true;
-                Con_TipoContrato controlador_contrato = new Con_TipoContrato();
-                cb_tipo_contrato.ItemsSource = controlador_contrato.listarTiposContrato();
+               
             } 
                 
 
@@ -272,16 +296,11 @@ namespace BeLife.Vistas
             }
         }
 
-        private void cb_tipo_contrato_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            cb_tipo_plan.IsEnabled = true;
-            Con_Plan controlador = new Con_Plan();
-            cb_tipo_plan.ItemsSource = controlador.listarPlanPorContrato(cb_tipo_contrato.SelectedItem.ToString());
-        }
+        
 
         private void btn_buscar_lista_Click(object sender, RoutedEventArgs e)
         {
-            ListarClientes ventana = new ListarClientes(true);
+            ListarClientes ventana = new ListarClientes("AdministrarCliente");
             ventana.ShowDialog();
         }
 
@@ -290,5 +309,87 @@ namespace BeLife.Vistas
             txt_nombres.Text = cliente.Nombres;
         }
 
+        private void btn_atras_Click(object sender, RoutedEventArgs e)
+        {
+            if (caretakerutil.Contar()>0 && indice>0)
+            {
+                --indice;
+                Memento estadoAnterior = caretakerutil.getMemento(indice);
+                Cliente clienteMemento = (Cliente)estadoAnterior.obtenerEstadoGuardado();
+
+                txt_rut.Text = clienteMemento.RutCliente.Split('-')[0];
+                txt_dv.Text = clienteMemento.RutCliente.Split('-')[1];
+                txt_nombres.Text = clienteMemento.Nombres;
+                txt_apellidos.Text = clienteMemento.Apellidos;
+                dp_fecha_nacimiento.SelectedDate = clienteMemento.FechaNacimiento;
+
+                Con_EstadoCivil c_estadoCivil = new Con_EstadoCivil();
+                Con_Sexo c_sexo = new Con_Sexo();
+                int idsexo = c_sexo.obtenerId(cb_sexo.SelectedItem.ToString());
+                int idestadocivil = c_estadoCivil.obtenerId(cb_estado_civil.SelectedItem.ToString());
+
+                idsexo = clienteMemento.IdSexo;
+                idestadocivil = clienteMemento.IdEstadoCivil;
+
+            }
+
+        }
+
+        public List<Cliente> obtenerClientes()
+        {
+            
+            
+            List<Cliente> listaCliente = new List<Cliente>();
+            foreach(Memento m in caretakerutil.getMemento())
+            {
+                Cliente cliente = (Cliente)m.obtenerEstadoGuardado();
+                listaCliente.Add(cliente);
+            }
+
+            return listaCliente;
+        }
+
+        private void btn_adelante_Click(object sender, RoutedEventArgs e)
+        {
+            if (caretakerutil.Contar() > 0 && indice > 0 && indice < caretakerutil.Contar()-1)
+            {
+                ++indice;
+                Memento estadoAnterior = caretakerutil.getMemento(indice);
+                Cliente clienteMemento = (Cliente)estadoAnterior.obtenerEstadoGuardado();
+
+                txt_rut.Text = clienteMemento.RutCliente.Split('-')[0];
+                txt_dv.Text = clienteMemento.RutCliente.Split('-')[1];
+                txt_nombres.Text = clienteMemento.Nombres;
+                txt_apellidos.Text = clienteMemento.Apellidos;
+                dp_fecha_nacimiento.SelectedDate = clienteMemento.FechaNacimiento;
+
+                Con_EstadoCivil c_estadoCivil = new Con_EstadoCivil();
+                Con_Sexo c_sexo = new Con_Sexo();
+
+                cb_sexo.SelectedItem = c_sexo.sexoPorId(clienteMemento.IdSexo);
+                cb_estado_civil.SelectedItem = c_estadoCivil.ecivilPorId(clienteMemento.IdEstadoCivil);
+
+            }
+        }
+
+        private void btn_cache_Click(object sender, RoutedEventArgs e)
+        {
+            Cliente cliente = new Cliente();
+            cliente.RutCliente = txt_rut.Text + "-" + txt_dv.Text;
+            cliente.Nombres = txt_nombres.Text;
+            cliente.Apellidos = txt_apellidos.Text;
+            cliente.FechaNacimiento = dp_fecha_nacimiento.SelectedDate.Value;
+            Con_EstadoCivil c_estadoCivil = new Con_EstadoCivil();
+            Con_Sexo c_sexo = new Con_Sexo();
+            int idsexo = c_sexo.obtenerId(cb_sexo.SelectedItem.ToString());
+            int idestadocivil = c_estadoCivil.obtenerId(cb_estado_civil.SelectedItem.ToString());
+
+            cliente.IdSexo = idsexo;
+            cliente.IdEstadoCivil = idestadocivil;
+
+            Memento m = new Memento(cliente);
+            caretakerutil.agregarMemento(m);
+            indice = caretakerutil.Contar()-1;
+        }
     }
 }

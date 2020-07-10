@@ -32,8 +32,8 @@ namespace BeLife.Vistas
             cb_filtro.Items.Add("TODOS");
             txt_filtro.Foreground = new SolidColorBrush(Colors.Gray);
         }
-
-        public ListarClientes(bool otra_ventana)
+        string ventana;
+        public ListarClientes(string nombre_ventana)
         {
             InitializeComponent();
             cb_filtro.Items.Add("ESTADO CIVIL");
@@ -42,6 +42,7 @@ namespace BeLife.Vistas
             cb_filtro.Items.Add("TODOS");
             txt_filtro.Foreground = new SolidColorBrush(Colors.Gray);
             btn_obtener.Visibility = Visibility.Visible;
+            ventana = nombre_ventana;
         }
 
         private void btn_salir_Click(object sender, RoutedEventArgs e)

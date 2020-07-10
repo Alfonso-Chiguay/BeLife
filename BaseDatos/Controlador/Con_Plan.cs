@@ -25,5 +25,30 @@ namespace BaseDatos.Controlador
                 return lista;
             }
         }
+
+        public class planTipoContrato
+        {
+            public int idContrato { get; set; }
+            public string descripcionContrato { get; set; }
+            public string idPlan { get; set; }
+            public string nombrePlan { get; set; }
+        }
+
+        public List<planTipoContrato> listarInfoJoin()
+        {
+            using(BeLifeEntities entidades = new BeLifeEntities())
+            {
+                var consulta = (from x in entidades.TipoContrato
+                                join y in entidades.Plan on x.IdTipoContrato equals y.IdTipoContrato
+                                select new planTipoContrato
+                                {   idContrato = x.IdTipoContrato,
+                                    descripcionContrato = x.Descripcion,
+                                    idPlan = y.IdPlan,
+                                   nombrePlan = y.Nombre
+                                }).ToList();
+                return consulta;
+            }
+
+        }
     }
 }
