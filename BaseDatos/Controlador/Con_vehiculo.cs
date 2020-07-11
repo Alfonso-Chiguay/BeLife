@@ -22,11 +22,20 @@ namespace BaseDatos.Controlador
             }
         }
 
-        public int MarcaPorId(int id)
+        public void asegurarVehiculo(Vehiculo vehiculo)
         {
             using (BeLifeEntities entidades = new BeLifeEntities())
             {
-                var consulta = entidades.MarcaVehiculo.Where(x => x.IdMarca == id).FirstOrDefault();
+                entidades.Vehiculo.Add(vehiculo);
+                entidades.SaveChanges();
+            }
+        }
+
+        public int MarcaPorId(string marca)
+        {
+            using (BeLifeEntities entidades = new BeLifeEntities())
+            {
+                var consulta = entidades.MarcaVehiculo.Where(x => x.Descripcion == marca).FirstOrDefault();
                 return consulta.IdMarca;
             }
         }

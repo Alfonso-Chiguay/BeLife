@@ -42,25 +42,30 @@ namespace BeLife.Vistas
 
         private void btn_guardado_Click(object sender, RoutedEventArgs e)
         {
-            txt_fecha.Text = fecha.ToString("yyyyMMddhhmmss");
-            txt_fecha.IsEnabled = false;
-            Con_vehiculo vehiculo = new Con_vehiculo();
-            cb_marca.ItemsSource = vehiculo.listarMarca();
-            if (Regex.IsMatch(txt_patente.Text, "^[a-z-A-Z]{4}[0-9]{2}$"))
+            if (cb_modelo.Text.Equals("") || cb_modelo.Text.Equals("") || txt_patente.Equals(""))
             {
-                MessageBox.Show("TIPO DE PATENTE AAAA-99");
-                //https://social.msdn.microsoft.com/Forums/es-ES/d2941e3c-81cc-40d2-9a59-f8716c1ca5ae/validar-patente-vehiculo?forum=vcses
-            }
-            else if (Regex.IsMatch(txt_patente.Text, "^[a-z-A-Z]{3}[0-9]{3}$"))
-            {
-                MessageBox.Show("TIPO DE PATENTE AAA-999");
-            }
-            else if (Regex.IsMatch(txt_patente.Text, "^[a-z-A-Z]{2}[0-9]{4}$"))
-            {
-                MessageBox.Show("TIPO DE PATENTE AA-9999");
+                MessageBox.Show("Faltan Datos", "ERROR REGISTRO", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
-                MessageBox.Show("PATENTE INVALIDA","ERROR PATENTE", MessageBoxButton.OK,MessageBoxImage.Error);
+            {
+                DateTime fecha_1 = dp_fechaVehiculo.SelectedDate.Value;
+                txt_fecha.Text = fecha.ToString("yyyyMMddhhmmss");
+                txt_fecha.IsEnabled = false;
+                Con_vehiculo vehiculo = new Con_vehiculo();
+                Vehiculo vehiculo_save = new Vehiculo();
+                Con_modeloVehiculo Mo_vehiculo = new Con_modeloVehiculo();
+                var id_marca = vehiculo.MarcaPorId(cb_marca.Text);
+                var id_modelo = Mo_vehiculo.buscarIDmodelo(cb_modelo.Text);
+                vehiculo_save.Patente = txt_patente.Text;
+                vehiculo_save.IdMarca = id_marca;
+                vehiculo_save.IdModelo = id_modelo;
+                vehiculo_save.Anho = fecha_1.Year;
+                vehiculo.asegurarVehiculo(vehiculo_save);
+                MessageBox.Show("DATOS GUARDADOS CORRECTAMENTE", "REGISTRO COMPLETO", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
+                //https://social.msdn.microsoft.com/Forums/es-ES/d2941e3c-81cc-40d2-9a59-f8716c1ca5ae/validar-patente-vehiculo?forum=vcses
+
+            }
 
         }
 
@@ -180,24 +185,47 @@ namespace BeLife.Vistas
             else
             {
                 lbl_fecha.Content = "TAMOS BIEN";
+                btn_guardado.IsEnabled = true;
             }
         }
 
         private void txt_patente_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (txt_patente.Text.Equals("AAAA99"))
+            if (txt_patente.Text.Equals(""))
             {
                 txt_patente.Text = "";
                 txt_patente.Foreground = new SolidColorBrush(Colors.Black);
             }
         }
 
-        private void txt_patente_LostFocus(object sender, RoutedEventArgs e)
+        private void cb_modelo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (txt_patente.Text.Equals(""))
+            txt_patente.Foreground = new SolidColorBrush(Colors.Black);
+            txt_patente.Text = "";
+            txt_patente.IsEnabled = true;
+            btn_validarPatente.IsEnabled = true;
+        }
+
+        private void btn_validarPatente_Click(object sender, RoutedEventArgs e)
+        {
+            if (Regex.IsMatch(txt_patente.Text, "^[a-z-A-Z]{4}[0-9]{2}$"))
             {
-                txt_patente.Foreground = new SolidColorBrush(Colors.Gray);
-                txt_patente.Text = "AAAA99";
+                dp_fechaVehiculo.IsEnabled = true;
+                //https://social.msdn.microsoft.com/Forums/es-ES/d2941e3c-81cc-40d2-9a59-f8716c1ca5ae/validar-patente-vehiculo?forum=vcses
+            }
+            else if (Regex.IsMatch(txt_patente.Text, "^[a-z-A-Z]{3}[0-9]{3}$"))
+            {
+                dp_fechaVehiculo.IsEnabled = true;
+            }
+            else if (Regex.IsMatch(txt_patente.Text, "^[a-z-A-Z]{2}[0-9]{4}$"))
+            {
+                dp_fechaVehiculo.IsEnabled = true;
+            }
+            else
+            {
+                MessageBox.Show("PATENTE INVALIDA", "ERROR PATENTE", MessageBoxButton.OK, MessageBoxImage.Error);
+                dp_fechaVehiculo.DataContext = DateTime.Today;
+                dp_fechaVehiculo.IsEnabled = false;
             }
         }
     }

@@ -8,6 +8,5 @@ namespace BaseDatos.Controlador
 {
     public class Con_Contrato
     {
-        
     }
 }

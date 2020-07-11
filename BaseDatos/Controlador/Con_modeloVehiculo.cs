@@ -32,5 +32,14 @@ namespace BaseDatos.Controlador
                 return consulta.IdMarca;
             }
         }
+
+        public int buscarIDmodelo(string modelo)
+        {
+            using (BeLifeEntities entidades = new BeLifeEntities())
+            {
+                var consulta = entidades.ModeloVehiculo.Where(x => x.Descripcion.ToUpper().Equals(modelo.ToUpper())).FirstOrDefault();
+                return consulta.IdModelo;
+            }
+        }
     }
 }
