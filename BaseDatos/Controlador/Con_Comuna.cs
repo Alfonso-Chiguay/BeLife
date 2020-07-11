@@ -38,5 +38,13 @@ namespace BaseDatos.Controlador
                 return lista;
             }
         }
+        public int buscarIDcomuna(string comuna)
+        {
+            using (BeLifeEntities entidades = new BeLifeEntities())
+            {
+                var consulta = entidades.Comuna.Where(x => x.NombreComuna.ToUpper().Equals(comuna.ToUpper())).FirstOrDefault();
+                return consulta.IdComuna;
+            }
+        }
     }
 }

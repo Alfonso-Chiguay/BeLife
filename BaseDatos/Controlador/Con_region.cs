@@ -21,6 +21,15 @@ namespace BaseDatos.Controlador
                 return lista;
             }
         }
+
+        public void asegurarVivienda(Vivienda vivienda)
+        {
+            using (BeLifeEntities entidades = new BeLifeEntities())
+            {
+                entidades.Vivienda.Add(vivienda);
+                entidades.SaveChanges();
+            }
+        }
         public int idRegion(string nombreRegion)//OJOOOO
         {
             using (BeLifeEntities entidades = new BeLifeEntities())
