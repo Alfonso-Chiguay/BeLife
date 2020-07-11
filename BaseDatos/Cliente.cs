@@ -31,10 +31,5 @@ namespace BaseDatos
         public virtual Sexo Sexo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contrato> Contrato { get; set; }
-
-        public override string ToString()
-        {
-            return RutCliente+", "+Nombres+" "+Apellidos+", "+FechaNacimiento.ToShortDateString();
-        }
     }
 }

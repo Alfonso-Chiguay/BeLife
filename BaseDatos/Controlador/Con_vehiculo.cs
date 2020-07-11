@@ -39,5 +39,6 @@ namespace BaseDatos.Controlador
                 return consulta.IdMarca;
             }
         }
+
     }
 }
