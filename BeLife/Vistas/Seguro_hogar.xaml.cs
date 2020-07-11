@@ -37,18 +37,41 @@ namespace BeLife.Vistas
         {
             txt_codigoSeguro.Text = fecha.ToString("yyyyMMddhhmmss");
             txt_codigoSeguro.IsEnabled = false;
-            if (txt_valorInmueble.Text.Equals("0") || txt_valorInmueble.Text.Equals("00") || txt_valorInmueble.Text.Equals("000")
-                || txt_valorInmueble.Text.Equals("0000"))
-            {
-                MessageBox.Show("VALOR INMUEBLE DEBE SER DISTINTO DE 0");
-            }
-            else if (Regex.IsMatch(txt_valorInmueble.Text, "^[1-9]{1}$") || Regex.IsMatch(txt_valorInmueble.Text, "^[0-9]{2}$") ||
-                Regex.IsMatch(txt_valorInmueble.Text, "^[0-9]{3}$") || Regex.IsMatch(txt_valorInmueble.Text, "^[0-9]{4}$"))
-            {
-                MessageBox.Show("VALOR INMUEBLE ES NUMERICO, ESTA NITIDO#");
-            }
+            if (!txt_direccion.Text.Equals("Calle, Departamento,Torre,etc.") && txt_direccion.Text.Length > 5)
+                if (txt_valorInmueble.Text.Equals("0") || txt_valorInmueble.Text.Equals("00") || txt_valorInmueble.Text.Equals("000")
+                    || txt_valorInmueble.Text.Equals("0000"))
+                {
+                    MessageBox.Show("VALOR INMUEBLE DEBE SER DISTINTO DE 0");
+                }
+                else if (Regex.IsMatch(txt_valorInmueble.Text, "^[1-9]{1}$") || Regex.IsMatch(txt_valorInmueble.Text, "^[0-9]{2}$") ||
+                    Regex.IsMatch(txt_valorInmueble.Text, "^[0-9]{3}$") || Regex.IsMatch(txt_valorInmueble.Text, "^[0-9]{4}$"))
+                     {
+                        if (lbl_fecha.Content.Equals("TAMOS BIEN DIJO EL KOKU"))
+                        {
+                            if (lbl_postal.Content.Equals("CODIGO POSTAL OK"))
+                            {
+                                if (cb_region.Text.Equals("") || cb_comuna.Text.Equals(""))
+                                {
+                                    MessageBox.Show("Ingrese region / comuna");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Datos Guardados correctamente");
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Codigo Postal Invalido");
+                            }
+                        }
+                        else
+                        MessageBox.Show("Fecha Incorrecta");
+                     }
+
+                else
+                    MessageBox.Show("VALOR INMUEBLE INVALIDO");
             else
-                MessageBox.Show("VALOR INMUEBLE INVALIDO");
+                MessageBox.Show("Ingrese direccion");
 
         }
 
@@ -63,6 +86,7 @@ namespace BeLife.Vistas
         {
             Validacion validacion = new Validacion();
             DateTime fecha = dp_fechaConstruccion.SelectedDate.Value;
+            lbl_fecha.Foreground = new SolidColorBrush(Colors.White);
             if(!validacion.viviendaFecha(fecha))
             {
                 if (fecha.Year > DateTime.Today.Year)
@@ -138,7 +162,14 @@ namespace BeLife.Vistas
             }          
             else if (Regex.IsMatch(txt_codigoPostal.Text, "^[0-9]{7}$"))
             {
-                lbl_postal.Content = "CODIGO POSTAL OK";
+                var postal = Int32.Parse(txt_codigoPostal.Text);
+                if (postal >= 1000000)
+                    lbl_postal.Content = "CODIGO POSTAL OK";
+                else
+                {
+                    lbl_postal.Foreground = new SolidColorBrush(Colors.Red);
+                    lbl_postal.Content = "CODIGO POSTAL INVALIDO";
+                }
             }
             else
             {
