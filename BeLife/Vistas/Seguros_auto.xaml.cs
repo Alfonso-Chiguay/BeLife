@@ -23,11 +23,21 @@ namespace BeLife.Vistas
     /// </summary>
     public partial class Seguros_auto : Window
     {
+        Cliente cliente;
+
         public Seguros_auto()
         {
             InitializeComponent();
             Con_vehiculo vehiculo = new Con_vehiculo();
             cb_marca.ItemsSource = vehiculo.listarMarca();
+            
+        }
+        public Seguros_auto(Cliente c)
+        {
+            InitializeComponent();
+            Con_vehiculo vehiculo = new Con_vehiculo();
+            cb_marca.ItemsSource = vehiculo.listarMarca();
+            cliente = c;
         }
 
         DateTime fecha = DateTime.Now;

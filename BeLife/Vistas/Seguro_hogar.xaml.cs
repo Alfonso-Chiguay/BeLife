@@ -24,12 +24,23 @@ namespace BeLife.Vistas
     /// </summary>
     public partial class Seguro_hogar : Window
     {
+        Cliente cliente;
+
         public Seguro_hogar()
         {
             InitializeComponent();
             txt_codigoSeguro.Text = fecha.ToString("yyyyMMddhhmmss");
             Con_region comuna = new Con_region();
             cb_region.ItemsSource = comuna.listarRegion();
+            
+        }
+        public Seguro_hogar(Cliente c)
+        {
+            InitializeComponent();
+            txt_codigoSeguro.Text = fecha.ToString("yyyyMMddhhmmss");
+            Con_region comuna = new Con_region();
+            cb_region.ItemsSource = comuna.listarRegion();
+            cliente = c;
         }
 
         DateTime fecha = DateTime.Now;
