@@ -5,8 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BeLife.Vistas"
         mc:Ignorable="d"
-        Title="Seguro_hogar" Height="450" Width="800">
+        Title="Seguro_hogar" Height="450" Width="401.838">
     <Grid>
-        
+        <Label Content="Codigo postal" HorizontalAlignment="Left" Margin="50,87,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_codigoPostal" HorizontalAlignment="Left" Height="23" Margin="215,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <DatePicker x:Name="dp_fechaConstruccion" HorizontalAlignment="Left" Margin="190,146,0,0" VerticalAlignment="Top"/>
+        <Label Content="Año de construccion" HorizontalAlignment="Left" Margin="50,146,0,0" VerticalAlignment="Top"/>
+        <Label Content="Direccion" HorizontalAlignment="Left" Margin="50,198,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_direccion" HorizontalAlignment="Left" Height="23" Margin="161,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174"/>
+        <ComboBox x:Name="cb_region" HorizontalAlignment="Left" Margin="50,274,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cb_region_SelectionChanged"/>
+        <ComboBox x:Name="cb_comuna" HorizontalAlignment="Left" Margin="244,274,0,0" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <Label Content="Region" HorizontalAlignment="Left" Margin="50,243,0,0" VerticalAlignment="Top"/>
+        <Label Content="Comuna" HorizontalAlignment="Left" Margin="244,243,0,0" VerticalAlignment="Top"/>
+        <Label Content="Valor inmueble (UF)" HorizontalAlignment="Left" Margin="50,316,0,0" VerticalAlignment="Top"/>
+        <Label Content="Valor contenido (UF)" HorizontalAlignment="Left" Margin="50,347,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_valorInmueble" HorizontalAlignment="Left" Height="23" Margin="190,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58"/>
+        <TextBox x:Name="valor_contenido" HorizontalAlignment="Left" Height="23" Margin="190,350,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58"/>
+        <Label Content="Codigo Seguro" HorizontalAlignment="Left" Margin="50,56,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_codigoSeguro" HorizontalAlignment="Left" Height="23" Margin="215,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Guardar" HorizontalAlignment="Left" Margin="298,387,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button x:Name="btn_test" HorizontalAlignment="Left" Margin="274,327,0,0" VerticalAlignment="Top" Width="75" Height="25" Content="Test" Click="btn_test_Click"/>
+
     </Grid>
 </Window>

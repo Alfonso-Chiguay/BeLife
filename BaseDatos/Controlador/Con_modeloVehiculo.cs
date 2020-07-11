@@ -8,15 +8,18 @@ namespace BaseDatos.Controlador
 {
     public class Con_modeloVehiculo
     {
-        public List<string> listarModeloPorVehiculo()
+        public List<string> listarModeloPorMarca(string marca)
         {
+            Con_vehiculo marca_vehiculo = new Con_vehiculo();
+            int id_marca_vehiculo = idTipoModelo(marca);
             using (BeLifeEntities entidades = new BeLifeEntities())
             {
-                var consulta = entidades.ModeloVehiculo.ToList();
+                var consulta = entidades.MarcaModeloVehiculo.Where(x => x.IdMarca == id_marca_vehiculo).ToList();
                 List<string> lista = new List<string>();
-                foreach (ModeloVehiculo MoVe in consulta)
+                foreach (MarcaModeloVehiculo MaMoVe in consulta)
                 {
-                    lista.Add(MoVe.Descripcion.ToUpper());
+                    string retorno_1 = MaMoVe.ModeloVehiculo.Descripcion;
+                    lista.Add(retorno_1);
                 }
                 return lista;
             }

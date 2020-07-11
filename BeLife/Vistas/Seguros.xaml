@@ -40,7 +40,7 @@
                 </Label.Background>
             </Label>
         </Button>
-        <Button x:Name="btn_hogar" HorizontalAlignment="Left" Margin="419,155,0,0" VerticalAlignment="Top" Width="160" Height="144" Style="{DynamicResource boton_clientes}" Foreground="#FFFBF8F8" FontFamily="Global User Interface" FontSize="36" FontWeight="Bold" Grid.Column="1">
+        <Button x:Name="btn_hogar" HorizontalAlignment="Left" Margin="419,155,0,0" VerticalAlignment="Top" Width="160" Height="144" Style="{DynamicResource boton_clientes}" Foreground="#FFFBF8F8" FontFamily="Global User Interface" FontSize="36" FontWeight="Bold" Grid.Column="1" Click="btn_hogar_Click">
             <Label x:Name="lbl_hogar" Content="" Height="86" Width="84">
                 <Label.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/BeLife;component/img/casa.png"/>

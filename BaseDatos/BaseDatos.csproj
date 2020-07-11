@@ -77,10 +77,10 @@
     <Compile Include="Controlador\Con_Cliente.cs" />
     <Compile Include="Controlador\Con_Comuna.cs" />
     <Compile Include="Controlador\Con_Contrato.cs" />
-    <Compile Include="Controlador\Con_enlace.cs" />
     <Compile Include="Controlador\Con_EstadoCivil.cs" />
     <Compile Include="Controlador\Con_modeloVehiculo.cs" />
     <Compile Include="Controlador\Con_Plan.cs" />
+    <Compile Include="Controlador\Con_region.cs" />
     <Compile Include="Controlador\Con_Sexo.cs" />
     <Compile Include="Controlador\Con_TipoContrato.cs" />
     <Compile Include="Controlador\Con_vehiculo.cs" />

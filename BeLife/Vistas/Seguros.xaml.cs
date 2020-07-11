@@ -58,5 +58,11 @@ namespace BeLife.Vistas
             Seguros_auto ventana = new Seguros_auto();
             ventana.ShowDialog();
         }
+
+        private void btn_hogar_Click(object sender, RoutedEventArgs e)
+        {
+            Seguro_hogar ventana = new Seguro_hogar();
+            ventana.ShowDialog();
+        }
     }
 }

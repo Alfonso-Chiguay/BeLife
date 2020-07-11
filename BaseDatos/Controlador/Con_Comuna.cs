@@ -21,5 +21,22 @@ namespace BaseDatos.Controlador
                 return lista;
             }
         }
+
+        public List<string> listaComunaPorRegion(string region)
+        {
+            Con_region controlador_region = new Con_region();
+            int id_region = controlador_region.idRegion(region);
+            using (BeLifeEntities entidades = new BeLifeEntities())
+            {
+                var consulta = entidades.RegionComuna.Where(x => x.IdRegion == id_region).ToList();
+                List<string> lista = new List<string>();
+                foreach (RegionComuna ReCo in consulta)
+                {
+                    string retorno = ReCo.Comuna.NombreComuna;
+                    lista.Add(retorno);
+                }
+                return lista;
+            }
+        }
     }
 }
