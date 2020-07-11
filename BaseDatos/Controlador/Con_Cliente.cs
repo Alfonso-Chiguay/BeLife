@@ -8,6 +8,16 @@ namespace BaseDatos.Controlador
 {
     public class Con_Cliente
     {
+
+        public void crearCliente(Cliente cliente)
+        {
+            using(BeLifeEntities entidades = new BeLifeEntities())
+            {
+                entidades.Cliente.Add(cliente);
+                entidades.SaveChanges();
+            }
+        }
+
         public bool existeCliente(string rut, string dv)
         {
             using(BeLifeEntities entidades = new BeLifeEntities()){

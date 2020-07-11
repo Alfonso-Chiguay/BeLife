@@ -17,7 +17,7 @@ using Negocio.Funciones;
 using BaseDatos;
 using System.Data;
 using static BaseDatos.Controlador.Con_Plan;
-using BeLife.memento;
+
 
 namespace BeLife.Vistas
 {
@@ -29,9 +29,8 @@ namespace BeLife.Vistas
 
     public partial class AdministrarCliente : Window
     {
-        CareTakerUtil caretakerutil = new CareTakerUtil();
-        private int indice;
-        private string path;
+        
+       
         List<planTipoContrato> listaCompleta;
         public AdministrarCliente()
         {
@@ -45,12 +44,12 @@ namespace BeLife.Vistas
                 planGrid x = new planGrid();
                 x.NombreContrato = info.nombrePlan;
                 x.TipoContrato = info.descripcionContrato;
-                x.Tiene = true;
+                x.Tiene = false;
                 cargar.Add(x);
             }
 
             dg_contratos.ItemsSource = cargar;        
-
+            
 
         }
 
@@ -158,7 +157,7 @@ namespace BeLife.Vistas
             btn_buscar.Background = panelmorado.Background;
             btn_buscar.Foreground = new SolidColorBrush(Colors.Black);
         }
-
+        
         private void lbl_buscar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             btn_buscar.Background = morado_click.Background;
@@ -185,6 +184,7 @@ namespace BeLife.Vistas
                     btn_buscar_lista.IsEnabled = false;
                     txt_rut.IsEnabled = false;
                     txt_dv.IsEnabled = false;
+                    
                    
                 }
                 else
@@ -199,10 +199,12 @@ namespace BeLife.Vistas
                         cb_estado_civil.IsEnabled = true;
                         lbl_buscar.IsEnabled = false;
                         btn_buscar.IsEnabled = false;
+                        btn_guardar.Visibility = Visibility.Visible;
                         btn_buscar_lista.IsEnabled = false;
-                        btn_verificar.IsEnabled = true;
+                        btn_guardar.IsEnabled = true;
                         txt_rut.IsEnabled = false;
                         txt_dv.IsEnabled = false;
+                        
                     }
 
                     else
@@ -220,52 +222,7 @@ namespace BeLife.Vistas
                 MessageBox.Show("RUT invalido", "Campo: RUT", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
-        private void btn_verificar_Click(object sender, RoutedEventArgs e)
-        {
-            Validacion validacion = new Validacion();
-            bool todo_bien = true;
-            if(txt_nombres.Text.Length == 0 || txt_nombres.Text.Equals("Ej: Juan Jose")){
-                MessageBox.Show("Ingrese los nombres","Campo: Nombres",MessageBoxButton.OK,MessageBoxImage.Error);
-                todo_bien = false;
-            }
-            if(txt_apellidos.Text.Length == 0 || txt_apellidos.Text.Equals("Ej: Perez Gonzalez"))
-            {
-                MessageBox.Show("Ingrese los apellidos", "Campo: Apellidos", MessageBoxButton.OK, MessageBoxImage.Error);
-                todo_bien = false;
-            }
-
-            if (lbl_edad.Content.Equals("Ingrese una edad"))
-            {
-                MessageBox.Show("Debe seleccionar una fecha de nacimiento", "Campo: Fecha de nacimiento", MessageBoxButton.OK, MessageBoxImage.Error);
-                lbl_edad.Foreground = new SolidColorBrush(Colors.Red);
-                todo_bien = false;
-            }
-            
-            if (lbl_edad.Content.Equals("El cliente debe tener 18 años o mas") ||
-                lbl_edad.Content.Equals("Año incorrecto") ||
-                lbl_edad.Content.Equals("Mes incorrecto") )
-            {
-                MessageBox.Show("Verifique la edad del cliente", "Campo: Fecha de nacimiento", MessageBoxButton.OK, MessageBoxImage.Error);
-                todo_bien = false;
-            }
-            if (cb_sexo.SelectedIndex == -1)
-            {
-                MessageBox.Show("Seleccione un sexo", "Campo: Sexo", MessageBoxButton.OK, MessageBoxImage.Error);
-                todo_bien = false;
-            }
-            if (cb_estado_civil.SelectedIndex == -1)
-            {
-                MessageBox.Show("Seleccione un estado civil", "Campo: Estado Civil", MessageBoxButton.OK, MessageBoxImage.Error);
-                todo_bien = false;
-            }
-            if (todo_bien)
-            {
-                MessageBox.Show("La información es correcta", "Informacion verificada", MessageBoxButton.OK, MessageBoxImage.Information);
-               
-            } 
-                
-
-        }
+        
 
         private void dp_fecha_nacimiento_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -309,87 +266,64 @@ namespace BeLife.Vistas
             txt_nombres.Text = cliente.Nombres;
         }
 
-        private void btn_atras_Click(object sender, RoutedEventArgs e)
+        private void btn_guardar_Click(object sender, RoutedEventArgs e)
         {
-            if (caretakerutil.Contar()>0 && indice>0)
+            Validacion validacion = new Validacion();
+            bool todo_bien = true;
+            if (txt_nombres.Text.Length == 0 || txt_nombres.Text.Equals("Ej: Juan Jose"))
             {
-                --indice;
-                Memento estadoAnterior = caretakerutil.getMemento(indice);
-                Cliente clienteMemento = (Cliente)estadoAnterior.obtenerEstadoGuardado();
-
-                txt_rut.Text = clienteMemento.RutCliente.Split('-')[0];
-                txt_dv.Text = clienteMemento.RutCliente.Split('-')[1];
-                txt_nombres.Text = clienteMemento.Nombres;
-                txt_apellidos.Text = clienteMemento.Apellidos;
-                dp_fecha_nacimiento.SelectedDate = clienteMemento.FechaNacimiento;
-
-                Con_EstadoCivil c_estadoCivil = new Con_EstadoCivil();
-                Con_Sexo c_sexo = new Con_Sexo();
-                int idsexo = c_sexo.obtenerId(cb_sexo.SelectedItem.ToString());
-                int idestadocivil = c_estadoCivil.obtenerId(cb_estado_civil.SelectedItem.ToString());
-
-                idsexo = clienteMemento.IdSexo;
-                idestadocivil = clienteMemento.IdEstadoCivil;
-
+                MessageBox.Show("Ingrese los nombres", "Campo: Nombres", MessageBoxButton.OK, MessageBoxImage.Error);
+                todo_bien = false;
+            }
+            if (txt_apellidos.Text.Length == 0 || txt_apellidos.Text.Equals("Ej: Perez Gonzalez"))
+            {
+                MessageBox.Show("Ingrese los apellidos", "Campo: Apellidos", MessageBoxButton.OK, MessageBoxImage.Error);
+                todo_bien = false;
             }
 
-        }
-
-        public List<Cliente> obtenerClientes()
-        {
-            
-            
-            List<Cliente> listaCliente = new List<Cliente>();
-            foreach(Memento m in caretakerutil.getMemento())
+            if (lbl_edad.Content.Equals("Ingrese una edad"))
             {
-                Cliente cliente = (Cliente)m.obtenerEstadoGuardado();
-                listaCliente.Add(cliente);
+                MessageBox.Show("Debe seleccionar una fecha de nacimiento", "Campo: Fecha de nacimiento", MessageBoxButton.OK, MessageBoxImage.Error);
+                lbl_edad.Foreground = new SolidColorBrush(Colors.Red);
+                todo_bien = false;
             }
 
-            return listaCliente;
-        }
-
-        private void btn_adelante_Click(object sender, RoutedEventArgs e)
-        {
-            if (caretakerutil.Contar() > 0 && indice > 0 && indice < caretakerutil.Contar()-1)
+            if (lbl_edad.Content.Equals("El cliente debe tener 18 años o mas") ||
+                lbl_edad.Content.Equals("Año incorrecto") ||
+                lbl_edad.Content.Equals("Mes incorrecto"))
             {
-                ++indice;
-                Memento estadoAnterior = caretakerutil.getMemento(indice);
-                Cliente clienteMemento = (Cliente)estadoAnterior.obtenerEstadoGuardado();
-
-                txt_rut.Text = clienteMemento.RutCliente.Split('-')[0];
-                txt_dv.Text = clienteMemento.RutCliente.Split('-')[1];
-                txt_nombres.Text = clienteMemento.Nombres;
-                txt_apellidos.Text = clienteMemento.Apellidos;
-                dp_fecha_nacimiento.SelectedDate = clienteMemento.FechaNacimiento;
-
-                Con_EstadoCivil c_estadoCivil = new Con_EstadoCivil();
-                Con_Sexo c_sexo = new Con_Sexo();
-
-                cb_sexo.SelectedItem = c_sexo.sexoPorId(clienteMemento.IdSexo);
-                cb_estado_civil.SelectedItem = c_estadoCivil.ecivilPorId(clienteMemento.IdEstadoCivil);
-
+                MessageBox.Show("Verifique la edad del cliente", "Campo: Fecha de nacimiento", MessageBoxButton.OK, MessageBoxImage.Error);
+                todo_bien = false;
             }
-        }
+            if (cb_sexo.SelectedIndex == -1)
+            {
+                MessageBox.Show("Seleccione un sexo", "Campo: Sexo", MessageBoxButton.OK, MessageBoxImage.Error);
+                todo_bien = false;
+            }
+            if (cb_estado_civil.SelectedIndex == -1)
+            {
+                MessageBox.Show("Seleccione un estado civil", "Campo: Estado Civil", MessageBoxButton.OK, MessageBoxImage.Error);
+                todo_bien = false;
+            }
+            if (todo_bien)
+            {
+                
+                Con_Cliente con = new Con_Cliente();
+                Cliente cliente = new Cliente();
+                cliente.RutCliente = txt_rut.Text + '-' + txt_dv.Text;
+                cliente.Nombres = txt_nombres.Text;
+                cliente.Apellidos = txt_apellidos.Text;
+                cliente.FechaNacimiento = dp_fecha_nacimiento.SelectedDate.Value;
 
-        private void btn_cache_Click(object sender, RoutedEventArgs e)
-        {
-            Cliente cliente = new Cliente();
-            cliente.RutCliente = txt_rut.Text + "-" + txt_dv.Text;
-            cliente.Nombres = txt_nombres.Text;
-            cliente.Apellidos = txt_apellidos.Text;
-            cliente.FechaNacimiento = dp_fecha_nacimiento.SelectedDate.Value;
-            Con_EstadoCivil c_estadoCivil = new Con_EstadoCivil();
-            Con_Sexo c_sexo = new Con_Sexo();
-            int idsexo = c_sexo.obtenerId(cb_sexo.SelectedItem.ToString());
-            int idestadocivil = c_estadoCivil.obtenerId(cb_estado_civil.SelectedItem.ToString());
+                Con_Sexo csexo = new Con_Sexo();
+                Con_EstadoCivil ccivil = new Con_EstadoCivil();
+                cliente.IdSexo = csexo.obtenerId(cb_sexo.SelectedItem.ToString());
+                cliente.IdEstadoCivil = ccivil.obtenerId(cb_estado_civil.SelectedItem.ToString());
 
-            cliente.IdSexo = idsexo;
-            cliente.IdEstadoCivil = idestadocivil;
+                con.crearCliente(cliente);
 
-            Memento m = new Memento(cliente);
-            caretakerutil.agregarMemento(m);
-            indice = caretakerutil.Contar()-1;
+                MessageBox.Show("Cliente registrado", "Operacion exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
     }
 }

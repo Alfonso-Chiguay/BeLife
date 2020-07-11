@@ -77,8 +77,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="memento\CareTakerUtil.cs" />
-    <Compile Include="memento\Memento.cs" />
     <Compile Include="Vistas\AdministrarCliente.xaml.cs">
       <DependentUpon>AdministrarCliente.xaml</DependentUpon>
     </Compile>
