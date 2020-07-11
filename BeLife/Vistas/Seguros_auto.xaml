@@ -36,7 +36,7 @@
         <Label Content="-" HorizontalAlignment="Left" Margin="120,123,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.171,0.822"/>
         <TextBox x:Name="txt_nombre" HorizontalAlignment="Left" Height="23" Margin="28,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" IsEnabled="False"/>
         <TextBox x:Name="txt_apellidos" HorizontalAlignment="Left" Height="23" Margin="162,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" IsEnabled="False"/>
-        <ComboBox x:Name="cb_marca" HorizontalAlignment="Left" Margin="26,246,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cb_marca_SelectionChanged" IsEnabled="False"/>
+        <ComboBox x:Name="cb_marca" HorizontalAlignment="Left" Margin="26,246,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cb_marca_SelectionChanged"/>
         <ComboBox x:Name="cb_modelo" HorizontalAlignment="Left" Margin="201,246,0,0" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
         <Button x:Name="btn_buscarRut" Content="" HorizontalAlignment="Left" Margin="184,128,0,0" VerticalAlignment="Top" Width="39" Click="btn_buscarRut_Click" Height="21">
             <Button.Background>

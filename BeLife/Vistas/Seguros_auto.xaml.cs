@@ -26,6 +26,8 @@ namespace BeLife.Vistas
         public Seguros_auto()
         {
             InitializeComponent();
+            Con_vehiculo vehiculo = new Con_vehiculo();
+            cb_marca.ItemsSource = vehiculo.listarMarca();
         }
 
         DateTime fecha = DateTime.Now;
@@ -129,8 +131,6 @@ namespace BeLife.Vistas
             Con_Cliente controlador_cliente = new Con_Cliente();
             //if (validacion.rutValido(txt_rut.Text, txt_dv.Text))
             {
-                Con_vehiculo vehiculo = new Con_vehiculo();
-                cb_marca.ItemsSource = vehiculo.listarMarca();
                 //if (controlador_cliente.existeCliente(txt_rut.Text, txt_dv.Text))
                 //{
                     Cliente cliente = controlador_cliente.obtenerCliente(txt_rut.Text, txt_dv.Text);

@@ -79,7 +79,24 @@ namespace Negocio.Funciones
             else return true;
            
         }
+        public bool viviendaFecha(DateTime fechaVivienda)
+        {
+            if (fechaVivienda == null)
+            {
+                return false;
+            }
+            DateTime fechaActual = DateTime.Today;
 
-        
+            if (fechaVivienda > fechaActual)
+            {
+                return false;
+            }
+            else if (fechaVivienda.Year < 1910 || fechaVivienda.Year > fechaActual.Year)
+                return false;
+            else
+                return true;
+        }
+
+
     }
 }
