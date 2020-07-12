@@ -169,7 +169,8 @@ namespace BeLife.Vistas
 
         private void btn_buscarCliente_Click(object sender, RoutedEventArgs e)
         {
-            ListarClientes ventana = new ListarClientes("ListarClientes");
+            ListarClientes ventana = new ListarClientes("Seguros_auto");
+            this.Close();
             ventana.ShowDialog();
         }
 
