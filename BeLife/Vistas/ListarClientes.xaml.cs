@@ -31,6 +31,7 @@ namespace BeLife.Vistas
             cb_filtro.Items.Add("SEXO");
             cb_filtro.Items.Add("TODOS");
             txt_filtro.Foreground = new SolidColorBrush(Colors.Gray);
+            btn_obtener.Visibility = Visibility.Hidden;
         }
         string ventana;
         public ListarClientes(string nombre_ventana)
@@ -189,7 +190,30 @@ namespace BeLife.Vistas
             {
                 Con_Cliente con = new Con_Cliente();
                 cliente = con.obtenerCliente(fila.Rut.Split('-')[0], fila.Rut.Split('-')[1]);
-                MessageBox.Show(cliente.ToString());
+                if (ventana.Equals("AdministrarCliente"))
+                {
+                    AdministrarCliente vent = new AdministrarCliente(cliente);
+                    this.Close();
+                    vent.ShowDialog();
+                }
+                else if (ventana.Equals("Seguro_hogar"))
+                {
+                    Seguro_hogar vent = new Seguro_hogar(cliente);
+                    this.Close();
+                    vent.ShowDialog();
+                }
+                else if (ventana.Equals("Seguros_auto"))
+                {
+                    Seguros_auto vent = new Seguros_auto(cliente);
+                    this.Close();
+                    vent.ShowDialog();
+                }
+                /*else if (ventana.Equals("Seguros_vida"))
+                {
+                    AdministrarCliente vent = new AdministrarCliente(cliente);
+                    this.Close();
+                    vent.ShowDialog();
+                }*/
             }
             
             

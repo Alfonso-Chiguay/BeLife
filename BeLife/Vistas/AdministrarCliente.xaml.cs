@@ -48,8 +48,39 @@ namespace BeLife.Vistas
                 cargar.Add(x);
             }
 
-            dg_contratos.ItemsSource = cargar;        
-            
+            dg_contratos.ItemsSource = cargar;    
+        }
+
+        public AdministrarCliente(Cliente cliente)
+        {
+            InitializeComponent();
+            Con_Plan con = new Con_Plan();
+            listaCompleta = con.listarInfoJoin();
+            List<planGrid> cargar = new List<planGrid>();
+
+            foreach (planTipoContrato info in listaCompleta)
+            {
+                planGrid x = new planGrid();
+                x.NombreContrato = info.nombrePlan;
+                x.TipoContrato = info.descripcionContrato;
+                x.Tiene = false;
+                cargar.Add(x);
+            }
+
+            dg_contratos.ItemsSource = cargar;
+
+            txt_rut.Text = cliente.RutCliente.Split('-')[0];
+            txt_dv.Text = cliente.RutCliente.Split('-')[1];
+            txt_nombres.Text = cliente.Nombres;
+            txt_apellidos.Text = cliente.Apellidos;
+            Con_Sexo controlador_sexo = new Con_Sexo();
+            Con_EstadoCivil controlador_eCivil = new Con_EstadoCivil();
+            cb_sexo.Items.Add(controlador_sexo.sexoPorId(cliente.IdSexo));
+            cb_estado_civil.Items.Add(controlador_eCivil.ecivilPorId(cliente.IdEstadoCivil));
+
+            cb_sexo.SelectedIndex = 0;
+            cb_estado_civil.SelectedIndex = 0;
+            dp_fecha_nacimiento.SelectedDate = cliente.FechaNacimiento;
 
         }
 
@@ -258,6 +289,7 @@ namespace BeLife.Vistas
         private void btn_buscar_lista_Click(object sender, RoutedEventArgs e)
         {
             ListarClientes ventana = new ListarClientes("AdministrarCliente");
+            this.Close();
             ventana.ShowDialog();
         }
 
@@ -324,6 +356,12 @@ namespace BeLife.Vistas
 
                 MessageBox.Show("Cliente registrado", "Operacion exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+        }
+
+        private void btn_generar_Click(object sender, RoutedEventArgs e)
+        {
+            planGrid fila = dg_contratos.SelectedItem as planGrid;
+            MessageBox.Show(fila.NombreContrato.ToString());
         }
     }
 }
