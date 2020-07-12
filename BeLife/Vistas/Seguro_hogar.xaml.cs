@@ -16,6 +16,7 @@ using BaseDatos.Controlador;
 using Negocio;
 using Negocio.Funciones;
 using System.Text.RegularExpressions;
+using static BeLife.Vistas.AdministrarCliente;
 
 namespace BeLife.Vistas
 {
@@ -25,6 +26,7 @@ namespace BeLife.Vistas
     public partial class Seguro_hogar : Window
     {
         Cliente cliente;
+        string idPlan;
 
         public Seguro_hogar()
         {
@@ -34,13 +36,14 @@ namespace BeLife.Vistas
             cb_region.ItemsSource = comuna.listarRegion();
             
         }
-        public Seguro_hogar(Cliente c)
+        public Seguro_hogar(Parametro p)
         {
             InitializeComponent();
             txt_codigoSeguro.Text = fecha.ToString("yyyyMMddhhmmss");
             Con_region comuna = new Con_region();
             cb_region.ItemsSource = comuna.listarRegion();
-            cliente = c;
+            cliente = p.cliente;
+            idPlan = p.idPlan;
         }
 
         DateTime fecha = DateTime.Now;

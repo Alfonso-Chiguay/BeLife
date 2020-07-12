@@ -52,8 +52,9 @@
         <Label x:Name="lbl_edad" Content="Ingrese una edad" HorizontalAlignment="Left" Margin="25,255,0,0" VerticalAlignment="Top" Width="238" FontFamily="Dubai" Foreground="White" Height="30" Grid.Column="1"/>
         <DataGrid x:Name="dg_contratos" HorizontalAlignment="Left" Height="194" Margin="23,434,0,0" VerticalAlignment="Top" Width="443" AutoGenerateColumns="False" ItemsSource="{Binding Source=list}" Grid.ColumnSpan="2">
             <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding IdPlan}" Header="Id Plan" Width="80" IsReadOnly="True"/>
                 <DataGridTextColumn Binding="{Binding TipoContrato}" Header="T. Contrato" Width="100" IsReadOnly="True"/>
-                <DataGridTextColumn Binding="{Binding NombreContrato}" Header="N. Contrato" Width="250" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding NombreContrato}" Header="N. Contrato" Width="170" IsReadOnly="True"/>
                 <DataGridCheckBoxColumn Binding="{Binding Tiene}" Header="Contratado" Width="93" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>

@@ -42,6 +42,7 @@ namespace BeLife.Vistas
             foreach (planTipoContrato info in listaCompleta)
             {
                 planGrid x = new planGrid();
+                x.IdPlan = info.idPlan;
                 x.NombreContrato = info.nombrePlan;
                 x.TipoContrato = info.descripcionContrato;
                 x.Tiene = false;
@@ -86,6 +87,7 @@ namespace BeLife.Vistas
 
         public class planGrid
         {
+            public string IdPlan { get; set; }
             public string TipoContrato { get; set; }
             public string NombreContrato { get; set; }
             public bool Tiene { get; set; }
@@ -362,12 +364,17 @@ namespace BeLife.Vistas
         {
             Cliente cliente;
             Con_Cliente concliente = new Con_Cliente();
-
             cliente = concliente.obtenerCliente(txt_rut.Text, txt_dv.Text);
             planGrid fila = dg_contratos.SelectedItem as planGrid;
+            Parametro p = new Parametro();
+            p.cliente = cliente;
+            p.idPlan = fila.IdPlan;
+
             if (fila.TipoContrato.Equals("Vehículos"))
             {
-                Seguros_auto ventana = new Seguros_auto(cliente);
+                
+                Seguros_auto ventana = new Seguros_auto(p);
+                
                 this.Close();
                 ventana.ShowDialog();
             }
@@ -380,10 +387,16 @@ namespace BeLife.Vistas
             }
             else if (fila.TipoContrato.Equals("Hogar"))
             {
-                Seguro_hogar ventana = new Seguro_hogar(cliente);
+                Seguro_hogar ventana = new Seguro_hogar(p);
                 this.Close();
                 ventana.ShowDialog();
             }
+        }
+
+        public class Parametro
+        {
+            public Cliente cliente { get; set; }
+            public string idPlan { get; set; }
         }
     }
 }

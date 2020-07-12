@@ -15,6 +15,7 @@ using BaseDatos.Controlador;
 using System.Windows.Shapes;
 using Negocio.Funciones;
 using System.Text.RegularExpressions;
+using static BeLife.Vistas.AdministrarCliente;
 
 namespace BeLife.Vistas
 {
@@ -24,7 +25,7 @@ namespace BeLife.Vistas
     public partial class Seguros_auto : Window
     {
         Cliente cliente;
-
+        string idPlan;
         public Seguros_auto()
         {
             InitializeComponent();
@@ -32,12 +33,13 @@ namespace BeLife.Vistas
             cb_marca.ItemsSource = vehiculo.listarMarca();
             
         }
-        public Seguros_auto(Cliente c)
+        public Seguros_auto(Parametro p)
         {
             InitializeComponent();
             Con_vehiculo vehiculo = new Con_vehiculo();
             cb_marca.ItemsSource = vehiculo.listarMarca();
-            cliente = c;
+            cliente = p.cliente;
+            idPlan = p.idPlan;
         }
 
         DateTime fecha = DateTime.Now;
