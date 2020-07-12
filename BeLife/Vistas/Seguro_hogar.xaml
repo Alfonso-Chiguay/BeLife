@@ -36,11 +36,20 @@
         <Label Content="FECHA DE NACIMIENTO :" HorizontalAlignment="Left" Margin="49,249,0,0" VerticalAlignment="Top"/>
         <Label Content="SEXO" HorizontalAlignment="Left" Margin="49,316,0,0" VerticalAlignment="Top"/>
         <Label Content="ESTADO CIVIL" HorizontalAlignment="Left" Margin="218,316,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txt_rut" HorizontalAlignment="Left" Height="23" Margin="47,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
-        <TextBox x:Name="txt_dv" HorizontalAlignment="Left" Height="23" Margin="197,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="29" IsEnabled="False"/>
+        <TextBox x:Name="txt_rut" HorizontalAlignment="Left" Height="23" Margin="47,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" GotFocus="txt_rut_GotFocus" LostFocus="txt_rut_LostFocus" Text="Ej: 12345678" Foreground="#FFAAA4A4"/>
+        <TextBox x:Name="txt_dv" HorizontalAlignment="Left" Height="23" Margin="197,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="29" Text="N" LostFocus="txt_dv_LostFocus" GotFocus="txt_dv_GotFocus" Foreground="#FFAAA4A4"/>
         <Label Content="-" HorizontalAlignment="Left" Margin="177,121,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.622,-0.146"/>
-        <Button Content="Buscar cliente" HorizontalAlignment="Left" Margin="274,124,0,0" VerticalAlignment="Top" Width="84"/>
+        <Button Content="Buscar cliente" HorizontalAlignment="Left" Margin="310,124,0,0" VerticalAlignment="Top" Width="84"/>
         <Button Content="Buscar contrato" HorizontalAlignment="Left" Margin="318,62,0,0" VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="txt_idPlan" HorizontalAlignment="Left" Height="23" Margin="274,275,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btn_buscarRut" Content="" HorizontalAlignment="Left" Margin="251,124,0,0" VerticalAlignment="Top" Width="31" Height="34" Click="btn_buscarRut_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/BeLife;component/img/search.png"/>
+            </Button.Background>
+            <Button.Foreground>
+                <ImageBrush ImageSource="/BeLife;component/img/search.png"/>
+            </Button.Foreground>
+        </Button>
 
     </Grid>
 </Window>
