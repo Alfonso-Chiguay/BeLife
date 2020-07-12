@@ -33,7 +33,7 @@ namespace BeLife.Vistas
             cb_marca.ItemsSource = vehiculo.listarMarca();
             
         }
-        public Seguros_auto(Parametro p)
+        public Seguros_auto(Cliente cliente, Parametro p)
         {
             InitializeComponent();
             Con_vehiculo vehiculo = new Con_vehiculo();
