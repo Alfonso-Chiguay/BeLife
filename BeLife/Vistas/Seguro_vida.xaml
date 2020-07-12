@@ -21,7 +21,7 @@
         <DatePicker x:Name="dp_fechaNacimiento" HorizontalAlignment="Left" Margin="29,339,-177,0" VerticalAlignment="Top" Width="148" IsEnabled="False"/>
         <Button Content="Guardar" HorizontalAlignment="Left" Margin="241,508,-312,0" VerticalAlignment="Top" Width="71" Height="23"/>
         <TextBox x:Name="txt_rut" HorizontalAlignment="Left" Height="23" Margin="27,166,-138,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="111" LostFocus="txt_rut_LostFocus" GotFocus="txt_rut_GotFocus" Foreground="#FFAAA4A4" Text="Ej: 12345678"/>
-        <TextBox x:Name="txt_dv" HorizontalAlignment="Left" Height="23" Margin="161,166,-193,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="32" TextChanged="txt_dv_TextChanged" Foreground="#FFAAA4A4" Text="N" GotFocus="txt_dv_GotFocus" LostFocus="txt_dv_LostFocus"/>
+        <TextBox x:Name="txt_dv" HorizontalAlignment="Left" Height="23" Margin="161,166,-193,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="32" Foreground="#FFAAA4A4" Text="N" GotFocus="txt_dv_GotFocus" LostFocus="txt_dv_LostFocus"/>
         <Label Content="-" HorizontalAlignment="Left" Margin="143,163,-172,0" VerticalAlignment="Top" Width="29"/>
         <Button Content="Buscar cliente" HorizontalAlignment="Left" Margin="211,163,-314,0" VerticalAlignment="Top" Width="103" Height="23"/>
         <Label Content="Rut" HorizontalAlignment="Left" Margin="27,132,-150,0" VerticalAlignment="Top" Width="123"/>
