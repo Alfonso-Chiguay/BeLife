@@ -96,7 +96,21 @@ namespace Negocio.Funciones
             else
                 return true;
         }
+        public bool ContratoFecha(DateTime fechaContrato)
+        {
+            if (fechaContrato == null)
+            {
+                return false;
+            }
+            DateTime fechaActual = DateTime.Today;
 
+            if (fechaContrato > fechaActual)
+            {
+                return true;
+            }
+            else
+                return false;
+        }
 
     }
 }

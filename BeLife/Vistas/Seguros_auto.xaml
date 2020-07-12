@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BeLife.Vistas"
         mc:Ignorable="d"
-        Title="Seguros_auto" Height="611.905" Width="434.905">
-    <Grid>
+        Title="Seguros_auto" Height="957.143" Width="487.286">
+    <Grid Margin="0,0,2,3">
         <Label Content="Numero de contrato" HorizontalAlignment="Left" Margin="28,58,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txt_fecha" HorizontalAlignment="Left" Height="23" Margin="28,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" Text="yyyyMMddhhmmss" GotFocus="txt_fecha_GotFocus" LostFocus="txt_fecha_LostFocus" Foreground="Gray" IsEnabled="False"/>
         <Label Content="CONTRATO DE " HorizontalAlignment="Left" Margin="26,15,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbl_tipo_seguro" Content="Vehiculo" HorizontalAlignment="Left" Margin="122,15,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btn_buscar_en_lista" Content="Buscar en lista" HorizontalAlignment="Left" Margin="184,89,0,0" VerticalAlignment="Top" Width="93" Click="btn_buscar_en_lista_Click" Height="23"/>
-        <Button x:Name="btn_guardado" Content="Guardar" HorizontalAlignment="Left" Margin="248,551,0,0" VerticalAlignment="Top" Width="93" Click="btn_guardado_Click" IsEnabled="False"/>
+        <Button x:Name="btn_guardado" Content="Guardar" HorizontalAlignment="Left" Margin="309,866,0,0" VerticalAlignment="Top" Width="93" Click="btn_guardado_Click" IsEnabled="False"/>
         <Label Content="Rut" HorizontalAlignment="Left" Margin="26,121,0,0" VerticalAlignment="Top"/>
         <Label Content="Nombre" HorizontalAlignment="Left" Margin="26,166,0,0" VerticalAlignment="Top"/>
         <Label Content="Apellidos" HorizontalAlignment="Left" Margin="162,166,0,0" VerticalAlignment="Top"/>
@@ -31,7 +31,7 @@
         <Label Content="-" HorizontalAlignment="Left" Margin="117,139,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.171,0.822"/>
         <TextBox x:Name="txt_nombre" HorizontalAlignment="Left" Height="23" Margin="28,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="119" IsEnabled="False"/>
         <TextBox x:Name="txt_apellidos" HorizontalAlignment="Left" Height="23" Margin="162,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" IsEnabled="False"/>
-        <ComboBox x:Name="cb_marca" HorizontalAlignment="Left" Margin="24,425,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cb_marca_SelectionChanged"/>
+        <ComboBox x:Name="cb_marca" HorizontalAlignment="Left" Margin="24,425,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cb_marca_SelectionChanged" IsEnabled="False"/>
         <ComboBox x:Name="cb_modelo" HorizontalAlignment="Left" Margin="186,427,0,0" VerticalAlignment="Top" Width="120" IsEnabled="False" SelectionChanged="cb_modelo_SelectionChanged"/>
         <Button x:Name="btn_buscarRut" Content="" HorizontalAlignment="Left" Margin="181,144,0,0" VerticalAlignment="Top" Width="39" Click="btn_buscarRut_Click" Height="21">
             <Button.Background>
@@ -41,7 +41,6 @@
         <Label Content="Patente :" HorizontalAlignment="Left" Margin="24,452,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txt_patente" HorizontalAlignment="Left" Height="23" Margin="26,483,0,0" TextWrapping="Wrap" MaxLength = "6" VerticalAlignment="Top" Width="87" Text="AAAA99" Foreground="Gray" GotFocus="txt_patente_GotFocus" IsEnabled="False"/>
         <Label Content="Año :" HorizontalAlignment="Left" Margin="184,479,0,0" VerticalAlignment="Top"/>
-        <DatePicker x:Name="dp_fechaVehiculo" HorizontalAlignment="Left" Margin="186,510,0,0" VerticalAlignment="Top" SelectedDateChanged="dp_fechaVehiculo_SelectedDateChanged" IsEnabled="False"/>
         <Label x:Name="lbl_fecha" Content="" HorizontalAlignment="Left" Margin="201,462,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="89">
             <Label.RenderTransform>
                 <TransformGroup>
@@ -62,7 +61,23 @@
         <Label Content="Estado civil" HorizontalAlignment="Left" Margin="188,298,0,0" VerticalAlignment="Top"/>
         <DatePicker x:Name="dp_FechaNacimiento" HorizontalAlignment="Left" Margin="28,251,0,0" VerticalAlignment="Top" IsEnabled="False"/>
         <TextBox x:Name="TXT_IDPLAN" HorizontalAlignment="Left" Height="23" Margin="282,89,-23,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="ID PLAN" HorizontalAlignment="Left" Margin="282,58,-21,0" VerticalAlignment="Top"/>
+        <Label Content="ID PLAN" HorizontalAlignment="Left" Margin="309,58,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="dp_fechaInicio" HorizontalAlignment="Left" Margin="32,648,0,0" VerticalAlignment="Top" SelectedDateChanged="dp_fechaInicio_SelectedDateChanged"/>
+        <DatePicker x:Name="dp_fechaTermino" HorizontalAlignment="Left" Margin="248,648,0,0" VerticalAlignment="Top" IsEnabled="False" SelectedDateChanged="dp_fechaTermino_SelectedDateChanged_1"/>
+        <Label Content="Fecha inicio" HorizontalAlignment="Left" Margin="32,604,0,0" VerticalAlignment="Top"/>
+        <Label Content="Fecha termino" HorizontalAlignment="Left" Margin="249,604,0,0" VerticalAlignment="Top"/>
+        <Label Content="Vigencia :" HorizontalAlignment="Left" Margin="32,677,0,0" VerticalAlignment="Top"/>
+        <Label Content="Prima Anual :" HorizontalAlignment="Left" Margin="32,790,0,0" VerticalAlignment="Top"/>
+        <Label Content="Prima Mensual :" HorizontalAlignment="Left" Margin="32,821,0,0" VerticalAlignment="Top"/>
+        <Label Content="Observaciones" HorizontalAlignment="Left" Margin="219,726,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_observaciones" HorizontalAlignment="Left" Height="78" Margin="219,769,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="193"/>
+        <Label Content="Declaracion de salud " HorizontalAlignment="Left" Margin="33,708,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="rbtn_si" Content="Si" HorizontalAlignment="Left" Margin="41,752,0,0" VerticalAlignment="Top" Checked="rbtn_si_Checked" Unchecked="rbtn_si_Unchecked"/>
+        <RadioButton x:Name="rbtn_no" Content="No" HorizontalAlignment="Left" Margin="97,752,0,0" VerticalAlignment="Top" Width="47" Checked="rbtn_no_Checked" Unchecked="rbtn_no_Unchecked"/>
+        <TextBox x:Name="txt_vigencia" HorizontalAlignment="Left" Height="23" Margin="109,680,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" IsEnabled="False"/>
+        <TextBox x:Name="txt_anho" HorizontalAlignment="Left" Height="23" Margin="191,519,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <TextBox x:Name="txt_primaAnual" HorizontalAlignment="Left" Height="23" Margin="146,790,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="31" IsEnabled="False"/>
+        <TextBox x:Name="txt_primaMensual" HorizontalAlignment="Left" Height="23" Margin="146,821,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="31" IsEnabled="False"/>
 
     </Grid>
 </Window>

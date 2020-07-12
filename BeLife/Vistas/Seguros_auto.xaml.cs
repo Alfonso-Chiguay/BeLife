@@ -45,6 +45,8 @@ namespace BeLife.Vistas
 
         }
 
+        
+
         public Seguros_auto(Cliente c)
         {
             InitializeComponent();
@@ -56,8 +58,6 @@ namespace BeLife.Vistas
             p.idPlan = "";
             llenarCampos(p);
         }
-
-
 
         DateTime fecha = DateTime.Now;
 
@@ -104,42 +104,105 @@ namespace BeLife.Vistas
             }
             else
             {
-                DateTime fecha_1 = dp_fechaVehiculo.SelectedDate.Value;                                
-                Con_vehiculo vehiculo = new Con_vehiculo();
-                Vehiculo vehiculo_save = new Vehiculo();
-                Con_modeloVehiculo Mo_vehiculo = new Con_modeloVehiculo();
-                var id_marca = vehiculo.MarcaPorId(cb_marca.SelectedItem.ToString());
-                var id_modelo = Mo_vehiculo.buscarIDmodelo(cb_modelo.SelectedItem.ToString());
-                vehiculo_save.Patente = txt_patente.Text.ToUpper();
-                vehiculo_save.IdMarca = id_marca;
-                vehiculo_save.IdModelo = id_modelo;
-                vehiculo_save.Anho = fecha_1.Year;
-                
-                // ------------- TESTEO DE INSERT ------------------
-                Contrato contrato = new Contrato();
-                Con_Contrato con = new Con_Contrato();
-                contrato.Numero = txt_fecha.Text;
-                contrato.FechaCreacion = fecha;
-                contrato.FechaTermino = fecha.AddYears(2);
-                contrato.RutCliente = txt_rut.Text+"-"+txt_dv.Text;
-                contrato.CodigoPlan = idPlan;
-                contrato.IdTipoContrato = 20;
-                contrato.FechaInicioVigencia = fecha;
-                contrato.FechaFinVigencia = fecha.AddYears(2);
-                contrato.Vigente = true;
-                contrato.DeclaracionSalud = false;
-                contrato.PrimaAnual = 1111;
-                contrato.PrimaMensual = 2222;
-                contrato.Observaciones = "NO LO SE";
-                contrato.Vehiculo.Add(vehiculo_save);
-                
-                con.contratoVehiculo(contrato);
-                // ------------- TESTEO DE INSERT A CONTRATO ------------------
-                MessageBox.Show("DATOS GUARDADOS CORRECTAMENTE", "REGISTRO COMPLETO", MessageBoxButton.OK, MessageBoxImage.Information);
-                this.Close();
-                //https://social.msdn.microsoft.com/Forums/es-ES/d2941e3c-81cc-40d2-9a59-f8716c1ca5ae/validar-patente-vehiculo?forum=vcses
+                bool vigencia;
+                if (Regex.IsMatch(txt_anho.Text, "^[0-9]{4}$"))
+                {
+                    int anho = Int32.Parse(txt_anho.Text);
+                    int primaMensual = Int32.Parse(txt_primaMensual.Text);
+                    int primaAnual = Int32.Parse(txt_primaAnual.Text);
+                    if (anho <= 1980 || anho <= 2020)
+                    {
+                        if (rbtn_si.IsChecked == true)
+                        {
+                            if (txt_primaAnual.Text.Equals("") || txt_primaMensual.Text.Equals(""))
+                            {
+                                MessageBox.Show("ERROR EN LAS PRIMAS");
+                            }
+                            else
+                            {
+                                Con_vehiculo vehiculo = new Con_vehiculo();
+                                Vehiculo vehiculo_save = new Vehiculo();
+                                Con_modeloVehiculo Mo_vehiculo = new Con_modeloVehiculo();
+                                var id_marca = vehiculo.MarcaPorId(cb_marca.SelectedItem.ToString());
+                                var id_modelo = Mo_vehiculo.buscarIDmodelo(cb_modelo.SelectedItem.ToString());
+                                vehiculo_save.Patente = txt_patente.Text.ToUpper();
+                                vehiculo_save.IdMarca = id_marca;
+                                vehiculo_save.IdModelo = id_modelo;
+                                vehiculo_save.Anho = anho;
 
-            }
+                                Contrato contrato = new Contrato();
+                                Con_Contrato con = new Con_Contrato();
+                                contrato.Numero = txt_fecha.Text;
+                                contrato.FechaCreacion = fecha;
+                                contrato.FechaTermino = dp_fechaTermino.SelectedDate.Value;
+                                contrato.RutCliente = txt_rut.Text + "-" + txt_dv.Text;
+                                contrato.CodigoPlan = idPlan;
+                                contrato.IdTipoContrato = 20;
+                                contrato.FechaInicioVigencia = dp_fechaInicio.SelectedDate.Value;
+                                contrato.FechaFinVigencia = dp_fechaTermino.SelectedDate.Value;
+                                contrato.Vigente = true;
+                                contrato.DeclaracionSalud = true;
+                                contrato.PrimaAnual = primaAnual;
+                                contrato.PrimaMensual = primaMensual;
+                                contrato.Observaciones = txt_observaciones.Text;
+                                contrato.Vehiculo.Add(vehiculo_save);
+
+                                con.contratoVehiculo(contrato);
+                                // ------------- TESTEO DE INSERT A CONTRATO ------------------
+                                MessageBox.Show("DATOS GUARDADOS CORRECTAMENTE", "REGISTRO COMPLETO", MessageBoxButton.OK, MessageBoxImage.Information);
+                                this.Close();
+                            }
+                        }
+                        else if (rbtn_no.IsChecked == true)
+                        {
+                            if (txt_primaMensual.Text.Equals("") || txt_primaAnual.Text.Equals(""))
+                            {
+                                MessageBox.Show("ERROR EN LAS PRIMAS");
+                            }
+                            else
+                            {
+                                Con_vehiculo vehiculo = new Con_vehiculo();
+                                Vehiculo vehiculo_save = new Vehiculo();
+                                Con_modeloVehiculo Mo_vehiculo = new Con_modeloVehiculo();
+                                var id_marca = vehiculo.MarcaPorId(cb_marca.SelectedItem.ToString());
+                                var id_modelo = Mo_vehiculo.buscarIDmodelo(cb_modelo.SelectedItem.ToString());
+                                vehiculo_save.Patente = txt_patente.Text.ToUpper();
+                                vehiculo_save.IdMarca = id_marca;
+                                vehiculo_save.IdModelo = id_modelo;
+                                vehiculo_save.Anho = anho;
+
+                                Contrato contrato = new Contrato();
+                                Con_Contrato con = new Con_Contrato();
+                                contrato.Numero = txt_fecha.Text;
+                                contrato.FechaCreacion = fecha;
+                                contrato.FechaTermino = dp_fechaTermino.SelectedDate.Value;
+                                contrato.RutCliente = txt_rut.Text + "-" + txt_dv.Text;
+                                contrato.CodigoPlan = idPlan;
+                                contrato.IdTipoContrato = 20;
+                                contrato.FechaInicioVigencia = dp_fechaInicio.SelectedDate.Value;
+                                contrato.FechaFinVigencia = dp_fechaTermino.SelectedDate.Value;
+                                contrato.Vigente = true;
+                                contrato.DeclaracionSalud = false;
+                                contrato.PrimaAnual = primaAnual;
+                                contrato.PrimaMensual = primaMensual;
+                                contrato.Observaciones = txt_observaciones.Text;
+                                contrato.Vehiculo.Add(vehiculo_save);
+
+                                con.contratoVehiculo(contrato);
+                                // ------------- TESTEO DE INSERT A CONTRATO ------------------
+                                MessageBox.Show("DATOS GUARDADOS CORRECTAMENTE", "REGISTRO COMPLETO", MessageBoxButton.OK, MessageBoxImage.Information);
+                                this.Close();
+                            }
+                        }
+                        else
+                            MessageBox.Show("Seleccione en declaracion de salud");
+                    }
+                    else
+                        MessageBox.Show("AÑO INCORRECTO");
+                }
+                else
+                    MessageBox.Show("PATENTE INVALIDA");
+            }    
 
         }
 
@@ -240,32 +303,6 @@ namespace BeLife.Vistas
             ventana.ShowDialog();
         }
 
-        private void dp_fechaVehiculo_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Validacion validacion = new Validacion();
-            DateTime fecha = dp_fechaVehiculo.SelectedDate.Value;
-            if (!validacion.VehiculoFecha(fecha))
-            {
-                if(fecha.Year > DateTime.Today.Year)
-                {
-                    lbl_fecha.Content = "AÑO INCORRECTO";
-                }
-                else if (fecha.Month > DateTime.Today.Month)
-                {
-                    lbl_fecha.Content = "MES INCORRECTO";
-                }
-                else
-                {
-                    lbl_fecha.Content = "HOLAAA?";
-                }
-            }
-            else
-            {
-                lbl_fecha.Content = "TAMOS BIEN";
-                btn_guardado.IsEnabled = true;
-            }
-        }
-
         private void txt_patente_GotFocus(object sender, RoutedEventArgs e)
         {
             if (txt_patente.Text.Equals(""))
@@ -287,25 +324,75 @@ namespace BeLife.Vistas
         {
             if (Regex.IsMatch(txt_patente.Text, "^[a-z-A-Z]{4}[0-9]{2}$"))
             {
-                dp_fechaVehiculo.IsEnabled = true;
+                txt_anho.IsEnabled = true;
                 //https://social.msdn.microsoft.com/Forums/es-ES/d2941e3c-81cc-40d2-9a59-f8716c1ca5ae/validar-patente-vehiculo?forum=vcses
             }
             else if (Regex.IsMatch(txt_patente.Text, "^[a-z-A-Z]{3}[0-9]{3}$"))
             {
-                dp_fechaVehiculo.IsEnabled = true;
+                txt_anho.IsEnabled = true;
             }
             else if (Regex.IsMatch(txt_patente.Text, "^[a-z-A-Z]{2}[0-9]{4}$"))
             {
-                dp_fechaVehiculo.IsEnabled = true;
+                txt_anho.IsEnabled = true;
             }
             else
             {
                 MessageBox.Show("PATENTE INVALIDA", "ERROR PATENTE", MessageBoxButton.OK, MessageBoxImage.Error);
-                dp_fechaVehiculo.DataContext = DateTime.Today;
-                dp_fechaVehiculo.IsEnabled = false;
             }
         }
 
-        
+        private void txt_anho_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_anho.Text.Equals(""))
+            {
+                txt_anho.Text = "1980";
+            }
+        }
+
+
+        private void dp_fechaTermino_SelectedDateChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            Validacion validacion = new Validacion();
+            DateTime fecha_1 = dp_fechaTermino.SelectedDate.Value;
+            if (!validacion.ContratoFecha(fecha_1))
+            {
+                txt_vigencia.Text = "No";
+            }
+            else
+            {
+                txt_vigencia.Text = "Si";
+            }
+        }
+
+        private void dp_fechaInicio_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            dp_fechaTermino.IsEnabled = true;
+        }
+
+        private void rbtn_si_Checked(object sender, RoutedEventArgs e)
+        {
+            btn_guardado.IsEnabled = true;
+        }
+
+        private void rbtn_no_Checked(object sender, RoutedEventArgs e)
+        {
+            btn_guardado.IsEnabled = true;
+        }
+
+        private void rbtn_no_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (rbtn_si.IsChecked == false)
+            {
+                btn_guardado.IsEnabled = false;
+            }
+        }
+
+        private void rbtn_si_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (rbtn_no.IsChecked == false)
+            {
+                btn_guardado.IsEnabled = false;
+            }
+        }
     }
 }
