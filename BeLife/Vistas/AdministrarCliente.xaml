@@ -58,8 +58,9 @@
                 <DataGridCheckBoxColumn Binding="{Binding Tiene}" Header="Contratado" Width="93" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btn_generar" Content="Ir a generar contrato" HorizontalAlignment="Left" Margin="242.5,497,0,0" VerticalAlignment="Top" Width="169" Height="29" Background="#FF9F68C5" BorderBrush="Black" UseLayoutRounding="False" Style="{DynamicResource boton_clientes}" FontFamily="Dubai" FontSize="13" FontWeight="Bold" Grid.Column="1" Click="btn_generar_Click"/>
-        <Button x:Name="btn_cancelar_contrato" Content="Dar de baja" HorizontalAlignment="Left" Margin="242.5,531,0,0" VerticalAlignment="Top" Width="169" Height="29" Background="#FF9F68C5" BorderBrush="Black" UseLayoutRounding="False" Style="{DynamicResource boton_clientes}" FontFamily="Dubai" FontSize="13" FontWeight="Bold" Grid.Column="1"/>
+        <Button x:Name="btn_generar" Content="Ir a generar contrato" HorizontalAlignment="Left" Margin="242.5,497,0,0" VerticalAlignment="Top" Width="169" Height="29" Background="#FF9F68C5" BorderBrush="Black" UseLayoutRounding="False" Style="{DynamicResource boton_clientes}" FontFamily="Dubai" FontSize="13" FontWeight="Bold" Grid.Column="1" Click="btn_generar_Click" Visibility="Hidden"/>
+        <Button x:Name="btn_cancelar_contrato" Content="Dar de baja" HorizontalAlignment="Left" Margin="242.5,531,0,0" VerticalAlignment="Top" Width="169" Height="29" Background="#FF9F68C5" BorderBrush="Black" UseLayoutRounding="False" Style="{DynamicResource boton_clientes}" FontFamily="Dubai" FontSize="13" FontWeight="Bold" Grid.Column="1" Visibility="Hidden"/>
+        <Button x:Name="btn_eliminar" Content="Eliminar cliente" HorizontalAlignment="Left" Margin="143,650,0,0" VerticalAlignment="Top" Width="233" Height="29" Background="#FF9F68C5" BorderBrush="Black" UseLayoutRounding="False" Style="{DynamicResource boton_clientes}" FontFamily="Dubai" FontSize="13" FontWeight="Bold" Grid.ColumnSpan="2" Visibility="Hidden" Click="btn_eliminar_Click"/>
 
     </Grid>
 </Window>

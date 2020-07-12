@@ -76,5 +76,14 @@ namespace BaseDatos.Controlador
             }
         }
 
+        public void eliminarCliente(Cliente cliente)
+        {
+            using(BeLifeEntities entidades = new BeLifeEntities())
+            {
+                entidades.Entry(cliente).State = System.Data.Entity.EntityState.Deleted;
+                entidades.SaveChanges();
+            }
+        }
+
     }
 }

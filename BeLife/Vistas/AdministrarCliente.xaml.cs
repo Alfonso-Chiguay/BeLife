@@ -29,47 +29,38 @@ namespace BeLife.Vistas
 
     public partial class AdministrarCliente : Window
     {
-        
-       
+
+        Con_Contrato con_contrato = new Con_Contrato();
         List<planTipoContrato> listaCompleta;
-        public AdministrarCliente()
+
+        public void llenarGrid(Cliente cliente)
         {
-            InitializeComponent();
             Con_Plan con = new Con_Plan();
             listaCompleta = con.listarInfoJoin();
             List<planGrid> cargar = new List<planGrid>();
-
+            var lista_contratos = con_contrato.listasDeContratoPorCliente(cliente.RutCliente);
             foreach (planTipoContrato info in listaCompleta)
             {
                 planGrid x = new planGrid();
                 x.IdPlan = info.idPlan;
                 x.NombreContrato = info.nombrePlan;
                 x.TipoContrato = info.descripcionContrato;
-                x.Tiene = false;
+                if (lista_contratos.Contains(info.idPlan)) x.Tiene = true;
+                else x.Tiene = false;
                 cargar.Add(x);
-            }
-
-            dg_contratos.ItemsSource = cargar;    
+            } 
+            dg_contratos.ItemsSource = cargar;
+        }
+        public AdministrarCliente()
+        {
+            InitializeComponent();
+              
         }
 
         public AdministrarCliente(Cliente cliente)
         {
             InitializeComponent();
-            Con_Plan con = new Con_Plan();
-            listaCompleta = con.listarInfoJoin();
-            List<planGrid> cargar = new List<planGrid>();
-
-            foreach (planTipoContrato info in listaCompleta)
-            {
-                planGrid x = new planGrid();
-                x.IdPlan = info.idPlan;
-                x.NombreContrato = info.nombrePlan;
-                x.TipoContrato = info.descripcionContrato;
-                x.Tiene = false;
-                cargar.Add(x);
-            }
-
-            dg_contratos.ItemsSource = cargar;
+            llenarGrid(cliente);
 
             txt_rut.Text = cliente.RutCliente.Split('-')[0];
             txt_dv.Text = cliente.RutCliente.Split('-')[1];
@@ -83,6 +74,10 @@ namespace BeLife.Vistas
             cb_sexo.SelectedIndex = 0;
             cb_estado_civil.SelectedIndex = 0;
             dp_fecha_nacimiento.SelectedDate = cliente.FechaNacimiento;
+
+            btn_generar.Visibility = Visibility.Visible;
+            btn_cancelar_contrato.Visibility = Visibility.Visible;
+            btn_eliminar.Visibility = Visibility.Visible;
 
         }
 
@@ -207,7 +202,9 @@ namespace BeLife.Vistas
                 cb_estado_civil.ItemsSource = c_estadoCivil.listarEstadoCivil();
                 if (controlador_cliente.existeCliente(txt_rut.Text, txt_dv.Text))
                 {
+
                     Cliente cliente = controlador_cliente.obtenerCliente(txt_rut.Text, txt_dv.Text);
+                    llenarGrid(cliente);
                     txt_nombres.Text = cliente.Nombres;
                     txt_apellidos.Text = cliente.Apellidos;
                     dp_fecha_nacimiento.SelectedDate = cliente.FechaNacimiento;
@@ -358,6 +355,11 @@ namespace BeLife.Vistas
                 con.crearCliente(cliente);
 
                 MessageBox.Show("Cliente registrado", "Operacion exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                AdministrarCliente ventana = new AdministrarCliente(cliente);
+                this.Close();
+                ventana.ShowDialog();
+
             }
         }
 
@@ -397,6 +399,24 @@ namespace BeLife.Vistas
         {
             public Cliente cliente { get; set; }
             public string idPlan { get; set; }
+        }
+
+        private void btn_eliminar_Click(object sender, RoutedEventArgs e)
+        {
+            string rut = txt_rut.Text + "-" + txt_dv.Text;
+            Con_Contrato con = new Con_Contrato();
+            if(con.listasDeContratoPorCliente(rut).Count == 0)
+            {
+                Con_Cliente con_cliente = new Con_Cliente();
+                Cliente c = con_cliente.obtenerCliente(txt_rut.Text, txt_dv.Text);
+                con_cliente.eliminarCliente(c);
+                MessageBox.Show("Cliente eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Cliente tiene contratos, no se puede eliminar", "Error eliminando", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
