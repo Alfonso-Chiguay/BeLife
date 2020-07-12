@@ -75,6 +75,10 @@ namespace BeLife.Vistas
             cb_estado_civil.SelectedIndex = 0;
             dp_fecha_nacimiento.SelectedDate = cliente.FechaNacimiento;
 
+            btn_generar.Visibility = Visibility.Visible;
+            btn_cancelar_contrato.Visibility = Visibility.Visible;
+            btn_eliminar.Visibility = Visibility.Visible;
+
         }
 
         public class planGrid
@@ -351,6 +355,11 @@ namespace BeLife.Vistas
                 con.crearCliente(cliente);
 
                 MessageBox.Show("Cliente registrado", "Operacion exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                AdministrarCliente ventana = new AdministrarCliente(cliente);
+                this.Close();
+                ventana.ShowDialog();
+
             }
         }
 
@@ -390,6 +399,24 @@ namespace BeLife.Vistas
         {
             public Cliente cliente { get; set; }
             public string idPlan { get; set; }
+        }
+
+        private void btn_eliminar_Click(object sender, RoutedEventArgs e)
+        {
+            string rut = txt_rut.Text + "-" + txt_dv.Text;
+            Con_Contrato con = new Con_Contrato();
+            if(con.listasDeContratoPorCliente(rut).Count == 0)
+            {
+                Con_Cliente con_cliente = new Con_Cliente();
+                Cliente c = con_cliente.obtenerCliente(txt_rut.Text, txt_dv.Text);
+                con_cliente.eliminarCliente(c);
+                MessageBox.Show("Cliente eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Cliente tiene contratos, no se puede eliminar", "Error eliminando", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
