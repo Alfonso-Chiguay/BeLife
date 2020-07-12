@@ -37,7 +37,7 @@ namespace BeLife.Vistas
             cb_region.ItemsSource = comuna.listarRegion();
             
         }
-        public Seguro_hogar(Cliente cliente, Parametro p)
+        public Seguro_hogar(Parametro p)
         {
             InitializeComponent();
             txt_codigoSeguro.Text = fecha.ToString("yyyyMMddhhmmss");

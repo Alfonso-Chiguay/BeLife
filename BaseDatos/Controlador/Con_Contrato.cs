@@ -12,11 +12,8 @@ namespace BaseDatos.Controlador
         {
             using (BeLifeEntities entidades = new BeLifeEntities())
             {
-                // CREO QUE ESTO AGREGA VALORES LA TABLA "FANTASMA" DE CONTRATO VEHICULO //
-                //Contrato c = new Contrato(); //--CREO QUE ESTA TABLA ES INNECESARIA-->{Numero = idContrato};
-                //c.Vehiculo.Add(new Vehiculo() { Patente = patente });
+                
                 entidades.Contrato.Add(contrato);
-                //entidades.Contrato.Add(c);
                 entidades.SaveChanges();
             }
         }

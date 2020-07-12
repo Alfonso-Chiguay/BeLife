@@ -31,16 +31,21 @@ namespace BeLife.Vistas
             InitializeComponent();
             Con_vehiculo vehiculo = new Con_vehiculo();
             cb_marca.ItemsSource = vehiculo.listarMarca();
-            
+            txt_fecha.Text = fecha.ToString("yyyyMMddhhmmss");
+
         }
-        public Seguros_auto(Cliente cliente, Parametro p)
+        public Seguros_auto(Parametro p)
         {
             InitializeComponent();
             Con_vehiculo vehiculo = new Con_vehiculo();
             cb_marca.ItemsSource = vehiculo.listarMarca();
             cliente = p.cliente;
             idPlan = p.idPlan;
+            llenarCampos(p);
+
         }
+
+        
 
         public Seguros_auto(Cliente c)
         {
@@ -48,12 +53,42 @@ namespace BeLife.Vistas
             Con_vehiculo vehiculo = new Con_vehiculo();
             cb_marca.ItemsSource = vehiculo.listarMarca();
             cliente = c;
-            
+            Parametro p = new Parametro();
+            p.cliente = c;
+            p.idPlan = "";
+            llenarCampos(p);
         }
 
         DateTime fecha = DateTime.Now;
 
-        
+        public void llenarCampos(Parametro p_cliente)
+        {
+            txt_fecha.Text = fecha.ToString("yyyyMMddhhmmss");
+            txt_rut.Text = p_cliente.cliente.RutCliente.Split('-')[0];
+            txt_dv.Text = p_cliente.cliente.RutCliente.Split('-')[1];
+            txt_nombre.Text = p_cliente.cliente.Nombres;
+            txt_apellidos.Text = p_cliente.cliente.Apellidos;
+            dp_FechaNacimiento.SelectedDate = p_cliente.cliente.FechaNacimiento;
+            Con_Sexo consexo = new Con_Sexo();
+            Con_EstadoCivil concivil = new Con_EstadoCivil();
+
+            cb_sexo.Items.Add(consexo.sexoPorId(p_cliente.cliente.IdSexo));
+            cb_sexo.SelectedIndex = 0;
+            cb_estadoCivil.Items.Add(concivil.ecivilPorId(p_cliente.cliente.IdEstadoCivil));
+            cb_estadoCivil.SelectedIndex = 0;
+
+            txt_rut.IsEnabled = false;
+            txt_dv.IsEnabled = false;
+
+            cb_marca.IsEnabled = true;
+            txt_patente.IsEnabled = true;
+            if (!p_cliente.idPlan.Equals(""))
+            {
+                TXT_IDPLAN.Text = p_cliente.idPlan;
+            }
+        }
+
+
         private void btn_buscar_en_lista_Click(object sender, RoutedEventArgs e)
         {
             Lista_contratos ventana = new Lista_contratos();
@@ -69,35 +104,35 @@ namespace BeLife.Vistas
             }
             else
             {
-                DateTime fecha_1 = dp_fechaVehiculo.SelectedDate.Value;
-                txt_fecha.Text = fecha.ToString("yyyyMMddhhmmss");
-                txt_fecha.IsEnabled = false;
+                DateTime fecha_1 = dp_fechaVehiculo.SelectedDate.Value;                                
                 Con_vehiculo vehiculo = new Con_vehiculo();
                 Vehiculo vehiculo_save = new Vehiculo();
                 Con_modeloVehiculo Mo_vehiculo = new Con_modeloVehiculo();
-                var id_marca = vehiculo.MarcaPorId(cb_marca.Text);
-                var id_modelo = Mo_vehiculo.buscarIDmodelo(cb_modelo.Text);
-                vehiculo_save.Patente = txt_patente.Text;
+                var id_marca = vehiculo.MarcaPorId(cb_marca.SelectedItem.ToString());
+                var id_modelo = Mo_vehiculo.buscarIDmodelo(cb_modelo.SelectedItem.ToString());
+                vehiculo_save.Patente = txt_patente.Text.ToUpper();
                 vehiculo_save.IdMarca = id_marca;
                 vehiculo_save.IdModelo = id_modelo;
                 vehiculo_save.Anho = fecha_1.Year;
-                vehiculo.asegurarVehiculo(vehiculo_save);
+                
                 // ------------- TESTEO DE INSERT ------------------
                 Contrato contrato = new Contrato();
                 Con_Contrato con = new Con_Contrato();
-                contrato.Numero = fecha.ToString("yyyyMMddhhmmss");
+                contrato.Numero = txt_fecha.Text;
                 contrato.FechaCreacion = fecha;
-                contrato.FechaTermino = fecha;
-                contrato.RutCliente = "66666666-6";
-                contrato.CodigoPlan = "VEH01";
+                contrato.FechaTermino = fecha.AddYears(2);
+                contrato.RutCliente = txt_rut.Text+"-"+txt_dv.Text;
+                contrato.CodigoPlan = idPlan;
                 contrato.IdTipoContrato = 20;
                 contrato.FechaInicioVigencia = fecha;
-                contrato.FechaFinVigencia = fecha;
+                contrato.FechaFinVigencia = fecha.AddYears(2);
                 contrato.Vigente = true;
                 contrato.DeclaracionSalud = false;
                 contrato.PrimaAnual = 1111;
                 contrato.PrimaMensual = 2222;
                 contrato.Observaciones = "NO LO SE";
+                contrato.Vehiculo.Add(vehiculo_save);
+                
                 con.contratoVehiculo(contrato);
                 // ------------- TESTEO DE INSERT A CONTRATO ------------------
                 MessageBox.Show("DATOS GUARDADOS CORRECTAMENTE", "REGISTRO COMPLETO", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -173,27 +208,29 @@ namespace BeLife.Vistas
         {
             Validacion validacion = new Validacion();
             Con_Cliente controlador_cliente = new Con_Cliente();
-            //if (validacion.rutValido(txt_rut.Text, txt_dv.Text))
+            if (validacion.rutValido(txt_rut.Text, txt_dv.Text))
             {
-                //if (controlador_cliente.existeCliente(txt_rut.Text, txt_dv.Text))
-                //{
-                    Cliente cliente = controlador_cliente.obtenerCliente(txt_rut.Text, txt_dv.Text);
-                    txt_nombre.Text = cliente.Nombres;
-                    txt_apellidos.Text = cliente.Apellidos;
-                    cb_marca.IsEnabled = true;
-                    txt_patente.IsEnabled = true;
-                //}
-                //else
-                //{
-                    //MessageBox.Show("Cliente no existe", " ", MessageBoxButton.OK, MessageBoxImage.Error);
+                if (controlador_cliente.existeCliente(txt_rut.Text, txt_dv.Text))
+                {
+                    cliente = controlador_cliente.obtenerCliente(txt_rut.Text, txt_dv.Text);
+                    Parametro p = new Parametro();
+                    p.cliente = cliente;
+                    p.idPlan = "";
+                    llenarCampos(p);
+                        
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Cliente no existe", " ", MessageBoxButton.OK, MessageBoxImage.Error);
                     txt_rut.Foreground = new SolidColorBrush(Colors.Gray);
                     txt_dv.Foreground = new SolidColorBrush(Colors.Gray);
                     txt_rut.Text = "Ej: 12345678";
                     txt_dv.Text = "N";
-                //}
+                }
             }
-           // else
-             //   MessageBox.Show("RUT invalido", "Campo : RUT", MessageBoxButton.OK, MessageBoxImage.Error);
+            else
+              MessageBox.Show("RUT invalido", "Campo : RUT", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private void btn_buscarCliente_Click(object sender, RoutedEventArgs e)
@@ -268,5 +305,7 @@ namespace BeLife.Vistas
                 dp_fechaVehiculo.IsEnabled = false;
             }
         }
+
+        
     }
 }

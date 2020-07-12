@@ -22,14 +22,7 @@ namespace BaseDatos.Controlador
             }
         }
 
-        public void asegurarVehiculo(Vehiculo vehiculo)
-        {
-            using (BeLifeEntities entidades = new BeLifeEntities())
-            {
-                entidades.Vehiculo.Add(vehiculo);
-                entidades.SaveChanges();
-            }
-        }
+        
 
         public int MarcaPorId(string marca)
         {

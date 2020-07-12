@@ -78,5 +78,7 @@ namespace BeLife.Vistas
                 txt_dv.Foreground = new SolidColorBrush(Colors.Gray);
             }
         }
+
+        
     }
 }
