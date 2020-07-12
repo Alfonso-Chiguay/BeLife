@@ -29,47 +29,38 @@ namespace BeLife.Vistas
 
     public partial class AdministrarCliente : Window
     {
-        
-       
+
+        Con_Contrato con_contrato = new Con_Contrato();
         List<planTipoContrato> listaCompleta;
-        public AdministrarCliente()
+
+        public void llenarGrid(Cliente cliente)
         {
-            InitializeComponent();
             Con_Plan con = new Con_Plan();
             listaCompleta = con.listarInfoJoin();
             List<planGrid> cargar = new List<planGrid>();
-
+            var lista_contratos = con_contrato.listasDeContratoPorCliente(cliente.RutCliente);
             foreach (planTipoContrato info in listaCompleta)
             {
                 planGrid x = new planGrid();
                 x.IdPlan = info.idPlan;
                 x.NombreContrato = info.nombrePlan;
                 x.TipoContrato = info.descripcionContrato;
-                x.Tiene = false;
+                if (lista_contratos.Contains(info.idPlan)) x.Tiene = true;
+                else x.Tiene = false;
                 cargar.Add(x);
-            }
-
-            dg_contratos.ItemsSource = cargar;    
+            } 
+            dg_contratos.ItemsSource = cargar;
+        }
+        public AdministrarCliente()
+        {
+            InitializeComponent();
+              
         }
 
         public AdministrarCliente(Cliente cliente)
         {
             InitializeComponent();
-            Con_Plan con = new Con_Plan();
-            listaCompleta = con.listarInfoJoin();
-            List<planGrid> cargar = new List<planGrid>();
-
-            foreach (planTipoContrato info in listaCompleta)
-            {
-                planGrid x = new planGrid();
-                x.IdPlan = info.idPlan;
-                x.NombreContrato = info.nombrePlan;
-                x.TipoContrato = info.descripcionContrato;
-                x.Tiene = false;
-                cargar.Add(x);
-            }
-
-            dg_contratos.ItemsSource = cargar;
+            llenarGrid(cliente);
 
             txt_rut.Text = cliente.RutCliente.Split('-')[0];
             txt_dv.Text = cliente.RutCliente.Split('-')[1];
@@ -207,7 +198,9 @@ namespace BeLife.Vistas
                 cb_estado_civil.ItemsSource = c_estadoCivil.listarEstadoCivil();
                 if (controlador_cliente.existeCliente(txt_rut.Text, txt_dv.Text))
                 {
+
                     Cliente cliente = controlador_cliente.obtenerCliente(txt_rut.Text, txt_dv.Text);
+                    llenarGrid(cliente);
                     txt_nombres.Text = cliente.Nombres;
                     txt_apellidos.Text = cliente.Apellidos;
                     dp_fecha_nacimiento.SelectedDate = cliente.FechaNacimiento;
