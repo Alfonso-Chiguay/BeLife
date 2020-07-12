@@ -11,11 +11,27 @@ namespace BaseDatos.Controlador
         public void contratoVehiculo(Contrato contrato)
         {
             using (BeLifeEntities entidades = new BeLifeEntities())
-            {
-                
+            {                
                 entidades.Contrato.Add(contrato);
                 entidades.SaveChanges();
             }
         }
+
+        public List<string> listasDeContratoPorCliente(string RutCliente)
+        {
+            using(BeLifeEntities entidades = new BeLifeEntities())
+            {
+                List<string> retorno = new List<string>();
+                var consulta = entidades.Contrato.Where(x => x.RutCliente.Equals(RutCliente)).ToList();
+                if (consulta.Count > 0)
+                {
+                    foreach(Contrato contrato in consulta)
+                    {
+                        retorno.Add(contrato.CodigoPlan);
+                    }                    
+                }
+                return retorno;
+            }
+        } 
     }
 }

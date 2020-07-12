@@ -191,9 +191,6 @@ namespace BeLife.Vistas
                 }
                 
             }
-            
-
-
         }
 
         private void btn_obtener_Click(object sender, RoutedEventArgs e)
@@ -231,10 +228,6 @@ namespace BeLife.Vistas
                     vent.ShowDialog();
                 }*/
             }
-            
-            
-            
-           
         }
 
         private class Carga
