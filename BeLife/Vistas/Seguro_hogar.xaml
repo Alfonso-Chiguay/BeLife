@@ -5,27 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BeLife.Vistas"
         mc:Ignorable="d"
-        Title="Seguro_hogar" Height="450" Width="401.838">
+        Title="Seguro_hogar" Height="840.719" Width="465.161">
     <Grid>
-        <Label Content="Codigo postal" HorizontalAlignment="Left" Margin="50,87,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txt_codigoPostal" HorizontalAlignment="Left" MaxLength = "7" Height="23" Margin="215,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="9999999" Foreground="#FFAAA4A4" GotFocus="txt_codigoPostal_GotFocus" LostFocus="txt_codigoPostal_LostFocus"/>
-        <DatePicker x:Name="dp_fechaConstruccion" HorizontalAlignment="Left" Margin="190,146,0,0" VerticalAlignment="Top" SelectedDateChanged="dp_fechaConstruccion_SelectedDateChanged"/>
-        <Label Content="Año de construccion" HorizontalAlignment="Left" Margin="50,146,0,0" VerticalAlignment="Top"/>
-        <Label Content="Direccion" HorizontalAlignment="Left" Margin="50,198,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txt_direccion" HorizontalAlignment="Left" MaxLength = "20" Height="23" Margin="161,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" Text="Calle, Departamento,Torre,etc." Foreground="#FFAAA4A4" GotFocus="txt_direccion_GotFocus" LostFocus="txt_direccion_LostFocus"/>
-        <ComboBox x:Name="cb_region" HorizontalAlignment="Left" Margin="50,274,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cb_region_SelectionChanged"/>
-        <ComboBox x:Name="cb_comuna" HorizontalAlignment="Left" Margin="244,274,0,0" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
-        <Label Content="Region" HorizontalAlignment="Left" Margin="50,243,0,0" VerticalAlignment="Top"/>
-        <Label Content="Comuna" HorizontalAlignment="Left" Margin="244,243,0,0" VerticalAlignment="Top"/>
-        <Label Content="Valor inmueble (UF)" HorizontalAlignment="Left" Margin="50,316,0,0" VerticalAlignment="Top"/>
-        <Label Content="Valor contenido (UF)" HorizontalAlignment="Left" Margin="50,347,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txt_valorInmueble" HorizontalAlignment="Left" MaxLength = "4" Height="23" Margin="190,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58" Foreground="#FFAAA4A4" Text="0" GotFocus="txt_valorInmueble_GotFocus" LostFocus="txt_valorInmueble_LostFocus"/>
-        <TextBox x:Name="txt_valor_contenido" HorizontalAlignment="Left" Height="23" MaxLength = "4" Margin="190,350,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58" Foreground="#FFAAA4A4" Text="0" GotFocus="txt_valor_contenido_GotFocus" LostFocus="txt_valor_contenido_LostFocus"/>
+        <Label Content="Codigo postal" HorizontalAlignment="Left" Margin="44,399,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_codigoPostal" HorizontalAlignment="Left" MaxLength = "7" Height="23" Margin="209,402,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="9999999" Foreground="#FFAAA4A4" GotFocus="txt_codigoPostal_GotFocus" LostFocus="txt_codigoPostal_LostFocus"/>
+        <DatePicker x:Name="dp_fechaConstruccion" HorizontalAlignment="Left" Margin="184,488,0,0" VerticalAlignment="Top" SelectedDateChanged="dp_fechaConstruccion_SelectedDateChanged"/>
+        <Label Content="Año de construccion" HorizontalAlignment="Left" Margin="44,488,0,0" VerticalAlignment="Top"/>
+        <Label Content="Direccion" HorizontalAlignment="Left" Margin="53,553,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_direccion" HorizontalAlignment="Left" MaxLength = "20" Height="23" Margin="164,553,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" Text="Calle, Departamento,Torre,etc." Foreground="#FFAAA4A4" GotFocus="txt_direccion_GotFocus" LostFocus="txt_direccion_LostFocus"/>
+        <ComboBox x:Name="cb_region" HorizontalAlignment="Left" Margin="53,635,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cb_region_SelectionChanged"/>
+        <ComboBox x:Name="cb_comuna" HorizontalAlignment="Left" Margin="256,631,0,0" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <Label Content="Region" HorizontalAlignment="Left" Margin="53,592,0,0" VerticalAlignment="Top"/>
+        <Label Content="Comuna" HorizontalAlignment="Left" Margin="256,600,0,0" VerticalAlignment="Top"/>
+        <Label Content="Valor inmueble (UF)" HorizontalAlignment="Left" Margin="49,678,0,0" VerticalAlignment="Top"/>
+        <Label Content="Valor contenido (UF)" HorizontalAlignment="Left" Margin="49,722,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_valorInmueble" HorizontalAlignment="Left" MaxLength = "4" Height="23" Margin="193,681,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58" Foreground="#FFAAA4A4" Text="0" GotFocus="txt_valorInmueble_GotFocus" LostFocus="txt_valorInmueble_LostFocus"/>
+        <TextBox x:Name="txt_valor_contenido" HorizontalAlignment="Left" Height="23" MaxLength = "4" Margin="193,722,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58" Foreground="#FFAAA4A4" Text="0" GotFocus="txt_valor_contenido_GotFocus" LostFocus="txt_valor_contenido_LostFocus"/>
         <Label Content="Codigo Seguro" HorizontalAlignment="Left" Margin="50,56,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txt_codigoSeguro" HorizontalAlignment="Left" Height="23" Margin="215,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Guardar" HorizontalAlignment="Left" Margin="298,387,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Label x:Name="lbl_fecha" Content="" HorizontalAlignment="Left" Margin="141,120,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbl_postal" Content="" HorizontalAlignment="Left" Margin="215,115,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_codigoSeguro" HorizontalAlignment="Left" Height="23" Margin="181,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Guardar" HorizontalAlignment="Left" Margin="318,728,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Label x:Name="lbl_fecha" Content="" HorizontalAlignment="Left" Margin="135,432,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbl_postal" Content="" HorizontalAlignment="Left" Margin="209,427,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_nombres" HorizontalAlignment="Left" Height="23" Margin="47,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <TextBox x:Name="txt_apellidos" HorizontalAlignment="Left" Height="23" Margin="218,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <DatePicker x:Name="dp_fechaNacimiento" HorizontalAlignment="Left" Margin="47,280,0,0" VerticalAlignment="Top" IsEnabled="False"/>
+        <ComboBox x:Name="cb_sexo" HorizontalAlignment="Left" Margin="49,347,0,0" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <ComboBox x:Name="cb_estadoCivil" HorizontalAlignment="Left" Margin="209,347,0,0" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <Label Content="NOMBRES :" HorizontalAlignment="Left" Margin="47,174,0,0" VerticalAlignment="Top"/>
+        <Label Content="APELLIDOS :" HorizontalAlignment="Left" Margin="218,174,0,0" VerticalAlignment="Top"/>
+        <Label Content="FECHA DE NACIMIENTO :" HorizontalAlignment="Left" Margin="49,249,0,0" VerticalAlignment="Top"/>
+        <Label Content="SEXO" HorizontalAlignment="Left" Margin="49,316,0,0" VerticalAlignment="Top"/>
+        <Label Content="ESTADO CIVIL" HorizontalAlignment="Left" Margin="218,316,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_rut" HorizontalAlignment="Left" Height="23" Margin="47,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <TextBox x:Name="txt_dv" HorizontalAlignment="Left" Height="23" Margin="197,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="29" IsEnabled="False"/>
+        <Label Content="-" HorizontalAlignment="Left" Margin="177,121,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.622,-0.146"/>
+        <Button Content="Buscar cliente" HorizontalAlignment="Left" Margin="274,124,0,0" VerticalAlignment="Top" Width="84"/>
+        <Button Content="Buscar contrato" HorizontalAlignment="Left" Margin="318,62,0,0" VerticalAlignment="Top" Width="100"/>
 
     </Grid>
 </Window>
