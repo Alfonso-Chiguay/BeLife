@@ -382,9 +382,9 @@ namespace BeLife.Vistas
             }
             else if (fila.TipoContrato.Equals("Vida"))
             {
-                /* Seguros_auto ventana = new Seguros_auto(cliente);
+                Seguro_vida ventana = new Seguro_vida(cliente);
                  this.Close();
-                 ventana.ShowDialog();*/
+                 ventana.ShowDialog();
                 MessageBox.Show("FALTA CREAR VISTA DE SEGUROS DE VIDA");
             }
             else if (fila.TipoContrato.Equals("Hogar"))

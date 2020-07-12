@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BaseDatos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static BeLife.Vistas.AdministrarCliente;
 
 namespace BeLife.Vistas
 {
@@ -20,6 +22,16 @@ namespace BeLife.Vistas
     public partial class Seguro_vida : Window
     {
         public Seguro_vida()
+        {
+            InitializeComponent();
+        }
+
+        public Seguro_vida(Parametro p)
+        {
+            InitializeComponent();
+        }
+
+        public Seguro_vida(Cliente c)
         {
             InitializeComponent();
         }
