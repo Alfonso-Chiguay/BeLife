@@ -45,8 +45,6 @@ namespace BeLife.Vistas
 
         }
 
-        
-
         public Seguros_auto(Cliente c)
         {
             InitializeComponent();
@@ -58,6 +56,8 @@ namespace BeLife.Vistas
             p.idPlan = "";
             llenarCampos(p);
         }
+
+
 
         DateTime fecha = DateTime.Now;
 

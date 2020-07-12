@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BeLife.Vistas"
         mc:Ignorable="d"
-        Title="Seguro_vida" Height="590.992" Width="353.524">
+        Title="Seguro_vida" Height="704.992" Width="353.524">
     <Grid Margin="0,0,515,-186">
         <Label Content="CONTRATO DE VIDA" HorizontalAlignment="Left" Margin="86,21,-209,0" VerticalAlignment="Top" Width="123"/>
         <Label Content="Numero de contrato" HorizontalAlignment="Left" Margin="27,72,-150,0" VerticalAlignment="Top" Width="123"/>

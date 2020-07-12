@@ -26,7 +26,6 @@ namespace BeLife.Vistas
     public partial class Seguro_hogar : Window
     {
         Cliente cliente;
-        Parametro p;
         string idPlan;
 
         public Seguro_hogar()
@@ -45,6 +44,7 @@ namespace BeLife.Vistas
             cb_region.ItemsSource = comuna.listarRegion();
             cliente = p.cliente;
             idPlan = p.idPlan;
+            llenarCampos(p);
         }
 
         public Seguro_hogar(Cliente c)
@@ -54,9 +54,36 @@ namespace BeLife.Vistas
             Con_region comuna = new Con_region();
             cb_region.ItemsSource = comuna.listarRegion();
             cliente = c;
-            
+            Parametro p = new Parametro();
+            p.cliente = c;
+            p.idPlan = "";
+            llenarCampos(p);
         }
 
+        public void llenarCampos(Parametro p_cliente)
+        {
+            txt_codigoSeguro.Text = fecha.ToString("yyyyMMddhhmmss");
+            txt_rut.Text = p_cliente.cliente.RutCliente.Split('-')[0];
+            txt_dv.Text = p_cliente.cliente.RutCliente.Split('-')[1];
+            txt_nombres.Text = p_cliente.cliente.Nombres;
+            txt_apellidos.Text = p_cliente.cliente.Apellidos;
+            dp_fechaNacimiento.SelectedDate = p_cliente.cliente.FechaNacimiento;
+            Con_Sexo con_sexo = new Con_Sexo();
+            Con_EstadoCivil con_civil = new Con_EstadoCivil();
+
+            cb_sexo.Items.Add(con_sexo.sexoPorId(p_cliente.cliente.IdSexo));
+            cb_sexo.SelectedIndex = 0;
+            cb_estadoCivil.Items.Add(con_civil.ecivilPorId(p_cliente.cliente.IdEstadoCivil));
+            cb_estadoCivil.SelectedIndex = 0;
+
+            txt_rut.IsEnabled = false;
+            txt_dv.IsEnabled = false;
+
+            if (!p_cliente.idPlan.Equals(""))
+            {
+                txt_idPlan.Text = p_cliente.idPlan;
+            }
+        }
         DateTime fecha = DateTime.Now;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -292,6 +319,70 @@ namespace BeLife.Vistas
                 txt_valor_contenido.Foreground = new SolidColorBrush(Colors.Gray);
                 txt_valor_contenido.Text = "0";
             }
+        }
+
+        private void txt_rut_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_rut.Text.Equals("Ej: 12345678"))
+            {
+                txt_rut.Text = "";
+                txt_rut.Foreground = new SolidColorBrush(Colors.Black);
+            }
+        }
+
+        private void txt_rut_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_rut.Text.Equals(""))
+            {
+                txt_rut.Text = "Ej: 12345678";
+                txt_rut.Foreground = new SolidColorBrush(Colors.Gray);
+            }
+        }
+
+        private void txt_dv_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_dv.Text.Equals(""))
+            {
+                txt_dv.Text = "N";
+                txt_rut.Foreground = new SolidColorBrush(Colors.Gray);
+            }
+        }
+
+        private void txt_dv_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_dv.Text.Equals("N"))
+            {
+                txt_dv.Text = "";
+                txt_dv.Foreground = new SolidColorBrush(Colors.Black);
+            }
+        }
+
+        private void btn_buscarRut_Click(object sender, RoutedEventArgs e)
+        {
+            Validacion validacion = new Validacion();
+            Con_Cliente con_cliente = new Con_Cliente();
+            if (validacion.rutValido(txt_rut.Text, txt_dv.Text))
+            {
+                if (con_cliente.existeCliente(txt_rut.Text, txt_dv.Text))
+                {
+                    cliente = con_cliente.obtenerCliente(txt_rut.Text, txt_dv.Text);
+                    Parametro p = new Parametro();
+                    p.cliente = cliente;
+                    p.idPlan = "";
+                    llenarCampos(p);
+                    txt_codigoSeguro.IsEnabled = false;
+                }
+                else
+                {
+                    MessageBox.Show("Cliente no existe", "Error cliente", MessageBoxButton.OK, MessageBoxImage.Error);
+                    txt_rut.Foreground = new SolidColorBrush(Colors.Gray);
+                    txt_dv.Foreground = new SolidColorBrush(Colors.Gray);
+                    txt_rut.Text = "Ej: 12345678";
+                    txt_dv.Text = "N";
+                }
+            }
+            else
+                MessageBox.Show("RUT invalido", "Campo : RUT", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }
