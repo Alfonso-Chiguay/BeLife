@@ -8,7 +8,7 @@ namespace BaseDatos.Controlador
 {
     public class Con_Contrato
     {
-        public void contratoVehiculo(Contrato contrato, string idContrato, string patente)
+        /*public void contratoVehiculo(Contrato contrato, string idContrato, string patente)
         {
             using (BeLifeEntities entidades = new BeLifeEntities())
             {
@@ -19,6 +19,6 @@ namespace BaseDatos.Controlador
                 entidades.Contrato.Add(c);
                 entidades.SaveChanges();
             }
-        }
+        }*/
     }
 }

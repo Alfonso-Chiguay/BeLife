@@ -372,8 +372,8 @@ namespace BeLife.Vistas
 
             if (fila.TipoContrato.Equals("Vehículos"))
             {
-                
-                Seguros_auto ventana = new Seguros_auto(p);                
+
+                Seguros_auto ventana = new Seguros_auto();//p);                
                 this.Close();
                 ventana.ShowDialog();
             }
@@ -386,7 +386,7 @@ namespace BeLife.Vistas
             }
             else if (fila.TipoContrato.Equals("Hogar"))
             {
-                Seguro_hogar ventana = new Seguro_hogar(p);
+                Seguro_hogar ventana = new Seguro_hogar();//p);
                 this.Close();
                 ventana.ShowDialog();
             }
