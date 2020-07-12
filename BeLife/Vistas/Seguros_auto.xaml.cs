@@ -42,6 +42,15 @@ namespace BeLife.Vistas
             idPlan = p.idPlan;
         }
 
+        public Seguros_auto(Cliente c)
+        {
+            InitializeComponent();
+            Con_vehiculo vehiculo = new Con_vehiculo();
+            cb_marca.ItemsSource = vehiculo.listarMarca();
+            cliente = c;
+            
+        }
+
         DateTime fecha = DateTime.Now;
 
         

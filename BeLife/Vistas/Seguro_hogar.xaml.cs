@@ -46,6 +46,16 @@ namespace BeLife.Vistas
             idPlan = p.idPlan;
         }
 
+        public Seguro_hogar(Cliente c)
+        {
+            InitializeComponent();
+            txt_codigoSeguro.Text = fecha.ToString("yyyyMMddhhmmss");
+            Con_region comuna = new Con_region();
+            cb_region.ItemsSource = comuna.listarRegion();
+            cliente = c;
+            
+        }
+
         DateTime fecha = DateTime.Now;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
