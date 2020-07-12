@@ -360,8 +360,30 @@ namespace BeLife.Vistas
 
         private void btn_generar_Click(object sender, RoutedEventArgs e)
         {
+            Cliente cliente;
+            Con_Cliente concliente = new Con_Cliente();
+
+            cliente = concliente.obtenerCliente(txt_rut.Text, txt_dv.Text);
             planGrid fila = dg_contratos.SelectedItem as planGrid;
-            MessageBox.Show(fila.NombreContrato.ToString());
+            if (fila.TipoContrato.Equals("Vehículos"))
+            {
+                Seguros_auto ventana = new Seguros_auto(cliente);
+                this.Close();
+                ventana.ShowDialog();
+            }
+            else if (fila.TipoContrato.Equals("Vida"))
+            {
+                /* Seguros_auto ventana = new Seguros_auto(cliente);
+                 this.Close();
+                 ventana.ShowDialog();*/
+                MessageBox.Show("FALTA CREAR VISTA DE SEGUROS DE VIDA");
+            }
+            else if (fila.TipoContrato.Equals("Hogar"))
+            {
+                Seguro_hogar ventana = new Seguro_hogar(cliente);
+                this.Close();
+                ventana.ShowDialog();
+            }
         }
     }
 }

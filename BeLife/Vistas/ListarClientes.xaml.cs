@@ -99,8 +99,10 @@ namespace BeLife.Vistas
 
             if (cb_filtro.SelectedIndex != -1)
             {
+
                 var seleccion = cb_filtro.SelectedItem.ToString();
-                if (seleccion.Equals("SEXO"))
+                var segunda_opcion = cb_filtro_seleccion.SelectedIndex;
+                if (seleccion.Equals("SEXO") && segunda_opcion != -1)
                 {
 
                     List<Cliente> lista = filtro.filtarPorSexo(cb_filtro_seleccion.SelectedItem.ToString());
@@ -117,7 +119,7 @@ namespace BeLife.Vistas
 
                     dg_listaClientes.ItemsSource = carga;
                 }
-                else if (seleccion.Equals("ESTADO CIVIL"))
+                else if (seleccion.Equals("ESTADO CIVIL") && segunda_opcion != -1)
                 {
                     List<Cliente> lista = filtro.filtarPorECivil(cb_filtro_seleccion.SelectedItem.ToString());
                     List<Carga> carga = new List<Carga>();
@@ -133,33 +135,46 @@ namespace BeLife.Vistas
                     dg_listaClientes.ItemsSource = carga;
                 }
 
-                else if (seleccion.Equals("RUT"))
+                else if (seleccion.Equals("RUT") && !txt_filtro.Text.Equals("Ej: 11111111-1"))
                 {
-                    string rut = txt_filtro.Text.Split('-')[0];
-                    string dv = txt_filtro.Text.Split('-')[1];
-                    Cliente cliente = filtro.obtenerCliente(rut, dv);
-                    List<Carga> carga = new List<Carga>();
-                    Carga car = new Carga();
-                    if (cliente.Nombres.Equals("No existe"))
-                    {
+                    try {
+                        string rut = txt_filtro.Text.Split('-')[0];
+                        string dv = txt_filtro.Text.Split('-')[1];
+                        Cliente cliente = filtro.obtenerCliente(rut, dv);
+                        List<Carga> carga = new List<Carga>();
+                        Carga car = new Carga();
+                        if (cliente.Nombres.Equals("No existe"))
+                        {
 
+                            car.Rut = "NO";
+                            car.Nombre = "HAY";
+                            car.F_Nacimiento = "DATOS";
+                            carga.Add(car);
+                        }
+                        else
+                        {
+
+                            car.Rut = cliente.RutCliente;
+                            car.Nombre = cliente.Nombres;
+                            car.F_Nacimiento = cliente.FechaNacimiento.ToShortDateString();
+                            carga.Add(car);
+
+                        }
+                        dg_listaClientes.ItemsSource = carga;
+                    }
+                    catch (Exception)
+                    {
+                        List<Carga> carga = new List<Carga>();
+                        Carga car = new Carga();
                         car.Rut = "NO";
                         car.Nombre = "HAY";
                         car.F_Nacimiento = "DATOS";
                         carga.Add(car);
+                        dg_listaClientes.ItemsSource = carga;
                     }
-                    else
-                    {
-
-                        car.Rut = cliente.RutCliente;
-                        car.Nombre = cliente.Nombres;
-                        car.F_Nacimiento = cliente.FechaNacimiento.ToShortDateString();
-                        carga.Add(car);
-
-                    }
-                    dg_listaClientes.ItemsSource = carga;
+                    
                 }
-                else
+                else if (seleccion.Equals("TODOS"))
                 {
                     List<Cliente> lista = filtro.filtarTodo();
                     List<Carga> carga = new List<Carga>();
@@ -174,6 +189,7 @@ namespace BeLife.Vistas
                     }
                     dg_listaClientes.ItemsSource = carga;
                 }
+                
             }
             
 
