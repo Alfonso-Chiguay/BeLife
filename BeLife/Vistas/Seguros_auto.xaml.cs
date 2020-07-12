@@ -82,6 +82,24 @@ namespace BeLife.Vistas
                 vehiculo_save.IdModelo = id_modelo;
                 vehiculo_save.Anho = fecha_1.Year;
                 vehiculo.asegurarVehiculo(vehiculo_save);
+                // ------------- TESTEO DE INSERT ------------------
+                Contrato contrato = new Contrato();
+                Con_Contrato con = new Con_Contrato();
+                contrato.Numero = fecha.ToString("yyyyMMddhhmmss");
+                contrato.FechaCreacion = fecha;
+                contrato.FechaTermino = fecha;
+                contrato.RutCliente = "66666666-6";
+                contrato.CodigoPlan = "VEH01";
+                contrato.IdTipoContrato = 20;
+                contrato.FechaInicioVigencia = fecha;
+                contrato.FechaFinVigencia = fecha;
+                contrato.Vigente = true;
+                contrato.DeclaracionSalud = false;
+                contrato.PrimaAnual = 1111;
+                contrato.PrimaMensual = 2222;
+                contrato.Observaciones = "NO LO SE";
+                con.contratoVehiculo(contrato);
+                // ------------- TESTEO DE INSERT A CONTRATO ------------------
                 MessageBox.Show("DATOS GUARDADOS CORRECTAMENTE", "REGISTRO COMPLETO", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
                 //https://social.msdn.microsoft.com/Forums/es-ES/d2941e3c-81cc-40d2-9a59-f8716c1ca5ae/validar-patente-vehiculo?forum=vcses
