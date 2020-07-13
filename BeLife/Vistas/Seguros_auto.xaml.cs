@@ -124,12 +124,9 @@ namespace BeLife.Vistas
                 else
                     vigencia = false;
 
-
                 if (Regex.IsMatch(txt_anho.Text, "^[0-9]{4}$"))
                 {
                     int anho = Int32.Parse(txt_anho.Text);
-                    int primaMensual = Int32.Parse(txt_primaMensual.Text);
-                    int primaAnual = Int32.Parse(txt_primaAnual.Text);
                     if (anho <= 1980 || anho <= 2020)
                     {
                             if (txt_primaAnual.Text.Equals("0") || txt_primaMensual.Text.Equals("0"))
@@ -154,14 +151,14 @@ namespace BeLife.Vistas
                                 contrato.FechaCreacion = fecha;
                                 contrato.FechaTermino = dp_fechaTermino.SelectedDate.Value;
                                 contrato.RutCliente = txt_rut.Text + "-" + txt_dv.Text;
-                                contrato.CodigoPlan = idPlan;
+                                contrato.CodigoPlan = cb_idPlan.SelectedItem.ToString();
                                 contrato.IdTipoContrato = 20;
                                 contrato.FechaInicioVigencia = dp_fechaInicio.SelectedDate.Value;
                                 contrato.FechaFinVigencia = dp_fechaTermino.SelectedDate.Value;
                                 contrato.Vigente = vigencia;
                                 contrato.DeclaracionSalud = false;
-                                contrato.PrimaAnual = primaAnual;
-                                contrato.PrimaMensual = primaMensual;
+                                contrato.PrimaAnual = Double.Parse(txt_primaAnual.Text); 
+                                contrato.PrimaMensual = Double.Parse(txt_primaMensual.Text); 
                                 contrato.Observaciones = txt_observaciones.Text;
                                 contrato.Vehiculo.Add(vehiculo_save);
 

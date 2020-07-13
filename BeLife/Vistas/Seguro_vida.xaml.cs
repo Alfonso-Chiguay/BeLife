@@ -275,7 +275,7 @@ namespace BeLife.Vistas
                     else
                         calculo += 3.6;
 
-                    txt_primaMensual.Text = calculo.ToString();
+                    txt_primaAnual.Text = calculo.ToString();
                     txt_primaMensual.Text = Math.Round((calculo / 12), 2).ToString();
                 }
             }
@@ -326,8 +326,6 @@ namespace BeLife.Vistas
                 salud = true;
             else
                 salud = false;
-            int primaMensual = Int32.Parse(txt_primaMensual.Text);
-            int primaAnual = Int32.Parse(txt_primaMensual.Text);
             Con_Sexo consexo = new Con_Sexo();
             Con_EstadoCivil concivil = new Con_EstadoCivil();
             var id_sexo = consexo.obtenerId(cb_sexo.SelectedItem.ToString());
@@ -338,14 +336,19 @@ namespace BeLife.Vistas
             contrato.FechaCreacion = fecha;
             contrato.FechaTermino = dp_terminoContrato.SelectedDate.Value;
             contrato.RutCliente = txt_rut.Text + "-" + txt_dv.Text;
-            contrato.CodigoPlan = idPlan;
+            contrato.CodigoPlan = cb_idPlan.SelectedItem.ToString();
+            contrato.IdTipoContrato = 10;
             contrato.FechaInicioVigencia = dp_inicioContrato.SelectedDate.Value;
             contrato.FechaFinVigencia = dp_terminoContrato.SelectedDate.Value;
             contrato.Vigente = vigencia;
             contrato.DeclaracionSalud = salud;
-            contrato.PrimaAnual = primaAnual;
-            contrato.PrimaMensual = primaMensual;
+            contrato.PrimaAnual = Double.Parse(txt_primaAnual.Text); ;
+            contrato.PrimaMensual = Double.Parse(txt_primaMensual.Text); ;
             contrato.Observaciones = txt_observacion.Text;
+            Con_Contrato con_contrato = new Con_Contrato();
+            con_contrato.generarContrato(contrato);
+            MessageBox.Show("DATOS GUARDADOS CORRECTAMENTE", "REGISTRO COMPLETO", MessageBoxButton.OK, MessageBoxImage.Information);
+            this.Close();
         }
     }
 }
