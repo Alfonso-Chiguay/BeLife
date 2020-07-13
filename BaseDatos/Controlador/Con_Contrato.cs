@@ -34,6 +34,31 @@ namespace BaseDatos.Controlador
                 }
                 return retorno;
             }
-        } 
+        }
+
+        public void darDeBaja(string RutCliente, string idPlan)
+        {
+            using (BeLifeEntities entidades = new BeLifeEntities())
+            {
+                var consulta = entidades.Contrato.Where(x => x.RutCliente.Equals(RutCliente) && x.CodigoPlan.Equals(idPlan) && x.Vigente == true).FirstOrDefault();
+                consulta.Vigente = false;
+                entidades.SaveChanges();
+            }
+        }
+
+        public bool contratoVigente(string RutCliente, string idPlan)
+        {
+            using (BeLifeEntities entidades = new BeLifeEntities())
+            {
+                var consulta = entidades.Contrato.Where(x => x.RutCliente.Equals(RutCliente) && x.CodigoPlan.Equals(idPlan)).ToList();
+                foreach(Contrato con in consulta)
+                {
+                    if (con.Vigente == true)
+                        return true;
+                }
+                return false;
+                
+            }
+        }
     }
 }

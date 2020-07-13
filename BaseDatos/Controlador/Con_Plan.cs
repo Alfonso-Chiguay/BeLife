@@ -34,6 +34,8 @@ namespace BaseDatos.Controlador
             }
         }
 
+        
+
         public class planTipoContrato
         {
             public int idContrato { get; set; }

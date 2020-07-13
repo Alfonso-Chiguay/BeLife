@@ -467,15 +467,15 @@ namespace BeLife.Vistas
             if(pregunta == MessageBoxResult.Yes)
             {
                 calcularPrima();
-                txt_codigoPostal.IsEnabled = false;
+                
                 dp_fechaConstruccion.IsEnabled = false;
                 cb_region.IsEnabled = false;
                 cb_comuna.IsEnabled = false;
                 txt_valorInmueble.IsEnabled = false;
                 txt_valor_contenido.IsEnabled = false;
-                txt_comentarios.IsEnabled = false;
+                
                 btn_guardar.IsEnabled = true;
-                dp_inicio_contrato.IsEnabled = false;
+                
                 txt_direccion.IsEnabled = false;
 
             }

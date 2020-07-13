@@ -39,13 +39,17 @@ namespace BeLife.Vistas
             listaCompleta = con.listarInfoJoin();
             List<planGrid> cargar = new List<planGrid>();
             var lista_contratos = con_contrato.listasDeContratoPorCliente(cliente.RutCliente);
+            
             foreach (planTipoContrato info in listaCompleta)
             {
                 planGrid x = new planGrid();
                 x.IdPlan = info.idPlan;
                 x.NombreContrato = info.nombrePlan;
                 x.TipoContrato = info.descripcionContrato;
-                if (lista_contratos.Contains(info.idPlan)) x.Tiene = true;
+                if (lista_contratos.Contains(info.idPlan))
+                {                    
+                    x.Tiene = con_contrato.contratoVigente(cliente.RutCliente, info.idPlan);
+                }
                 else x.Tiene = false;
                 cargar.Add(x);
             } 
@@ -78,6 +82,12 @@ namespace BeLife.Vistas
             btn_generar.Visibility = Visibility.Visible;
             btn_cancelar_contrato.Visibility = Visibility.Visible;
             btn_eliminar.Visibility = Visibility.Visible;
+
+            btn_buscar.IsEnabled = false;
+            lbl_buscar.IsEnabled = false;
+            btn_buscar_lista.IsEnabled = false;
+            txt_rut.IsEnabled = false;
+            txt_dv.IsEnabled = false;
 
         }
 
@@ -420,6 +430,32 @@ namespace BeLife.Vistas
             else
             {
                 MessageBox.Show("Cliente tiene contratos, no se puede eliminar", "Error eliminando", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void btn_cancelar_contrato_Click(object sender, RoutedEventArgs e)
+        {
+            planGrid fila = dg_contratos.SelectedItem as planGrid;
+            if(fila.Tiene == true)
+            {
+                var pregunta = MessageBox.Show("¿Esta seguro? una vez realizada esta accion no se puede revertir", "Confirmar", MessageBoxButton.YesNo, MessageBoxImage.Information);
+                if(pregunta == MessageBoxResult.Yes)
+                {
+                    Con_Cliente con_cliente = new Con_Cliente();
+                    Cliente c = con_cliente.obtenerCliente(txt_rut.Text, txt_dv.Text);
+
+                    con_contrato.darDeBaja(c.RutCliente, fila.IdPlan);
+                    AdministrarCliente ventana = new AdministrarCliente(c);
+                    this.Close();
+                    ventana.ShowDialog();
+                }
+                else
+                    MessageBox.Show("Operacion cancelada", "Cancelada", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            }
+            else
+            {
+                MessageBox.Show("El seguro seleccionado no ha sido contratado", "Error dando de baja", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }
