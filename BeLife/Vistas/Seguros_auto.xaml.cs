@@ -93,12 +93,16 @@ namespace BeLife.Vistas
 
             txt_rut.IsEnabled = false;
             txt_dv.IsEnabled = false;
+            btn_buscarRut.IsEnabled = false;
+            btn_buscarCliente.IsEnabled = false;
 
             cb_marca.IsEnabled = true;
             txt_patente.IsEnabled = true;
             if (!p_cliente.idPlan.Equals(""))
             {
-                cb_idPlan.Text = p_cliente.idPlan;
+                cb_idPlan.Items.Add(p_cliente.idPlan);
+                cb_idPlan.SelectedIndex = 0;
+                cb_idPlan.IsEnabled = false;
             }
         }
 
@@ -295,6 +299,7 @@ namespace BeLife.Vistas
         private void btn_validarPatente_Click(object sender, RoutedEventArgs e)
         {
             Con_vehiculo vehiculo = new Con_vehiculo();
+            string patente = txt_patente.Text.ToUpper();
             if (vehiculo.patenteValida(txt_patente.Text))
             {
                 if (vehiculo.existePatente(txt_patente.Text))
@@ -304,7 +309,16 @@ namespace BeLife.Vistas
                 }
                 else
                 {
-                    txt_anho.IsEnabled = true;                    
+                    txt_patente.Text = patente;
+                    txt_patente.IsEnabled = false;
+                    btn_validarPatente.IsEnabled = false;
+                    cb_marca.IsEnabled = false;
+                    cb_modelo.IsEnabled = false;
+                    btn_validarPatente.IsEnabled = false;
+                    txt_anho.Text = "";
+                    txt_anho.Foreground = new SolidColorBrush(Colors.Black);
+                    txt_anho.IsEnabled = true;
+                    dp_fechaInicio.IsEnabled = true;
                 }
             }
             else
@@ -377,7 +391,9 @@ namespace BeLife.Vistas
                     }
                     else
                         MessageBox.Show("ERROR EN EL AÑO DEL VEHICULO", "ERROR AÑO VEHICULO", MessageBoxButton.OK, MessageBoxImage.Error);
-                }                
+                }
+                else
+                    MessageBox.Show("VALOR DE AÑO INVALIDO (NO ES NUMERICO)", "ERROR AÑO VEHICULO", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
@@ -451,6 +467,32 @@ namespace BeLife.Vistas
         private void btn_salir_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void txt_anho_LostFocus_1(object sender, RoutedEventArgs e)
+        {
+            if (Regex.IsMatch(txt_anho.Text, "^[0-9]{4}$"))
+            {
+                int anho_1 = Int32.Parse(txt_anho.Text);
+                if (anho_1 >= 1980 && anho_1 <= 2020)
+                {
+
+                }
+                else
+                {
+                    txt_anho.Text = "1979";
+                    txt_anho.Foreground = new SolidColorBrush(Colors.Gray);
+                }
+            }
+        }
+
+        private void txt_anho_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_anho.Text.Equals("1979"))
+            {
+                txt_anho.Text = "";
+                txt_anho.Foreground = new SolidColorBrush(Colors.Black);
+            }
         }
     }
 }

@@ -63,9 +63,10 @@ namespace BeLife.Vistas
             cliente = p.cliente;
             idPlan = p.idPlan;
             llenarCampos(p);
-            txt_rut.IsEnabled = true;
-            txt_dv.IsEnabled = true;
-            btn_buscarRut.IsEnabled = true;
+            txt_rut.IsEnabled = false;
+            txt_dv.IsEnabled = false;
+            btn_buscarRut.IsEnabled = false;
+            btn_buscarListado.IsEnabled = false;
             cb_idplan.IsEnabled = true;
         }
 
@@ -81,9 +82,10 @@ namespace BeLife.Vistas
             cb_idplan.Items.Add("HOG01");
             cb_idplan.Items.Add("HOG02");
             cb_idplan.Items.Add("HOG03");
-            txt_rut.IsEnabled = true;
-            txt_dv.IsEnabled = true;
-            btn_buscarRut.IsEnabled = true;
+            txt_rut.IsEnabled = false;
+            txt_dv.IsEnabled = false;
+            btn_buscarRut.IsEnabled = false;
+            btn_buscarListado.IsEnabled = false;
             cb_idplan.IsEnabled = true;
         }
 
@@ -512,6 +514,7 @@ namespace BeLife.Vistas
                 }
                 else
                 {
+                    txt_codigoPostal.IsEnabled = false;
                     lbl_postal.Content = "CODIGO POSTAL OK";
                     txt_anio_constru.IsEnabled = true;
                     Con_region comuna = new Con_region();

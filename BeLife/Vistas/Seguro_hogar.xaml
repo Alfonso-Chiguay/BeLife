@@ -78,7 +78,7 @@
         <Label Content="Fin Contrato" HorizontalAlignment="Left" Margin="14,594,0,0" VerticalAlignment="Top" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold" Grid.RowSpan="2"/>
         <DatePicker x:Name="dp_fin_contrato1" HorizontalAlignment="Left" Margin="233,0,0,0" Grid.Row="1" VerticalAlignment="Top" SelectedDateChanged="dp_fin_contrato1_SelectedDateChanged" IsEnabled="False"/>
         <Label x:Name="lbl_vigencia" Content="" HorizontalAlignment="Left" Margin="53,139,0,0" Grid.Row="1" VerticalAlignment="Top" Width="54"/>
-        <Button Content="Buscar Cliente" HorizontalAlignment="Left" Margin="253,174,0,0" VerticalAlignment="Top" Width="91" Height="26" Background="#FF9F68C5" BorderBrush="#FF9F68C5" Click="Button_Click_1"/>
+        <Button x:Name="btn_buscarListado" Content="Buscar Cliente" HorizontalAlignment="Left" Margin="253,174,0,0" VerticalAlignment="Top" Width="91" Height="26" Background="#FF9F68C5" BorderBrush="#FF9F68C5" Click="Button_Click_1"/>
 
     </Grid>
 </Window>
