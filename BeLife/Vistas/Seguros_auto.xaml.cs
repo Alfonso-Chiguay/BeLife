@@ -501,47 +501,9 @@ namespace BeLife.Vistas
 
         private void btn_limpiar_Click(object sender, RoutedEventArgs e)
         {
-            txt_fecha.Text = fecha.ToString("yyyyMMddhhmmss");
-            txt_rut.Text = "Ej :12345678";
-            txt_rut.Foreground = new SolidColorBrush(Colors.Gray);
-            txt_rut.IsEnabled = true;
-
-            txt_dv.Text = "N";
-            txt_dv.Foreground = new SolidColorBrush(Colors.Gray);
-            txt_dv.IsEnabled = true;
-
-            cb_sexo.Text = "";
-            cb_estadoCivil.Text = "";
-            cb_marca.Text = "";
-            cb_modelo.Text = "";
-
-            btn_buscarCliente.IsEnabled = true;
-            btn_buscarRut.IsEnabled = true;
-
-            cb_modelo.IsEnabled = false;
-
-            dp_FechaNacimiento.SelectedDate = default;
-            dp_fechaInicio.SelectedDate = default;
-            dp_fechaTermino.SelectedDate = default;
-
-            dp_FechaNacimiento.IsEnabled = false;
-            dp_fechaInicio.IsEnabled = false;
-            dp_fechaTermino.IsEnabled = false;
-
-            txt_patente.Text = "AAAA99";
-            txt_patente.Foreground = new SolidColorBrush(Colors.Gray);
-            btn_validarPatente.IsEnabled = false;
-
-            txt_anho.Text = "1979";
-            txt_anho.Foreground = new SolidColorBrush(Colors.Gray);
-
-            txt_vigencia.Text = "";
-            txt_observaciones.Text = "";
-            txt_observaciones.IsEnabled = false;
-
-            txt_primaAnual.Text = "0";
-            txt_primaMensual.Text = "0";
-            btn_calcularPrimas.IsEnabled = false;
+            Seguros_auto ventana = new Seguros_auto();
+            this.Close();
+            ventana.ShowDialog();
         }
     }
 }

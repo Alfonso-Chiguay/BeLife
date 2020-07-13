@@ -370,44 +370,9 @@ namespace BeLife.Vistas
 
         private void btn_limpiar_Click(object sender, RoutedEventArgs e)
         {
-            txt_contrato.Text = fecha.ToString("yyyyMMddhhmmss");
-            cb_idPlan.IsEnabled = true;
-            txt_rut.IsEnabled = true;
-            txt_dv.IsEnabled = true;
-            btn_buscarRut.IsEnabled = true;
-            btn_listaCliente.IsEnabled = true;
-
-            txt_rut.Foreground = new SolidColorBrush(Colors.Gray);
-            txt_rut.Text = "Ej: 12345678";
-            txt_dv.Foreground = new SolidColorBrush(Colors.Gray);
-            txt_dv.Text = "N";
-            txt_nombre.Foreground = new SolidColorBrush(Colors.Gray);
-            txt_nombre.Text = "Ej: Juan Jose";
-            txt_apellidos.Foreground = new SolidColorBrush(Colors.Gray);
-            txt_apellidos.Text = "Ej: Perez Gonzales";
-            dp_fechaNacimiento.SelectedDate = default;
-            cb_sexo.SelectedIndex = 0;
-            cb_estadoCivil.SelectedIndex = 0;
-            dp_inicioContrato.SelectedDate = default;
-            dp_terminoContrato.SelectedDate = default;
-            lbl_vigencia.Content = "";
-            rbtn_no.IsChecked = false;
-            rbtn_si.IsChecked = false;
-            txt_observacion.Text = "";
-            txt_primaAnual.Text = "0";
-            txt_primaMensual.Text = "0";
-
-            txt_nombre.IsEnabled = false;
-            txt_apellidos.IsEnabled = false;
-            cb_sexo.IsEnabled = false;
-            cb_estadoCivil.IsEnabled = false;
-            dp_inicioContrato.IsEnabled = false;
-            dp_fechaNacimiento.IsEnabled = false;
-            dp_terminoContrato.IsEnabled = false;
-            rbtn_no.IsEnabled = false;
-            rbtn_si.IsEnabled = false;
-            txt_observacion.IsEnabled = false;
-            btn_calcular_prima.IsEnabled = false;
+            Seguro_vida ventana = new Seguro_vida();
+            this.Close();
+            ventana.ShowDialog();
         }
     }
 }
