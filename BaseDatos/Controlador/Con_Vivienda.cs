@@ -8,6 +8,12 @@ namespace BaseDatos.Controlador
 {
     public class Con_Vivienda
     {
-
+        public Vivienda obtenerPorCodPostal(int codigoPostal)
+        {
+            using(BeLifeEntities entidades = new BeLifeEntities())
+            {
+                return entidades.Vivienda.Where(x => x.CodigoPostal == codigoPostal).FirstOrDefault();
+            }
+        }
     }
 }

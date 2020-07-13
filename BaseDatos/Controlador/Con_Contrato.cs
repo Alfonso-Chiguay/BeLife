@@ -17,6 +17,19 @@ namespace BaseDatos.Controlador
             }
         }
 
+        public Contrato buscarPorNumero(string numero)
+        {
+            Contrato retorno = new Contrato();
+            using(BeLifeEntities entidades = new BeLifeEntities())
+            {
+                if (entidades.Contrato.Any(x => x.Numero.Equals(numero)))
+                    return entidades.Contrato.Where(x => x.Numero.Equals(numero)).FirstOrDefault();
+                else
+                    return retorno;
+
+            }
+        }
+
         
 
         public List<string> listasDeContratoPorCliente(string RutCliente)
