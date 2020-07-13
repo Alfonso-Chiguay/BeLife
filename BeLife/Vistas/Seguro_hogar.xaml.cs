@@ -466,7 +466,7 @@ namespace BeLife.Vistas
             if(contrato == new Contrato())
             {
                 MessageBox.Show("No hay informacion asociada al numero ingresado", "No hay informacion", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
+            }/*
             else
             {
                 
@@ -518,7 +518,7 @@ namespace BeLife.Vistas
 
 
 
-            }
+            }*/
 
         }
 

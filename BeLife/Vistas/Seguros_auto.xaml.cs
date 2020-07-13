@@ -431,7 +431,7 @@ namespace BeLife.Vistas
                     else
                     { 
                           calculo += 0.4;
-                        if (!validacion.MayorEdad(fecha_1))
+                        if (validacion.MayorEdad(fecha_1))
                         {
                             int edad = validacion.edadContratante(dp_FechaNacimiento.SelectedDate.Value);
                             if (edad >= 18 && edad <= 25)

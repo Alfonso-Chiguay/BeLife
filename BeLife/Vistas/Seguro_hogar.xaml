@@ -46,7 +46,7 @@
                 <ImageBrush ImageSource="/BeLife;component/img/search.png"/>
             </Button.Foreground>
         </Button>
-        <DatePicker x:Name="dp_inicio_contrato" HorizontalAlignment="Left" Margin="154,555,0,0" VerticalAlignment="Top" SelectedDateChanged="dp_fechaConstruccion_SelectedDateChanged"/>
+        <DatePicker x:Name="dp_inicio_contrato" HorizontalAlignment="Left" Margin="154,555,0,0" VerticalAlignment="Top"/>
         <Label Content="Inicio contrato" HorizontalAlignment="Left" Margin="13,555,0,0" VerticalAlignment="Top"/>
         <Label Content="Comentarios" HorizontalAlignment="Left" Margin="14,671,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txt_comentarios" HorizontalAlignment="Left" Height="52" Margin="102,674,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197"/>
