@@ -51,6 +51,8 @@ namespace BeLife.Vistas
         {
             btn_vida.Background = panelmorado.Background;
             btn_vida.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            Seguro_vida ventana = new Seguro_vida();
+            ventana.ShowDialog();
         }
 
         private void btn_vehiculos_Click(object sender, RoutedEventArgs e)
