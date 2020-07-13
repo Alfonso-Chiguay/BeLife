@@ -29,6 +29,7 @@ namespace BeLife.Vistas
         public Seguro_vida()
         {
             InitializeComponent();
+            txt_contrato.Text = fecha.ToString("yyyyMMddhhmmss");
             cb_idPlan.Items.Add("VID01");
             cb_idPlan.Items.Add("VID02");
             cb_idPlan.Items.Add("VID03");
@@ -46,6 +47,7 @@ namespace BeLife.Vistas
         public Seguro_vida(Parametro p)
         {
             InitializeComponent();
+            txt_contrato.Text = fecha.ToString("yyyyMMddhhmmss");
             cliente = p.cliente;
             idPlan = p.idPlan;
             llenarCampos(p);
@@ -57,6 +59,7 @@ namespace BeLife.Vistas
         public Seguro_vida(Cliente c)
         {
             InitializeComponent();
+            txt_contrato.Text = fecha.ToString("yyyyMMddhhmmss");
             cliente = c;
             Parametro p = new Parametro();
             p.cliente = c;
@@ -349,6 +352,13 @@ namespace BeLife.Vistas
             con_contrato.generarContrato(contrato);
             MessageBox.Show("DATOS GUARDADOS CORRECTAMENTE", "REGISTRO COMPLETO", MessageBoxButton.OK, MessageBoxImage.Information);
             this.Close();
+        }
+
+        private void btn_buscarContrato_Click(object sender, RoutedEventArgs e)
+        {
+            Lista_contratos ventana = new Lista_contratos();
+            ventana.lbl_tipoContrato.Content = "VIDA";
+            ventana.ShowDialog();
         }
     }
 }

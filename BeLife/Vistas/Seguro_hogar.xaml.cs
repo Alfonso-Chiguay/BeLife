@@ -569,5 +569,12 @@ namespace BeLife.Vistas
             this.Close();
             ventana.ShowDialog();
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Lista_contratos ventana = new Lista_contratos();
+            ventana.lbl_tipoContrato.Content = "VIVIENDA";
+            ventana.ShowDialog();
+        }
     }
 }

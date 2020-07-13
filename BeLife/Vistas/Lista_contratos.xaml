@@ -10,7 +10,7 @@
         <ListBox HorizontalAlignment="Left" Height="213" Margin="10,99,0,0" VerticalAlignment="Top" Width="623"/>
         <Button Content="Buscar"  Style="{DynamicResource boton_clientes}" HorizontalAlignment="Left" Margin="548,347,0,0" VerticalAlignment="Top" Width="85" FontFamily="Dubai" Height="29" FontSize="13"/>
         <Label Content="TIPO DE CONTRATO :" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
-        <Label x:Name="lbl_tipoContrato" Content="" HorizontalAlignment="Left" Margin="137,50,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbl_tipoContrato" Content="" HorizontalAlignment="Left" Margin="202,70,0,0" VerticalAlignment="Top" Width="153" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
         <Label Content="Be" HorizontalAlignment="Left" Margin="2,-16,0,0" VerticalAlignment="Top" FontFamily="Dubai" FontSize="48" Background="#00000000" Foreground="#FF828285" FontWeight="Bold" Height="68" Width="67"/>
         <Label Content="Life" HorizontalAlignment="Left" Margin="53,-16,0,0" VerticalAlignment="Top" FontFamily="Dubai" FontSize="48" Background="#00000000" Foreground="#FF9F68C5" FontWeight="Bold" Height="74" Width="92"/>
         <Frame x:Name="panelmorado" Content="" HorizontalAlignment="Left" Height="428" VerticalAlignment="Top" Width="87" Background="#FF9F68C5" Margin="707,-8,-2,-1"/>
