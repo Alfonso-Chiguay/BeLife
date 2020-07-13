@@ -221,12 +221,12 @@ namespace BeLife.Vistas
                     this.Close();
                     vent.ShowDialog();
                 }
-                /*else if (ventana.Equals("Seguros_vida"))
+                else if (ventana.Equals("Seguro_vida"))
                 {
-                    AdministrarCliente vent = new AdministrarCliente(cliente);
+                    Seguro_vida vent = new Seguro_vida(cliente);
                     this.Close();
                     vent.ShowDialog();
-                }*/
+                }
             }
         }
 

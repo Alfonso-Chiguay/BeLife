@@ -99,6 +99,7 @@ namespace BeLife.Vistas
 
             txt_rut.IsEnabled = false;
             txt_dv.IsEnabled = false;
+            dp_inicioContrato.IsEnabled = true;
             if (!p_cliente.idPlan.Equals(""))
             {
                 cb_idPlan.Text = p_cliente.idPlan;
@@ -309,7 +310,8 @@ namespace BeLife.Vistas
 
         private void btn_listaCliente_Click_1(object sender, RoutedEventArgs e)
         {
-            ListarClientes cliente = new ListarClientes();
+            ListarClientes cliente = new ListarClientes("Seguro_vida");
+            this.Close();
             cliente.ShowDialog();
         }
 

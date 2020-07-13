@@ -294,26 +294,21 @@ namespace BeLife.Vistas
 
         private void btn_validarPatente_Click(object sender, RoutedEventArgs e)
         {
-            if (Regex.IsMatch(txt_patente.Text, "^[a-z-A-Z]{4}[0-9]{2}$"))
+            Con_vehiculo vehiculo = new Con_vehiculo();
+            if (vehiculo.patenteValida(txt_patente.Text))
             {
-                txt_anho.IsEnabled = true;
-                dp_fechaInicio.IsEnabled = true;
-                //https://social.msdn.microsoft.com/Forums/es-ES/d2941e3c-81cc-40d2-9a59-f8716c1ca5ae/validar-patente-vehiculo?forum=vcses
-            }
-            else if (Regex.IsMatch(txt_patente.Text, "^[a-z-A-Z]{3}[0-9]{3}$"))
-            {
-                txt_anho.IsEnabled = true;
-                dp_fechaInicio.IsEnabled = true;
-            }
-            else if (Regex.IsMatch(txt_patente.Text, "^[a-z-A-Z]{2}[0-9]{4}$"))
-            {
-                txt_anho.IsEnabled = true;
-                dp_fechaInicio.IsEnabled = true;
+                if (vehiculo.existePatente(txt_patente.Text))
+                {
+                    txt_anho.IsEnabled = false;
+                    MessageBox.Show("Patente ya existe", "Error patente", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    txt_anho.IsEnabled = true;                    
+                }
             }
             else
-            {
-                MessageBox.Show("PATENTE INVALIDA", "ERROR PATENTE", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+                MessageBox.Show("Patente invalida", "Error patente", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private void txt_anho_LostFocus(object sender, RoutedEventArgs e)

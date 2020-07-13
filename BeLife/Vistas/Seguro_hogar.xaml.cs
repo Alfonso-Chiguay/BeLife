@@ -34,8 +34,6 @@ namespace BeLife.Vistas
             InitializeComponent();
             lbl_fecha.Visibility = Visibility.Hidden;
             txt_codigoSeguro.Text = fecha.ToString("yyyyMMddhhmmss");
-            Con_region comuna = new Con_region();
-            cb_region.ItemsSource = comuna.listarRegion();
             cb_idplan.Items.Add("HOG01");
             cb_idplan.Items.Add("HOG02");
             cb_idplan.Items.Add("HOG03");
@@ -59,8 +57,6 @@ namespace BeLife.Vistas
         {
             InitializeComponent();
             txt_codigoSeguro.Text = fecha.ToString("yyyyMMddhhmmss");
-            Con_region comuna = new Con_region();
-            cb_region.ItemsSource = comuna.listarRegion();
             cliente = p.cliente;
             idPlan = p.idPlan;
             llenarCampos(p);
@@ -70,8 +66,6 @@ namespace BeLife.Vistas
         {
             InitializeComponent();
             txt_codigoSeguro.Text = fecha.ToString("yyyyMMddhhmmss");
-            Con_region comuna = new Con_region();
-            cb_region.ItemsSource = comuna.listarRegion();
             cliente = c;
             Parametro p = new Parametro();
             p.cliente = c;
@@ -104,6 +98,8 @@ namespace BeLife.Vistas
 
             dp_inicio_contrato.DisplayDateStart = fecha;
             dp_inicio_contrato.DisplayDateEnd = fecha.AddMonths(1);
+
+            btn_validar.IsEnabled = true;
 
             if (!p_cliente.idPlan.Equals(""))
             {
@@ -264,29 +260,12 @@ namespace BeLife.Vistas
         
         private void txt_codigoPostal_LostFocus(object sender, RoutedEventArgs e)
         {
-            lbl_postal.Visibility = Visibility.Hidden;
-            if (txt_codigoPostal.Text.Equals("0000000"))
+            if(txt_codigoPostal.Text.Equals(""))
             {
-                lbl_postal.Content = "CODIGO POSTAL INVALIDO";
-                MessageBox.Show("CODIGO POSTAL INVALIDO", "ERROR CODIGO POSTAL", MessageBoxButton.OK, MessageBoxImage.Error);
-            }          
-            else if (Regex.IsMatch(txt_codigoPostal.Text, "^[0-9]{7}$"))
-            {
-                var postal = Int32.Parse(txt_codigoPostal.Text);
-                if (postal >= 1000000)
-                    lbl_postal.Content = "CODIGO POSTAL OK";
-                else
-                {
-                    lbl_postal.Foreground = new SolidColorBrush(Colors.Red);
-                    lbl_postal.Content = "CODIGO POSTAL INVALIDO";
-                }
-                
+                txt_codigoPostal.Text = "9999999";
+                txt_codigoPostal.Foreground = new SolidColorBrush(Colors.Gray);
             }
-            else
-            {
-                lbl_postal.Content = "CODIGO POSTAL INVALIDO";
-                MessageBox.Show("CODIGO POSTAL INVALIDO", "ERROR CODIGO POSTAL", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+
         }
 
         private void txt_valor_contenido_GotFocus(object sender, RoutedEventArgs e)
@@ -359,14 +338,13 @@ namespace BeLife.Vistas
                     llenarCampos(p);
                     txt_codigoSeguro.IsEnabled = false;
                     txt_codigoPostal.IsEnabled = true;
-                    txt_anio_constru.IsEnabled = true;
-                    cb_region.IsEnabled = true;
-                    txt_valorInmueble.IsEnabled = true;
-                    txt_valor_contenido.IsEnabled = true;
+                    cb_region.IsEnabled = false;
+                    txt_valorInmueble.IsEnabled = false;
+                    txt_valor_contenido.IsEnabled = false;
                     txt_comentarios.IsEnabled = true;
-                    btn_guardar.IsEnabled = true;
-                    dp_inicio_contrato.IsEnabled = true;
-                    txt_direccion.IsEnabled = true;
+                    btn_guardar.IsEnabled = false;
+                    dp_inicio_contrato.IsEnabled = false;
+                    txt_direccion.IsEnabled = false;
                 }
                 else
                 {
@@ -489,6 +467,51 @@ namespace BeLife.Vistas
             }
         }
 
-       
+        private void btn_validar_Click(object sender, RoutedEventArgs e)
+        {
+            Con_Vivienda con_vivienda = new Con_Vivienda();
+            if (con_vivienda.postalValido(txt_codigoPostal.Text))
+            {
+                int postal = Int32.Parse(txt_codigoPostal.Text);
+                if (con_vivienda.existeCodigoPostal(postal))
+                {
+                    txt_anio_constru.IsEnabled = false;
+                    MessageBox.Show("Codigo postal ya existe", "Error postal", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    txt_anio_constru.IsEnabled = true;
+                    Con_region comuna = new Con_region();
+                    cb_region.ItemsSource = comuna.listarRegion();
+                    dp_inicio_contrato.IsEnabled = true;                  
+                    txt_direccion.IsEnabled = true;
+                    cb_region.IsEnabled = true;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Codigo postal invalido", "Error codigo postal", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void dp_fin_contrato1_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            txt_valorInmueble.IsEnabled = true;
+            txt_valor_contenido.IsEnabled = true;
+            Validacion validacion = new Validacion();
+            DateTime fecha_1 = dp_fin_contrato1.SelectedDate.Value;
+            if (!validacion.ContratoFecha(fecha_1))
+            {
+                lbl_vigencia.Content = "No";
+            }
+            else
+                lbl_vigencia.Content = "Si";
+            
+        }
+
+        private void dp_inicio_contrato_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            dp_fin_contrato1.IsEnabled = true;
+        }
     }
 }
