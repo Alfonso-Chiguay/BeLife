@@ -51,6 +51,10 @@ namespace BeLife.Vistas
             cliente = p.cliente;
             idPlan = p.idPlan;
             llenarCampos(p);
+            cb_idPlan.IsEnabled = false;
+            cb_idPlan.Items.Add("VID01");
+            cb_idPlan.Items.Add("VID02");
+            cb_idPlan.Items.Add("VID03");
             dp_inicioContrato.DisplayDateStart = fecha;
             dp_inicioContrato.DisplayDateEnd = fecha.AddMonths(1);
             dp_terminoContrato.DisplayDateStart = fecha.AddYears(1);
@@ -65,6 +69,9 @@ namespace BeLife.Vistas
             p.cliente = c;
             p.idPlan = "";
             llenarCampos(p);
+            cb_idPlan.Items.Add("VID01");
+            cb_idPlan.Items.Add("VID02");
+            cb_idPlan.Items.Add("VID03");
             cb_estadoCivil.Items.Add("SOLTERO");
             cb_estadoCivil.Items.Add("CASADO");
             cb_estadoCivil.Items.Add("DIVORCIADO");

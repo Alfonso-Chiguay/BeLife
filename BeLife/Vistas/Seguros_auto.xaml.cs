@@ -48,6 +48,9 @@ namespace BeLife.Vistas
             cliente = p.cliente;
             idPlan = p.idPlan;
             llenarCampos(p);
+            cb_idPlan.Items.Add("VEH01");
+            cb_idPlan.Items.Add("VEH02");
+            cb_idPlan.Items.Add("VEH03");
             dp_fechaInicio.DisplayDateStart = fecha;
             dp_fechaInicio.DisplayDateEnd = fecha.AddMonths(1);
             dp_fechaTermino.DisplayDateStart = fecha.AddYears(1);
@@ -338,6 +341,7 @@ namespace BeLife.Vistas
         {
             Validacion validacion = new Validacion();
             DateTime fecha_1 = dp_fechaTermino.SelectedDate.Value;
+            btn_calcularPrimas.IsEnabled = true;
             if (!validacion.ContratoFecha(fecha_1))
             {
                 txt_vigencia.Text = "No";
@@ -493,6 +497,49 @@ namespace BeLife.Vistas
                 txt_anho.Text = "";
                 txt_anho.Foreground = new SolidColorBrush(Colors.Black);
             }
+        }
+
+        private void btn_limpiar_Click(object sender, RoutedEventArgs e)
+        {
+            txt_fecha.Text = fecha.ToString("yyyyMMddhhmmss");
+            txt_rut.Text = "Ej :12345678";
+            txt_rut.Foreground = new SolidColorBrush(Colors.Gray);
+            txt_rut.IsEnabled = true;
+
+            txt_dv.Text = "N";
+            txt_dv.Foreground = new SolidColorBrush(Colors.Gray);
+            txt_dv.IsEnabled = true;
+
+            cb_sexo.SelectedIndex = 0;
+            cb_estadoCivil.SelectedIndex = 0;
+            cb_marca.SelectedIndex = 0;
+            cb_modelo.SelectedIndex = 0;
+
+            btn_buscarCliente.IsEnabled = true;
+            btn_buscarRut.IsEnabled = true;
+
+            dp_FechaNacimiento.SelectedDate = fecha;
+            dp_fechaInicio.SelectedDate = fecha;
+            dp_fechaTermino.SelectedDate = fecha;
+
+            dp_FechaNacimiento.IsEnabled = false;
+            dp_fechaInicio.IsEnabled = false;
+            dp_fechaTermino.IsEnabled = false;
+
+            txt_patente.Text = "AAAA99";
+            txt_patente.Foreground = new SolidColorBrush(Colors.Gray);
+            btn_validarPatente.IsEnabled = false;
+
+            txt_anho.Text = "1979";
+            txt_anho.Foreground = new SolidColorBrush(Colors.Gray);
+
+            txt_vigencia.Text = "";
+            txt_observaciones.Text = "";
+            txt_observaciones.IsEnabled = false;
+
+            txt_primaAnual.Text = "0";
+            txt_primaMensual.Text = "0";
+            btn_calcularPrimas.IsEnabled = false;
         }
     }
 }

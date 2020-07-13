@@ -15,12 +15,12 @@
         <TextBox x:Name="txt_fecha" HorizontalAlignment="Left" Height="23" Margin="186,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" Text="yyyyMMddhhmmss" GotFocus="txt_fecha_GotFocus" LostFocus="txt_fecha_LostFocus" Foreground="Gray" IsEnabled="False" Grid.ColumnSpan="2"/>
         <Label x:Name="lbl_tipo_seguro" Content="Vehiculo" HorizontalAlignment="Left" Margin="202,40,0,0" VerticalAlignment="Top" Background="White" Foreground="White" Grid.ColumnSpan="2"/>
         <Button x:Name="btn_buscar_en_lista" Style="{DynamicResource boton_clientes}" Content="Buscar en lista" HorizontalAlignment="Left" Margin="45,89,0,0" VerticalAlignment="Top" Width="93" Click="btn_buscar_en_lista_Click" Height="23" Grid.Column="1" FontFamily="Dubai" FontSize="13" FontWeight="Bold"/>
-        <Button x:Name="btn_guardado" Content="Guardar" Style="{DynamicResource boton_clientes}" HorizontalAlignment="Left" Margin="158,865,0,0" VerticalAlignment="Top" Width="103" Click="btn_guardado_Click" IsEnabled="False" Height="38" Grid.ColumnSpan="2" FontFamily="Dubai" FontSize="13" FontWeight="Bold"/>
+        <Button x:Name="btn_guardado" Content="Guardar" Style="{DynamicResource boton_clientes}" HorizontalAlignment="Left" Margin="10,864,0,0" VerticalAlignment="Top" Width="103" Click="btn_guardado_Click" IsEnabled="False" Height="38" FontFamily="Dubai" FontSize="13" FontWeight="Bold" Grid.Column="1"/>
         <Label Content="RUT" HorizontalAlignment="Left" Margin="24,159,0,0" VerticalAlignment="Top" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
         <Label Content="Nombres" HorizontalAlignment="Left" Margin="26,214,0,0" VerticalAlignment="Top" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
         <Label Content="Apellidos" HorizontalAlignment="Left" Margin="162,214,0,0" VerticalAlignment="Top" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
         <TextBox x:Name="txt_rut" HorizontalAlignment="Left" Height="23" Margin="24,185,0,0" MaxLength = "8" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" Foreground="Gray" Text="Ej :12345678" GotFocus="txt_rut_GotFocus" LostFocus="txt_rut_LostFocus"/>
-        <Button x:Name="btn_buscarCliente" Style="{DynamicResource boton_clientes}" Content="Buscar Cliente" HorizontalAlignment="Left" Margin="208,186,0,0" VerticalAlignment="Top" Width="87" RenderTransformOrigin="0.5,0.5" Click="btn_buscarCliente_Click" Height="22" Grid.ColumnSpan="2" FontFamily="Dubai" FontSize="13" FontWeight="Bold">
+        <Button x:Name="btn_buscarCliente" Style="{DynamicResource boton_clientes}" Content="Buscar Cliente" HorizontalAlignment="Left" Margin="208,182,0,0" VerticalAlignment="Top" Width="92" RenderTransformOrigin="0.5,0.5" Click="btn_buscarCliente_Click" Height="26" Grid.ColumnSpan="2" FontFamily="Dubai" FontSize="13" FontWeight="Bold">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -69,7 +69,7 @@
         <TextBox x:Name="txt_anho" HorizontalAlignment="Left" Height="23" MaxLength = "4" Margin="202,479,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62" IsEnabled="False" LostFocus="txt_anho_LostFocus_1" Text="1979" GotFocus="txt_anho_GotFocus"/>
         <TextBox x:Name="txt_primaAnual" HorizontalAlignment="Left" Height="23" Margin="228,789,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="38" IsEnabled="False" FontFamily="Perpetua Titling MT" FontWeight="Bold" FontSize="16"/>
         <TextBox x:Name="txt_primaMensual" HorizontalAlignment="Left" Height="23" Margin="228,821,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="38" IsEnabled="False" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
-        <Button x:Name="btn_calcularPrimas" Style="{DynamicResource boton_clientes}" Content="Calcular primas" HorizontalAlignment="Left" Margin="29,797,0,0" VerticalAlignment="Top" Width="91" Click="btn_calcularPrimas_Click" Height="32" FontFamily="Dubai" FontSize="13" FontWeight="Bold" Grid.Column="1"/>
+        <Button x:Name="btn_calcularPrimas" Style="{DynamicResource boton_clientes}" Content="Calcular primas" HorizontalAlignment="Left" Margin="29,797,0,0" VerticalAlignment="Top" Width="91" Click="btn_calcularPrimas_Click" Height="32" FontFamily="Dubai" FontSize="13" FontWeight="Bold" Grid.Column="1" IsEnabled="False"/>
         <ComboBox x:Name="cb_idPlan" HorizontalAlignment="Left" Margin="186,117,0,0" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
         <Label Content="Be" HorizontalAlignment="Left" Margin="2,-16,0,0" VerticalAlignment="Top" FontFamily="Dubai" FontSize="48" Background="#00000000" Foreground="#FF828285" FontWeight="Bold" Height="68" Width="67"/>
         <Label Content="Life" HorizontalAlignment="Left" Margin="53,-16,0,0" VerticalAlignment="Top" FontFamily="Dubai" FontSize="48" Background="#00000000" Foreground="#FF9F68C5" FontWeight="Bold" Height="74" Width="92"/>
@@ -84,6 +84,7 @@
             </Button.Background>
         </Button>
         <Label Content="Volver" HorizontalAlignment="Left" Margin="212,821,0,0" VerticalAlignment="Top" FontFamily="Dubai" FontWeight="Bold" Height="39" Width="42" Grid.Column="1"/>
+        <Button x:Name="btn_limpiar" Content="Limpiar" HorizontalAlignment="Left" Margin="134,864,0,0" VerticalAlignment="Top" Width="103" Height="38" BorderBrush="#FF9F68C5" Background="#FF9F68C5" FontFamily="Dubai" FontSize="13" FontWeight="Bold" Click="btn_limpiar_Click"/>
 
     </Grid>
 </Window>
