@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using Negocio.Funciones;
 using System.Text.RegularExpressions;
 using static BeLife.Vistas.AdministrarCliente;
+using System.Reflection;
 
 namespace BeLife.Vistas
 {
@@ -35,6 +36,8 @@ namespace BeLife.Vistas
             cb_idPlan.Items.Add("VEH01");
             cb_idPlan.Items.Add("VEH02");
             cb_idPlan.Items.Add("VEH03");
+            dp_fechaInicio.DisplayDateStart = fecha;
+            dp_fechaInicio.DisplayDateEnd = fecha.AddMonths(1);
         }
         public Seguros_auto(Parametro p)
         {
@@ -44,7 +47,8 @@ namespace BeLife.Vistas
             cliente = p.cliente;
             idPlan = p.idPlan;
             llenarCampos(p);
-
+            dp_fechaInicio.DisplayDateStart = fecha;
+            dp_fechaInicio.DisplayDateEnd = fecha.AddMonths(1);
         }
 
         
@@ -62,6 +66,8 @@ namespace BeLife.Vistas
             cb_idPlan.Items.Add("VEH01");
             cb_idPlan.Items.Add("VEH02");
             cb_idPlan.Items.Add("VEH03");
+            dp_fechaInicio.DisplayDateStart = fecha;
+            dp_fechaInicio.DisplayDateEnd = fecha.AddMonths(1);
         }
 
         DateTime fecha = DateTime.Now;
@@ -110,6 +116,12 @@ namespace BeLife.Vistas
             else
             {
                 bool vigencia;
+                if (txt_vigencia.Text.Equals("Si"))
+                    vigencia = true;
+                else
+                    vigencia = false;
+
+
                 if (Regex.IsMatch(txt_anho.Text, "^[0-9]{4}$"))
                 {
                     int anho = Int32.Parse(txt_anho.Text);
@@ -117,8 +129,6 @@ namespace BeLife.Vistas
                     int primaAnual = Int32.Parse(txt_primaAnual.Text);
                     if (anho <= 1980 || anho <= 2020)
                     {
-                        if (rbtn_si.IsChecked == true)
-                        {
                             if (txt_primaAnual.Text.Equals("") || txt_primaMensual.Text.Equals(""))
                             {
                                 MessageBox.Show("ERROR EN LAS PRIMAS");
@@ -145,48 +155,7 @@ namespace BeLife.Vistas
                                 contrato.IdTipoContrato = 20;
                                 contrato.FechaInicioVigencia = dp_fechaInicio.SelectedDate.Value;
                                 contrato.FechaFinVigencia = dp_fechaTermino.SelectedDate.Value;
-                                contrato.Vigente = true;
-                                contrato.DeclaracionSalud = true;
-                                contrato.PrimaAnual = primaAnual;
-                                contrato.PrimaMensual = primaMensual;
-                                contrato.Observaciones = txt_observaciones.Text;
-                                contrato.Vehiculo.Add(vehiculo_save);
-
-                                con.generarContrato(contrato);
-                                // ------------- TESTEO DE INSERT A CONTRATO ------------------
-                                MessageBox.Show("DATOS GUARDADOS CORRECTAMENTE", "REGISTRO COMPLETO", MessageBoxButton.OK, MessageBoxImage.Information);
-                                this.Close();
-                            }
-                        }
-                        else if (rbtn_no.IsChecked == true)
-                        {
-                            if (txt_primaMensual.Text.Equals("") || txt_primaAnual.Text.Equals(""))
-                            {
-                                MessageBox.Show("ERROR EN LAS PRIMAS");
-                            }
-                            else
-                            {
-                                Con_vehiculo vehiculo = new Con_vehiculo();
-                                Vehiculo vehiculo_save = new Vehiculo();
-                                Con_modeloVehiculo Mo_vehiculo = new Con_modeloVehiculo();
-                                var id_marca = vehiculo.MarcaPorId(cb_marca.SelectedItem.ToString());
-                                var id_modelo = Mo_vehiculo.buscarIDmodelo(cb_modelo.SelectedItem.ToString());
-                                vehiculo_save.Patente = txt_patente.Text.ToUpper();
-                                vehiculo_save.IdMarca = id_marca;
-                                vehiculo_save.IdModelo = id_modelo;
-                                vehiculo_save.Anho = anho;
-
-                                Contrato contrato = new Contrato();
-                                Con_Contrato con = new Con_Contrato();
-                                contrato.Numero = txt_fecha.Text;
-                                contrato.FechaCreacion = fecha;
-                                contrato.FechaTermino = dp_fechaTermino.SelectedDate.Value;
-                                contrato.RutCliente = txt_rut.Text + "-" + txt_dv.Text;
-                                contrato.CodigoPlan = idPlan;
-                                contrato.IdTipoContrato = 20;
-                                contrato.FechaInicioVigencia = dp_fechaInicio.SelectedDate.Value;
-                                contrato.FechaFinVigencia = dp_fechaTermino.SelectedDate.Value;
-                                contrato.Vigente = true;
+                                contrato.Vigente = vigencia;
                                 contrato.DeclaracionSalud = false;
                                 contrato.PrimaAnual = primaAnual;
                                 contrato.PrimaMensual = primaMensual;
@@ -198,9 +167,7 @@ namespace BeLife.Vistas
                                 MessageBox.Show("DATOS GUARDADOS CORRECTAMENTE", "REGISTRO COMPLETO", MessageBoxButton.OK, MessageBoxImage.Information);
                                 this.Close();
                             }
-                        }
-                        else
-                            MessageBox.Show("Seleccione en declaracion de salud");
+                       
                     }
                     else
                         MessageBox.Show("AÑO INCORRECTO");
@@ -374,31 +341,9 @@ namespace BeLife.Vistas
             dp_fechaTermino.IsEnabled = true;
         }
 
-        private void rbtn_si_Checked(object sender, RoutedEventArgs e)
-        {
-            btn_guardado.IsEnabled = true;
-        }
 
-        private void rbtn_no_Checked(object sender, RoutedEventArgs e)
-        {
-            btn_guardado.IsEnabled = true;
-        }
 
-        private void rbtn_no_Unchecked(object sender, RoutedEventArgs e)
-        {
-            if (rbtn_si.IsChecked == false)
-            {
-                btn_guardado.IsEnabled = false;
-            }
-        }
 
-        private void rbtn_si_Unchecked(object sender, RoutedEventArgs e)
-        {
-            if (rbtn_no.IsChecked == false)
-            {
-                btn_guardado.IsEnabled = false;
-            }
-        }
 
         private void btn_calcularPrimas_Click(object sender, RoutedEventArgs e)
         {
@@ -407,6 +352,7 @@ namespace BeLife.Vistas
             if (pregunta == MessageBoxResult.Yes)
             {
                 calcularPrima();
+                btn_guardado.IsEnabled = true;
             }
         }
 
@@ -429,10 +375,11 @@ namespace BeLife.Vistas
                             calculo += 0.8;
                         }
                     else
-                    { 
                           calculo += 0.4;
+
+
                         if (validacion.MayorEdad(fecha_1))
-                        {
+                             {
                             int edad = validacion.edadContratante(dp_FechaNacimiento.SelectedDate.Value);
                             if (edad >= 18 && edad <= 25)
                             {
@@ -462,7 +409,6 @@ namespace BeLife.Vistas
                         }
                         else
                             MessageBox.Show("DEBE SER MAYOR DE EDAD");
-                    }
                 }
             }
         }
