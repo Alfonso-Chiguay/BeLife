@@ -5,49 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BeLife.Vistas"
         mc:Ignorable="d"
-        Title="Seguros BeLife | Seguro de vida" Height="906.992" Width="535.524" WindowStartupLocation="CenterScreen">
+        Title="Seguros BeLife | Seguro de vida" Height="915.992" Width="537.524" WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,515,-186">
-        <Label Content="Num. Contrato" HorizontalAlignment="Left" Margin="13,90,-132,0" VerticalAlignment="Top" Width="132" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
+        <Label Content="Num. Contrato" HorizontalAlignment="Left" Margin="13,90,-179,0" VerticalAlignment="Top" Width="179" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
         <Label Content="Nombre" HorizontalAlignment="Left" Margin="13,205,-85,0" VerticalAlignment="Top" Width="85" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
         <Label Content="Apellidos" HorizontalAlignment="Left" Margin="148,205,-237,0" VerticalAlignment="Top" Width="102" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
-        <Label Content="Fecha de nacimiento" HorizontalAlignment="Left" Margin="13,272,-177,0" VerticalAlignment="Top" Width="177" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
+        <Label Content="Fecha de nacimiento" HorizontalAlignment="Left" Margin="13,265,-222,0" VerticalAlignment="Top" Width="224" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
         <Label Content="Sexo" HorizontalAlignment="Left" Margin="13,323,-60,0" VerticalAlignment="Top" Width="60" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
-        <Label Content="Estado Civil" HorizontalAlignment="Left" Margin="127,323,-250,0" VerticalAlignment="Top" Width="123" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
-        <TextBox x:Name="txt_contrato" HorizontalAlignment="Left" Height="23" Margin="154,93,-261,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" GotFocus="txt_contrato_GotFocus" LostFocus="txt_contrato_LostFocus" Foreground="#FFAAA4A4" Text="yyyyMMddhhmmss"/>
-        <Button Content="Buscar contrato" Style="{DynamicResource boton_clientes}" HorizontalAlignment="Left" Margin="284,90,-374,0" VerticalAlignment="Top" Width="103" Height="26" FontFamily="Dubai" FontSize="13" FontWeight="Bold"/>
+        <Label Content="Estado Civil" HorizontalAlignment="Left" Margin="230,306,-360,0" VerticalAlignment="Top" Width="145" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="txt_contrato" HorizontalAlignment="Left" Height="23" Margin="174,92,-279,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" GotFocus="txt_contrato_GotFocus" LostFocus="txt_contrato_LostFocus" Foreground="#FFAAA4A4" Text="yyyyMMddhhmmss"/>
+        <Button Content="Buscar contrato" Style="{DynamicResource boton_clientes}" HorizontalAlignment="Left" Margin="299,89,-387,0" VerticalAlignment="Top" Width="103" Height="26" FontFamily="Dubai" FontSize="13" FontWeight="Bold"/>
         <TextBox x:Name="txt_nombre" HorizontalAlignment="Left" Height="23" Margin="13,231,-132,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="119" IsEnabled="False" Text="Ej: Juan Jose" Foreground="#FFAAA4A4"/>
         <TextBox x:Name="txt_apellidos" HorizontalAlignment="Left" Height="23" Margin="148,231,-272,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" IsEnabled="False" Text="Ej: Perez Gonzalez" Foreground="#FFAAA4A4"/>
         <DatePicker x:Name="dp_fechaNacimiento" HorizontalAlignment="Left" Margin="13,294,-161,0" VerticalAlignment="Top" Width="148" IsEnabled="False"/>
-        <Button x:Name="btn_guardar" Content="Guardar" Style="{DynamicResource boton_clientes}" HorizontalAlignment="Left" Margin="127,762,-223,0" VerticalAlignment="Top" Width="96" Height="36" FontFamily="Dubai" FontSize="13" FontWeight="Bold"/>
+        <Button x:Name="btn_guardar" Content="Guardar" Style="{DynamicResource boton_clientes}" HorizontalAlignment="Left" Margin="127,788,-210,0" VerticalAlignment="Top" Width="96" Height="36" FontFamily="Dubai" FontSize="13" FontWeight="Bold"/>
         <TextBox x:Name="txt_rut" HorizontalAlignment="Left" Height="20" Margin="13,180,-93,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" LostFocus="txt_rut_LostFocus" GotFocus="txt_rut_GotFocus" Foreground="#FFAAA4A4" Text="Ej: 12345678"/>
         <TextBox x:Name="txt_dv" HorizontalAlignment="Left" Height="20" Margin="111,180,-132,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="21" Foreground="#FFAAA4A4" Text="N" GotFocus="txt_dv_GotFocus" LostFocus="txt_dv_LostFocus"/>
         <Label Content="-" HorizontalAlignment="Left" Margin="93,177,-122,0" VerticalAlignment="Top" Width="29"/>
         <Button Content="Buscar cliente" Style="{DynamicResource boton_clientes}" HorizontalAlignment="Left" Margin="148,177,-237,0" VerticalAlignment="Top" Width="102" Height="23" FontFamily="Dubai" FontSize="13" FontWeight="Bold"/>
         <Label Content="RUT" HorizontalAlignment="Left" Margin="13,157,-48,0" VerticalAlignment="Top" Width="48" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
         <ComboBox x:Name="cb_sexo" HorizontalAlignment="Left" Margin="13,344,-109,0" VerticalAlignment="Top" Width="96"/>
-        <ComboBox x:Name="cb_estadoCivil" HorizontalAlignment="Left" Margin="132,344,-234,0" VerticalAlignment="Top" Width="102"/>
-        <DatePicker HorizontalAlignment="Left" Margin="181,384,-337,0" VerticalAlignment="Top" Width="169"/>
-        <DatePicker HorizontalAlignment="Left" Margin="181,415,-337,0" VerticalAlignment="Top" Width="169"/>
-        <Label Content="Inicio contrato" HorizontalAlignment="Left" Margin="9,382,-132,0" VerticalAlignment="Top" Width="136" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
-        <Label Content="Termino contrato" HorizontalAlignment="Left" Margin="9,413,-148,0" VerticalAlignment="Top" Width="152" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
+        <ComboBox x:Name="cb_estadoCivil" HorizontalAlignment="Left" Margin="272,344,-359,0" VerticalAlignment="Top" Width="102"/>
+        <DatePicker HorizontalAlignment="Left" Margin="206,385,-362,0" VerticalAlignment="Top" Width="169"/>
+        <DatePicker HorizontalAlignment="Left" Margin="206,414,-362,0" VerticalAlignment="Top" Width="169"/>
+        <Label Content="Inicio contrato" HorizontalAlignment="Left" Margin="9,382,-169,0" VerticalAlignment="Top" Width="173" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
+        <Label Content="Termino contrato" HorizontalAlignment="Left" Margin="9,413,-193,0" VerticalAlignment="Top" Width="197" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
         <Label Content="Vigente:" HorizontalAlignment="Left" Margin="13,450,-96,0" VerticalAlignment="Top" Width="96" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
         <Label Content="" HorizontalAlignment="Left" Margin="132,453,-169,0" VerticalAlignment="Top" Width="50"/>
         <RadioButton Content="Si" HorizontalAlignment="Left" Margin="21,519,-61,0" VerticalAlignment="Top" Width="40"/>
         <RadioButton Content="No" HorizontalAlignment="Left" Margin="67,519,-115,0" VerticalAlignment="Top" Width="48"/>
-        <Label Content="Declaracion de Salud ?" HorizontalAlignment="Left" Margin="13,488,-194,0" VerticalAlignment="Top" Width="194" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
-        <Label Content="Prima anual" HorizontalAlignment="Left" Margin="13,653,-102,0" VerticalAlignment="Top" Width="102" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
-        <Label Content="Prima Mensual" HorizontalAlignment="Left" Margin="13,684,-130,0" VerticalAlignment="Top" Width="130" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
-        <Label Content="0" HorizontalAlignment="Left" Margin="148,684,-198,0" VerticalAlignment="Top" Width="63"/>
-        <Label Content="0" HorizontalAlignment="Left" Margin="148,653,-184,0" VerticalAlignment="Top" Width="49"/>
-        <TextBox HorizontalAlignment="Left" Height="86" Margin="148,549,-316,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181"/>
-        <Label Content="Observaciones" HorizontalAlignment="Left" Margin="13,549,-130,0" VerticalAlignment="Top" Width="130" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
+        <Label Content="Declaracion de Salud " HorizontalAlignment="Left" Margin="13,488,-259,0" VerticalAlignment="Top" Width="259" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
+        <Label Content="Prima anual" HorizontalAlignment="Left" Margin="13,653,-148,0" VerticalAlignment="Top" Width="148" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
+        <Label Content="Prima Mensual" HorizontalAlignment="Left" Margin="13,684,-156,0" VerticalAlignment="Top" Width="156" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
+        <Label Content="0" HorizontalAlignment="Left" Margin="174,684,-224,0" VerticalAlignment="Top" Width="63"/>
+        <Label Content="0" HorizontalAlignment="Left" Margin="174,655,-210,0" VerticalAlignment="Top" Width="49" RenderTransformOrigin="0.776,0.462"/>
+        <TextBox HorizontalAlignment="Left" Height="86" Margin="194,549,-362,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181"/>
+        <Label Content="Observaciones" HorizontalAlignment="Left" Margin="13,549,-169,0" VerticalAlignment="Top" Width="169" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
         <Label Content="Be" HorizontalAlignment="Left" Margin="2,-16,-69,0" VerticalAlignment="Top" FontFamily="Dubai" FontSize="48" Background="#00000000" Foreground="#FF828285" FontWeight="Bold" Height="68" Width="67"/>
         <Label Content="Life" HorizontalAlignment="Left" Margin="53,-16,-145,0" VerticalAlignment="Top" FontFamily="Dubai" FontSize="48" Background="#00000000" Foreground="#FF9F68C5" FontWeight="Bold" Height="74" Width="92"/>
-        <Label Content="Cod. Plan" HorizontalAlignment="Left" Margin="13,120,-102,0" VerticalAlignment="Top" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold" Width="102"/>
-        <ComboBox x:Name="cb_idPlan" HorizontalAlignment="Left" Margin="154,122,-261,0" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btn_calcular_prima" Content="Calcular primas" Style="{DynamicResource boton_clientes}" HorizontalAlignment="Left" Margin="216,665,-297,0" VerticalAlignment="Top" Width="94" Height="28" FontFamily="Dubai" FontSize="13" FontWeight="Bold"/>
-        <Frame x:Name="panelmorado" Content="" HorizontalAlignment="Left" Height="887" VerticalAlignment="Top" Width="87" Background="#FF9F68C5" Margin="442,-7,-516,0"/>
-        <Frame Content="" HorizontalAlignment="Left" Height="887" VerticalAlignment="Top" Width="35" Background="#FF828285" Margin="407,-7,-429,0"/>
+        <Label Content="Cod. Plan" HorizontalAlignment="Left" Margin="13,120,-119,0" VerticalAlignment="Top" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold" Width="119"/>
+        <ComboBox x:Name="cb_idPlan" HorizontalAlignment="Left" Margin="174,120,-279,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btn_calcular_prima" Content="Calcular primas" Style="{DynamicResource boton_clientes}" HorizontalAlignment="Left" Margin="281,685,-362,0" VerticalAlignment="Top" Width="94" Height="28" FontFamily="Dubai" FontSize="13" FontWeight="Bold"/>
+        <Frame x:Name="panelmorado" Content="" HorizontalAlignment="Left" Height="896" VerticalAlignment="Top" Width="95" Background="#FF9F68C5" Margin="442,-7,-522,0"/>
+        <Frame Content="" HorizontalAlignment="Left" Height="896" VerticalAlignment="Top" Width="35" Background="#FF828285" Margin="407,-7,-427,0"/>
         <Button x:Name="btn_volver" Content="" HorizontalAlignment="Left" Margin="466,810,-490,0" VerticalAlignment="Top" Width="37" Height="47" BorderBrush="Transparent" Style="{DynamicResource boton_salida}" Click="btn_salir_Click">
             <Button.Foreground>
                 <ImageBrush ImageSource="/BeLife;component/img/exit.png" Stretch="Uniform"/>

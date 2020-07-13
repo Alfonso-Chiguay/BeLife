@@ -38,6 +38,7 @@ namespace BeLife.Vistas
             cb_idPlan.Items.Add("VEH03");
             dp_fechaInicio.DisplayDateStart = fecha;
             dp_fechaInicio.DisplayDateEnd = fecha.AddMonths(1);
+            dp_fechaTermino.DisplayDateStart = fecha.AddYears(1);
         }
         public Seguros_auto(Parametro p)
         {
@@ -49,6 +50,7 @@ namespace BeLife.Vistas
             llenarCampos(p);
             dp_fechaInicio.DisplayDateStart = fecha;
             dp_fechaInicio.DisplayDateEnd = fecha.AddMonths(1);
+            dp_fechaTermino.DisplayDateStart = fecha.AddYears(1);
         }
 
         
@@ -68,6 +70,7 @@ namespace BeLife.Vistas
             cb_idPlan.Items.Add("VEH03");
             dp_fechaInicio.DisplayDateStart = fecha;
             dp_fechaInicio.DisplayDateEnd = fecha.AddMonths(1);
+            dp_fechaTermino.DisplayDateStart = fecha.AddYears(1);
         }
 
         DateTime fecha = DateTime.Now;
@@ -129,7 +132,7 @@ namespace BeLife.Vistas
                     int primaAnual = Int32.Parse(txt_primaAnual.Text);
                     if (anho <= 1980 || anho <= 2020)
                     {
-                            if (txt_primaAnual.Text.Equals("") || txt_primaMensual.Text.Equals(""))
+                            if (txt_primaAnual.Text.Equals("0") || txt_primaMensual.Text.Equals("0"))
                             {
                                 MessageBox.Show("ERROR EN LAS PRIMAS");
                             }
@@ -297,15 +300,18 @@ namespace BeLife.Vistas
             if (Regex.IsMatch(txt_patente.Text, "^[a-z-A-Z]{4}[0-9]{2}$"))
             {
                 txt_anho.IsEnabled = true;
+                dp_fechaInicio.IsEnabled = true;
                 //https://social.msdn.microsoft.com/Forums/es-ES/d2941e3c-81cc-40d2-9a59-f8716c1ca5ae/validar-patente-vehiculo?forum=vcses
             }
             else if (Regex.IsMatch(txt_patente.Text, "^[a-z-A-Z]{3}[0-9]{3}$"))
             {
                 txt_anho.IsEnabled = true;
+                dp_fechaInicio.IsEnabled = true;
             }
             else if (Regex.IsMatch(txt_patente.Text, "^[a-z-A-Z]{2}[0-9]{4}$"))
             {
                 txt_anho.IsEnabled = true;
+                dp_fechaInicio.IsEnabled = true;
             }
             else
             {
@@ -347,13 +353,45 @@ namespace BeLife.Vistas
 
         private void btn_calcularPrimas_Click(object sender, RoutedEventArgs e)
         {
-            var pregunta = MessageBox.Show("¿Esta seguro que quiere calcular? una vez realizado, no podra hacer mas modificaciones",
-                "Confirmar accion", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
-            if (pregunta == MessageBoxResult.Yes)
+            if (cb_idPlan.SelectedIndex != -1)
             {
-                calcularPrima();
-                btn_guardado.IsEnabled = true;
+                if (Regex.IsMatch(txt_anho.Text, "^[0-9]{4}$"))
+                {
+                    int anho = Int32.Parse(txt_anho.Text);
+                    if (anho >= 1980 && anho <= 2020)
+                    {
+                        var pregunta = MessageBox.Show("¿Esta seguro que quiere calcular? una vez realizado, no podra hacer mas modificaciones",
+                        "Confirmar accion", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+                        if (pregunta == MessageBoxResult.Yes)
+                        {
+                            calcularPrima();
+                            btn_guardado.IsEnabled = true;
+
+                            txt_patente.IsEnabled = false;
+                            txt_anho.IsEnabled = false;
+                            dp_fechaInicio.IsEnabled = false;
+                            dp_fechaTermino.IsEnabled = false;
+                            txt_observaciones.IsEnabled = false;
+                            cb_marca.IsEnabled = false;
+                            cb_idPlan.IsEnabled = false;
+                            cb_modelo.IsEnabled = false;
+
+                            btn_buscarCliente.IsEnabled = false;
+                            btn_buscar_en_lista.IsEnabled = false;
+                            btn_buscarRut.IsEnabled = false;
+                            btn_validarPatente.IsEnabled = false;
+                            btn_calcularPrimas.IsEnabled = false;
+                        }
+                    }
+                    else
+                        MessageBox.Show("ERROR EN EL AÑO DEL VEHICULO", "ERROR AÑO VEHICULO", MessageBoxButton.OK, MessageBoxImage.Error);
+                }                
             }
+            else
+            {
+                MessageBox.Show("ERROR EN EL ID DEL PLAN","ERROR ID PLAN",MessageBoxButton.OK,MessageBoxImage.Error);
+            }
+            
         }
 
         private void calcularPrima()
@@ -366,16 +404,19 @@ namespace BeLife.Vistas
                 int anho = Int32.Parse(txt_anho.Text);
                 if (anho >= 1980 && anho <=2020)
                 {
+
                     if (anho == 2020)
                     {
-                            calculo += 1.2;
+                        calculo += 1.2;
                     }
                     else if (anho < 2020 && anho >= 2015)
-                        {
-                            calculo += 0.8;
-                        }
+                    {
+                        calculo += 0.8;
+                    }
                     else
-                          calculo += 0.4;
+                    {
+                        calculo += 0.4;
+                    }
 
 
                         if (validacion.MayorEdad(fecha_1))
@@ -410,6 +451,8 @@ namespace BeLife.Vistas
                         else
                             MessageBox.Show("DEBE SER MAYOR DE EDAD");
                 }
+                else
+                    MessageBox.Show("Año invalido");
             }
         }
 
