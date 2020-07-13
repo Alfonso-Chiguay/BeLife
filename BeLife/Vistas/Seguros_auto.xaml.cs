@@ -510,13 +510,15 @@ namespace BeLife.Vistas
             txt_dv.Foreground = new SolidColorBrush(Colors.Gray);
             txt_dv.IsEnabled = true;
 
-            cb_sexo.SelectedIndex = 0;
-            cb_estadoCivil.SelectedIndex = 0;
-            cb_marca.SelectedIndex = 0;
-            cb_modelo.SelectedIndex = 0;
+            cb_sexo.Text = "";
+            cb_estadoCivil.Text = "";
+            cb_marca.Text = "";
+            cb_modelo.Text = "";
 
             btn_buscarCliente.IsEnabled = true;
             btn_buscarRut.IsEnabled = true;
+
+            cb_modelo.IsEnabled = false;
 
             dp_FechaNacimiento.SelectedDate = fecha;
             dp_fechaInicio.SelectedDate = fecha;

@@ -576,5 +576,12 @@ namespace BeLife.Vistas
             ventana.lbl_tipoContrato.Content = "VIVIENDA";
             ventana.ShowDialog();
         }
+
+        private void btn_Limpiar_Click(object sender, RoutedEventArgs e)
+        {
+            Seguro_hogar ventana = new Seguro_hogar();
+            this.Close();
+            ventana.ShowDialog();
+        }
     }
 }
