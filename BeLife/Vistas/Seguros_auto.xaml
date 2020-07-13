@@ -66,17 +66,14 @@
         <Label Content="Fecha inicio" HorizontalAlignment="Left" Margin="32,604,0,0" VerticalAlignment="Top"/>
         <Label Content="Fecha termino" HorizontalAlignment="Left" Margin="249,604,0,0" VerticalAlignment="Top"/>
         <Label Content="Vigencia :" HorizontalAlignment="Left" Margin="32,677,0,0" VerticalAlignment="Top"/>
-        <Label Content="Prima Anual :" HorizontalAlignment="Left" Margin="32,790,0,0" VerticalAlignment="Top"/>
-        <Label Content="Prima Mensual :" HorizontalAlignment="Left" Margin="32,821,0,0" VerticalAlignment="Top"/>
-        <Label Content="Observaciones" HorizontalAlignment="Left" Margin="219,726,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txt_observaciones" HorizontalAlignment="Left" Height="78" Margin="219,769,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="193"/>
-        <Label Content="Declaracion de salud " HorizontalAlignment="Left" Margin="33,708,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="rbtn_si" Content="Si" HorizontalAlignment="Left" Margin="41,752,0,0" VerticalAlignment="Top" Checked="rbtn_si_Checked" Unchecked="rbtn_si_Unchecked"/>
-        <RadioButton x:Name="rbtn_no" Content="No" HorizontalAlignment="Left" Margin="97,752,0,0" VerticalAlignment="Top" Width="47" Checked="rbtn_no_Checked" Unchecked="rbtn_no_Unchecked"/>
+        <Label Content="Prima Anual :" HorizontalAlignment="Left" Margin="25,724,0,0" VerticalAlignment="Top"/>
+        <Label Content="Prima Mensual :" HorizontalAlignment="Left" Margin="25,755,0,0" VerticalAlignment="Top"/>
+        <Label Content="Observaciones" HorizontalAlignment="Left" Margin="219,706,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_observaciones" HorizontalAlignment="Left" Height="78" Margin="219,737,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="193"/>
         <TextBox x:Name="txt_vigencia" HorizontalAlignment="Left" Height="23" Margin="109,680,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" IsEnabled="False"/>
         <TextBox x:Name="txt_anho" HorizontalAlignment="Left" Height="23" Margin="191,519,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
-        <TextBox x:Name="txt_primaAnual" HorizontalAlignment="Left" Height="23" Margin="146,790,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="31" IsEnabled="False"/>
-        <TextBox x:Name="txt_primaMensual" HorizontalAlignment="Left" Height="23" Margin="146,821,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="31" IsEnabled="False"/>
+        <TextBox x:Name="txt_primaAnual" HorizontalAlignment="Left" Height="23" Margin="139,724,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="31" IsEnabled="False"/>
+        <TextBox x:Name="txt_primaMensual" HorizontalAlignment="Left" Height="23" Margin="139,755,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="31" IsEnabled="False"/>
         <Button x:Name="btn_calcularPrimas" Content="Calcular primas" HorizontalAlignment="Left" Margin="41,871,0,0" VerticalAlignment="Top" Width="91" Click="btn_calcularPrimas_Click"/>
         <ComboBox x:Name="cb_idPlan" HorizontalAlignment="Left" Margin="309,90,0,0" VerticalAlignment="Top" Width="120"/>
 
