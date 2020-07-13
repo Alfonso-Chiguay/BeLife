@@ -32,7 +32,6 @@ namespace BeLife.Vistas
         public Seguro_hogar()
         {
             InitializeComponent();
-            lbl_fecha.Visibility = Visibility.Hidden;
             txt_codigoSeguro.Text = fecha.ToString("yyyyMMddhhmmss");
             cb_idplan.Items.Add("HOG01");
             cb_idplan.Items.Add("HOG02");
@@ -447,7 +446,7 @@ namespace BeLife.Vistas
             {
                 if (txt_valorInmueble.Text.Equals("0") || txt_valorInmueble.Text.Equals("00") || txt_valorInmueble.Text.Equals("000")
                     || txt_valorInmueble.Text.Equals("0000"))
-                    MessageBox.Show("VALOR INMUEBLE DEBE SER SUPERIOR A 0 ");
+                    MessageBox.Show("VALOR INMUEBLE DEBE SER SUPERIOR A 0","ERROR INMUEBLE",MessageBoxButton.OK,MessageBoxImage.Error);
                 
                 else if(Regex.IsMatch(txt_valorInmueble.Text, "^[1-9]{1}$") || Regex.IsMatch(txt_valorInmueble.Text, "^[0-9]{2}$")
                     || Regex.IsMatch(txt_valorInmueble.Text, "^[0-9]{3}$") || Regex.IsMatch(txt_valorInmueble.Text, "^[0-9]{4}$"))
@@ -559,6 +558,13 @@ namespace BeLife.Vistas
                 txt_anio_constru.Text = "";
                 txt_anio_constru.Foreground = new SolidColorBrush(Colors.Black);
             }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            ListarClientes ventana = new ListarClientes("Seguro_hogar");
+            this.Close();
+            ventana.ShowDialog();
         }
     }
 }

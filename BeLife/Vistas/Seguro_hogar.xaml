@@ -26,8 +26,7 @@
         <TextBox x:Name="txt_valor_contenido" HorizontalAlignment="Left" Height="22" MaxLength = "4" Margin="253,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58" Foreground="#FFAAA4A4" Text="0" GotFocus="txt_valor_contenido_GotFocus" LostFocus="txt_valor_contenido_LostFocus" Grid.Row="1"/>
         <Label Content="Num. Contrato" HorizontalAlignment="Left" Margin="13,60,0,0" VerticalAlignment="Top" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
         <TextBox x:Name="txt_codigoSeguro" HorizontalAlignment="Left" Height="23" Margin="211,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14" IsEnabled="False"/>
-        <Button x:Name="btn_guardar" Content="Guardar"  Style="{DynamicResource boton_clientes}" HorizontalAlignment="Left" Margin="127,255.186,0,0" VerticalAlignment="Top" Width="92" Click="Button_Click" Height="30" FontFamily="Dubai" FontWeight="Bold" Grid.Row="1" IsEnabled="False"/>
-        <Label x:Name="lbl_fecha" Content="" HorizontalAlignment="Left" Margin="187,594,0,0" VerticalAlignment="Top" Width="36" Grid.RowSpan="2"/>
+        <Button x:Name="btn_guardar" Content="Guardar"  Style="{DynamicResource boton_clientes}" HorizontalAlignment="Left" Margin="127,255.186,0,0" VerticalAlignment="Top" Width="92" Click="Button_Click" Height="30" FontFamily="Dubai" FontWeight="Bold" Grid.Row="1" IsEnabled="False" Background="#FF9F68C5"/>
         <Label x:Name="lbl_postal" Content="" HorizontalAlignment="Left" Margin="168,332,0,0" VerticalAlignment="Top" Width="45" Foreground="White"/>
         <TextBox x:Name="txt_nombres" HorizontalAlignment="Left" Height="23" Margin="13,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
         <TextBox x:Name="txt_apellidos" HorizontalAlignment="Left" Height="23" Margin="211,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
@@ -72,21 +71,14 @@
         <Label x:Name="lbl_prima_anual" Content="" HorizontalAlignment="Left" Margin="184,183,0,0" VerticalAlignment="Top" Width="69" Grid.Row="1" FontFamily="Perpetua Titling MT"/>
         <Label Content="Prima Mensual:" HorizontalAlignment="Left" Margin="11,211.186,0,0" VerticalAlignment="Top" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold" Grid.Row="1"/>
         <Label x:Name="lbl_prima_mensual" Content="" HorizontalAlignment="Left" Margin="184,214,0,0" VerticalAlignment="Top" Width="69" Grid.Row="1" RenderTransformOrigin="0.869,0.623" FontFamily="Perpetua Titling MT"/>
-        <Button x:Name="btn_calcular_primas" Content="Calcular primas"  Style="{DynamicResource boton_clientes}" HorizontalAlignment="Left" Margin="258,191.186,0,0" VerticalAlignment="Top" Width="92" Height="30" Click="btn_calcular_primas_Click" FontFamily="Dubai" FontWeight="Bold" Grid.Row="1" IsEnabled="False">
-            <Button.Background>
-                <ImageBrush/>
-            </Button.Background>
-        </Button>
+        <Button x:Name="btn_calcular_primas" Content="Calcular primas"  Style="{DynamicResource boton_clientes}" HorizontalAlignment="Left" Margin="258,191.186,0,0" VerticalAlignment="Top" Width="92" Height="30" Click="btn_calcular_primas_Click" FontFamily="Dubai" FontWeight="Bold" Grid.Row="1" IsEnabled="False" Background="#FF9F68C5" Foreground="Black"/>
         <Button x:Name="btn_dar_de_baja" Content="Dar de baja"  Style="{DynamicResource boton_clientes}" HorizontalAlignment="Left" Margin="219,258.186,0,0" VerticalAlignment="Top" Width="92" Height="30" Click="btn_dar_de_baja_Click" Visibility="Hidden" Grid.Row="1"/>
         <TextBox x:Name="txt_anio_constru" HorizontalAlignment="Left" MaxLength = "7" Height="23" Margin="267,370,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Foreground="#FFAAA4A4" LostFocus="txt_anio_constru_LostFocus" GotFocus="txt_anio_constru_GotFocus" Text="0"/>
-        <Button x:Name="btn_validar" Content="Validar" HorizontalAlignment="Left" Margin="311,336,0,0" VerticalAlignment="Top" Width="75" Click="btn_validar_Click" IsEnabled="False" BorderBrush="#FF9F68C5" Foreground="Black" FontFamily="Dubai">
-            <Button.Background>
-                <ImageBrush/>
-            </Button.Background>
-        </Button>
-        <Label Content="Inicio contrato" HorizontalAlignment="Left" Margin="10,594,0,0" VerticalAlignment="Top" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold" Grid.RowSpan="2"/>
+        <Button x:Name="btn_validar" Content="Validar" HorizontalAlignment="Left" Margin="311,336,0,0" VerticalAlignment="Top" Width="75" Click="btn_validar_Click" Foreground="Black" FontFamily="Dubai" Background="#FF9F68C5" BorderBrush="#FF9F68C5" IsEnabled="False"/>
+        <Label Content="Fin Contrato" HorizontalAlignment="Left" Margin="14,594,0,0" VerticalAlignment="Top" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold" Grid.RowSpan="2"/>
         <DatePicker x:Name="dp_fin_contrato1" HorizontalAlignment="Left" Margin="233,0,0,0" Grid.Row="1" VerticalAlignment="Top" SelectedDateChanged="dp_fin_contrato1_SelectedDateChanged" IsEnabled="False"/>
         <Label x:Name="lbl_vigencia" Content="" HorizontalAlignment="Left" Margin="53,139,0,0" Grid.Row="1" VerticalAlignment="Top" Width="54"/>
+        <Button Content="Buscar Cliente" HorizontalAlignment="Left" Margin="253,174,0,0" VerticalAlignment="Top" Width="91" Height="26" Background="#FF9F68C5" BorderBrush="#FF9F68C5" Click="Button_Click_1"/>
 
     </Grid>
 </Window>
