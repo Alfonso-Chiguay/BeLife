@@ -32,6 +32,7 @@ namespace BeLife.Vistas
         public Seguro_hogar()
         {
             InitializeComponent();
+            lbl_fecha.Visibility = Visibility.Hidden;
             txt_codigoSeguro.Text = fecha.ToString("yyyyMMddhhmmss");
             Con_region comuna = new Con_region();
             cb_region.ItemsSource = comuna.listarRegion();
@@ -39,7 +40,7 @@ namespace BeLife.Vistas
             cb_idplan.Items.Add("HOG02");
             cb_idplan.Items.Add("HOG03");
             txt_codigoPostal.IsEnabled = false;
-            dp_fechaConstruccion.IsEnabled = false;
+            txt_anio_constru.IsEnabled = false;
             cb_region.IsEnabled = false;
             txt_valorInmueble.IsEnabled = false;
             txt_valor_contenido.IsEnabled = false;
@@ -134,14 +135,14 @@ namespace BeLife.Vistas
                                     if (Regex.IsMatch(txt_valor_contenido.Text, "^[0-9]{1}$") || Regex.IsMatch(txt_valor_contenido.Text, "^[0-9]{2}$") ||
                                         Regex.IsMatch(txt_valor_contenido.Text, "^[0-9]{3}$") || Regex.IsMatch(txt_valor_contenido.Text, "^[0-9]{4}$"))
                                     {
-                                        DateTime fecha_1 = dp_fechaConstruccion.SelectedDate.Value;
+                                        
                                         Con_Comuna Cont_comuna = new Con_Comuna();
                                         Con_region Cont_region = new Con_region();
                                         Vivienda vivienda = new Vivienda();
                                         var id_comuna = Cont_comuna.buscarIDcomuna(cb_comuna.Text);
                                         var id_region = Cont_region.idRegion(cb_region.Text);
                                         vivienda.CodigoPostal = Int32.Parse(txt_codigoPostal.Text);
-                                        vivienda.Anho = fecha_1.Year;
+                                        vivienda.Anho = Int32.Parse(txt_anio_constru.Text);
                                         vivienda.Direccion = txt_direccion.Text;
                                         vivienda.ValorInmueble = Int32.Parse(txt_valorInmueble.Text);
                                         vivienda.ValorContenido = Int32.Parse(txt_valor_contenido.Text);
@@ -200,32 +201,7 @@ namespace BeLife.Vistas
             cb_comuna.ItemsSource = comuna.listaComunaPorRegion(cb_region.SelectedItem.ToString());
         }
 
-        private void dp_fechaConstruccion_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            lbl_fecha.Visibility = Visibility.Hidden;
-            Validacion validacion = new Validacion();
-            DateTime fecha = dp_fechaConstruccion.SelectedDate.Value;
-            lbl_fecha.Foreground = new SolidColorBrush(Colors.White);
-            if(!validacion.viviendaFecha(fecha))
-            {
-                if (fecha.Year > DateTime.Today.Year)
-                {
-                    lbl_fecha.Content = "AÑO INCORRECTO";
-                }
-                else if (fecha.Month > DateTime.Today.Month && fecha.Year == DateTime.Today.Year)
-                {
-                    lbl_fecha.Content = "MES INCORRECTO";
-                }
-                else if (fecha.Year < 1910)
-                {
-                    lbl_fecha.Content = "MUY VIEJA";
-                }
-            }
-            else
-            {
-                lbl_fecha.Content = "TAMOS BIEN DIJO EL KOKU";
-            }
-        }
+        
 
         private void txt_direccion_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -370,7 +346,7 @@ namespace BeLife.Vistas
                     llenarCampos(p);
                     txt_codigoSeguro.IsEnabled = false;
                     txt_codigoPostal.IsEnabled = true;
-                    dp_fechaConstruccion.IsEnabled = true;
+                    txt_anio_constru.IsEnabled = true;
                     cb_region.IsEnabled = true;
                     txt_valorInmueble.IsEnabled = true;
                     txt_valor_contenido.IsEnabled = true;
@@ -408,10 +384,11 @@ namespace BeLife.Vistas
 
         private void calcularPrima()
         {
-            if (dp_fechaConstruccion.SelectedDate.HasValue)
+            int anio_construccion;
+            if (Int32.TryParse(txt_anio_constru.Text, out anio_construccion))
             {
                 double calculo = 0;
-                int anio_construccion = dp_fechaConstruccion.SelectedDate.Value.Year;
+                
                 anio_construccion = fecha.Year - anio_construccion;
                 if (anio_construccion <= 5)
                     calculo += 1;
@@ -468,7 +445,7 @@ namespace BeLife.Vistas
             {
                 calcularPrima();
                 
-                dp_fechaConstruccion.IsEnabled = false;
+                txt_anio_constru.IsEnabled = false;
                 cb_region.IsEnabled = false;
                 cb_comuna.IsEnabled = false;
                 txt_valorInmueble.IsEnabled = false;
@@ -480,6 +457,74 @@ namespace BeLife.Vistas
 
             }
             
+        }
+
+        private void btn_buscarContrato_Click(object sender, RoutedEventArgs e)
+        {
+            Con_Contrato con_Contrato = new Con_Contrato();
+            Contrato contrato = con_Contrato.buscarPorNumero(txt_codigoSeguro.Text);
+            if(contrato == new Contrato())
+            {
+                MessageBox.Show("No hay informacion asociada al numero ingresado", "No hay informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                
+                txt_codigoSeguro.IsEnabled = false;
+                cb_idplan.IsEnabled = false;
+                txt_rut.IsEnabled = false;
+                txt_dv.IsEnabled = false;
+                txt_anio_constru.IsEnabled = false;
+                txt_nombres.IsEnabled = false;
+                txt_apellidos.IsEnabled = false;
+                cb_sexo.IsEnabled = false;
+                cb_estadoCivil.IsEnabled = false;
+                txt_codigoPostal.IsEnabled = false;
+                cb_region.IsEnabled = false;
+                cb_comuna.IsEnabled = false;
+                txt_direccion.IsEnabled = false;
+                dp_inicio_contrato.IsEnabled = false;
+                txt_valorInmueble.IsEnabled = false;
+                txt_valor_contenido.IsEnabled = false;
+                txt_comentarios.IsEnabled = false;
+                btn_calcular_primas.IsEnabled = false;
+                btn_guardar.IsEnabled = false;
+                btn_dar_de_baja.Visibility = Visibility.Visible;
+
+                Con_Cliente c_cliente = new Con_Cliente();
+                Cliente cliente = c_cliente.obtenerCliente(contrato.RutCliente.Split('-')[0], contrato.RutCliente.Split('-')[1]);
+                
+                
+                cb_idplan.SelectedItem = contrato.CodigoPlan.ToString();
+                txt_rut.Text = cliente.RutCliente.Split('-')[0];
+                txt_dv.Text = cliente.RutCliente.Split('-')[1];
+                
+                txt_nombres.IsEnabled = false;
+                txt_apellidos.IsEnabled = false;
+                cb_sexo.IsEnabled = false;
+                cb_estadoCivil.IsEnabled = false;
+                txt_codigoPostal.IsEnabled = false;
+                cb_region.IsEnabled = false;
+                cb_comuna.IsEnabled = false;
+                txt_direccion.IsEnabled = false;
+                dp_inicio_contrato.IsEnabled = false;
+                txt_valorInmueble.IsEnabled = false;
+                txt_valor_contenido.IsEnabled = false;
+                txt_comentarios.IsEnabled = false;
+                btn_calcular_primas.IsEnabled = false;
+                btn_guardar.IsEnabled = false;
+
+
+
+
+
+            }
+
+        }
+
+        private void btn_dar_de_baja_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
