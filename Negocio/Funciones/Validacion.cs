@@ -111,6 +111,17 @@ namespace Negocio.Funciones
             else
                 return false;
         }
+        public int edadContratante(DateTime fechaCliente)
+        {
+            DateTime fechaActual = DateTime.Today;
+            int anhos = fechaActual.Year - fechaCliente.Year;
+            if (anhos >= 18)
+            {
+                return anhos;
+            }
+            else
+                return 0;
+        }
 
     }
 }

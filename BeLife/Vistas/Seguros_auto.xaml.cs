@@ -32,7 +32,9 @@ namespace BeLife.Vistas
             Con_vehiculo vehiculo = new Con_vehiculo();
             cb_marca.ItemsSource = vehiculo.listarMarca();
             txt_fecha.Text = fecha.ToString("yyyyMMddhhmmss");
-
+            cb_idPlan.Items.Add("VEH01");
+            cb_idPlan.Items.Add("VEH02");
+            cb_idPlan.Items.Add("VEH03");
         }
         public Seguros_auto(Parametro p)
         {
@@ -57,6 +59,9 @@ namespace BeLife.Vistas
             p.cliente = c;
             p.idPlan = "";
             llenarCampos(p);
+            cb_idPlan.Items.Add("VEH01");
+            cb_idPlan.Items.Add("VEH02");
+            cb_idPlan.Items.Add("VEH03");
         }
 
         DateTime fecha = DateTime.Now;
@@ -84,7 +89,7 @@ namespace BeLife.Vistas
             txt_patente.IsEnabled = true;
             if (!p_cliente.idPlan.Equals(""))
             {
-                TXT_IDPLAN.Text = p_cliente.idPlan;
+                cb_idPlan.Text = p_cliente.idPlan;
             }
         }
 
@@ -392,6 +397,73 @@ namespace BeLife.Vistas
             if (rbtn_no.IsChecked == false)
             {
                 btn_guardado.IsEnabled = false;
+            }
+        }
+
+        private void btn_calcularPrimas_Click(object sender, RoutedEventArgs e)
+        {
+            var pregunta = MessageBox.Show("¿Esta seguro que quiere calcular? una vez realizado, no podra hacer mas modificaciones",
+                "Confirmar accion", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+            if (pregunta == MessageBoxResult.Yes)
+            {
+                calcularPrima();
+            }
+        }
+
+        private void calcularPrima()
+        {
+            Validacion validacion = new Validacion();
+            DateTime fecha_1 = dp_FechaNacimiento.SelectedDate.Value;
+            double calculo = 0;
+            if (Regex.IsMatch(txt_anho.Text, "^[0-9]{4}$"))
+            {
+                int anho = Int32.Parse(txt_anho.Text);
+                if (anho >= 1980 || anho <=2020)
+                {
+                    if (anho == 2020)
+                    {
+                            calculo += 1.2;
+                    }
+                    else if (anho < 2020 || anho >= 2015)
+                        {
+                            calculo += 0.8;
+                        }
+                    else
+                    { 
+                          calculo += 0.4;
+                        if (!validacion.MayorEdad(fecha_1))
+                        {
+                            int edad = validacion.edadContratante(fecha_1);
+                            if (edad >= 18 && edad <= 25)
+                            {
+                                calculo += 1.2;
+                            }
+                            else if (edad >= 26 && edad <= 45)
+                            {
+                                calculo += 2.4;
+                            }
+                            else
+                                calculo += 3.2;
+                            if (cb_idPlan.SelectedIndex != -1)
+                            {
+                                Con_Plan conplan = new Con_Plan();
+                                Plan plan = conplan.obtenerPlanPorId(cb_idPlan.SelectedItem.ToString());
+                                calculo += plan.PrimaBase;
+                                if (cb_sexo.SelectedItem.Equals("HOMBRE"))
+                                {
+                                    calculo += 0.8;
+                                }
+                                else
+                                    calculo += 0.4;
+
+                                txt_primaAnual.Text = calculo.ToString();
+                                txt_primaMensual.Text = Math.Round((calculo/12),2).ToString();
+                            }
+                        }
+                        else
+                            MessageBox.Show("DEBE SER MAYOR DE EDAD");
+                    }
+                }
             }
         }
     }
