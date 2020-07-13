@@ -24,16 +24,25 @@ namespace BeLife.Vistas
         public Seguro_vida()
         {
             InitializeComponent();
+            cb_idPlan.Items.Add("VID01");
+            cb_idPlan.Items.Add("VID02");
+            cb_idPlan.Items.Add("VID03");
         }
 
         public Seguro_vida(Parametro p)
         {
             InitializeComponent();
+            cb_idPlan.Items.Add("VID01");
+            cb_idPlan.Items.Add("VID02");
+            cb_idPlan.Items.Add("VID03");
         }
 
         public Seguro_vida(Cliente c)
         {
             InitializeComponent();
+            cb_idPlan.Items.Add("VID01");
+            cb_idPlan.Items.Add("VID02");
+            cb_idPlan.Items.Add("VID03");
         }
 
 
@@ -91,6 +100,9 @@ namespace BeLife.Vistas
             }
         }
 
-        
+        private void btn_salir_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

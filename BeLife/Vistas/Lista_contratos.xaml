@@ -5,12 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BeLife.Vistas"
         mc:Ignorable="d"
-        Title="Lista_contratos" Height="450" Width="800">
+        Title="Seguros BeLife | Listar Contratos" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <ListBox HorizontalAlignment="Left" Height="213" Margin="10,99,0,0" VerticalAlignment="Top" Width="623"/>
-        <Button Content="Buscar" HorizontalAlignment="Left" Margin="558,347,0,0" VerticalAlignment="Top" Width="75"/>
-        <Label Content="TIPO DE CONTRATO :" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top"/>
+        <Button Content="Buscar"  Style="{DynamicResource boton_clientes}" HorizontalAlignment="Left" Margin="548,347,0,0" VerticalAlignment="Top" Width="85" FontFamily="Dubai" Height="29" FontSize="13"/>
+        <Label Content="TIPO DE CONTRATO :" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" FontFamily="Perpetua Titling MT" FontSize="16" FontWeight="Bold"/>
         <Label x:Name="lbl_tipoContrato" Content="" HorizontalAlignment="Left" Margin="137,50,0,0" VerticalAlignment="Top"/>
+        <Label Content="Be" HorizontalAlignment="Left" Margin="2,-16,0,0" VerticalAlignment="Top" FontFamily="Dubai" FontSize="48" Background="#00000000" Foreground="#FF828285" FontWeight="Bold" Height="68" Width="67"/>
+        <Label Content="Life" HorizontalAlignment="Left" Margin="53,-16,0,0" VerticalAlignment="Top" FontFamily="Dubai" FontSize="48" Background="#00000000" Foreground="#FF9F68C5" FontWeight="Bold" Height="74" Width="92"/>
+        <Frame x:Name="panelmorado" Content="" HorizontalAlignment="Left" Height="428" VerticalAlignment="Top" Width="87" Background="#FF9F68C5" Margin="707,-8,-2,-1"/>
+        <Frame Content="" HorizontalAlignment="Left" Height="428" VerticalAlignment="Top" Width="35" Background="#FF828285" Margin="672,-8,0,-1"/>
+        <Button x:Name="btn_volver" Content="" HorizontalAlignment="Left" Margin="726,368,0,0" VerticalAlignment="Top" Width="42" Height="40" BorderBrush="Transparent" Style="{DynamicResource boton_salida}" Click="btn_salir_Click">
+            <Button.Foreground>
+                <ImageBrush ImageSource="/BeLife;component/img/exit.png" Stretch="Uniform"/>
+            </Button.Foreground>
+            <Button.Background>
+                <ImageBrush ImageSource="/BeLife;component/img/exit.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+        <Label Content="Volver" HorizontalAlignment="Left" Margin="726,340,0,0" VerticalAlignment="Top" FontFamily="Dubai" FontWeight="Bold" Height="28" Width="42"/>
 
     </Grid>
 </Window>
