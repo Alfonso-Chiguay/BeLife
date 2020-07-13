@@ -385,11 +385,11 @@ namespace BeLife.Vistas
             txt_nombre.Text = "Ej: Juan Jose";
             txt_apellidos.Foreground = new SolidColorBrush(Colors.Gray);
             txt_apellidos.Text = "Ej: Perez Gonzales";
-            dp_fechaNacimiento.SelectedDate = fecha;
+            dp_fechaNacimiento.SelectedDate = default;
             cb_sexo.SelectedIndex = 0;
             cb_estadoCivil.SelectedIndex = 0;
-            dp_inicioContrato.SelectedDate = fecha;
-            dp_terminoContrato.SelectedDate = fecha;
+            dp_inicioContrato.SelectedDate = default;
+            dp_terminoContrato.SelectedDate = default;
             lbl_vigencia.Content = "";
             rbtn_no.IsChecked = false;
             rbtn_si.IsChecked = false;

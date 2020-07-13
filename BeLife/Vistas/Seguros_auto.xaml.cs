@@ -520,9 +520,9 @@ namespace BeLife.Vistas
 
             cb_modelo.IsEnabled = false;
 
-            dp_FechaNacimiento.SelectedDate = fecha;
-            dp_fechaInicio.SelectedDate = fecha;
-            dp_fechaTermino.SelectedDate = fecha;
+            dp_FechaNacimiento.SelectedDate = default;
+            dp_fechaInicio.SelectedDate = default;
+            dp_fechaTermino.SelectedDate = default;
 
             dp_FechaNacimiento.IsEnabled = false;
             dp_fechaInicio.IsEnabled = false;
