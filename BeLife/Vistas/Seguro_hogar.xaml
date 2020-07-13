@@ -21,7 +21,7 @@
         <TextBox x:Name="txt_valorInmueble" HorizontalAlignment="Left" MaxLength = "4" Height="23" Margin="154,600,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58" Foreground="#FFAAA4A4" Text="0" GotFocus="txt_valorInmueble_GotFocus" LostFocus="txt_valorInmueble_LostFocus"/>
         <TextBox x:Name="txt_valor_contenido" HorizontalAlignment="Left" Height="22" MaxLength = "4" Margin="154,627,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58" Foreground="#FFAAA4A4" Text="0" GotFocus="txt_valor_contenido_GotFocus" LostFocus="txt_valor_contenido_LostFocus"/>
         <Label Content="Cod. Seguro" HorizontalAlignment="Left" Margin="13,60,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txt_codigoSeguro" HorizontalAlignment="Left" Height="23" Margin="102,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
+        <TextBox x:Name="txt_codigoSeguro" HorizontalAlignment="Left" Height="23" Margin="102,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14" IsEnabled="False"/>
         <Button x:Name="btn_guardar" Content="Guardar"  Style="{DynamicResource boton_clientes}" HorizontalAlignment="Left" Margin="69,824,0,0" VerticalAlignment="Top" Width="92" Click="Button_Click" Height="30"/>
         <Label x:Name="lbl_fecha" Content="" HorizontalAlignment="Left" Margin="98,362,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbl_postal" Content="" HorizontalAlignment="Left" Margin="172,357,0,0" VerticalAlignment="Top"/>
@@ -37,7 +37,6 @@
         <TextBox x:Name="txt_dv" HorizontalAlignment="Left" Height="24" Margin="153,177,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="29" Text="N" LostFocus="txt_dv_LostFocus" GotFocus="txt_dv_GotFocus" Foreground="#FFAAA4A4" FontSize="14"/>
         <Label Content="-" HorizontalAlignment="Left" Margin="133,174,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.622,-0.146"/>
         <Button x:Name="btn_buscar_listado"   Style="{DynamicResource boton_clientes}" Content="Buscar en listado" HorizontalAlignment="Left" Margin="228,177,0,0" VerticalAlignment="Top" Width="111" Height="24" Click="btn_buscar_listado_Click"/>
-        <Button x:Name="btn_buscar"  Style="{DynamicResource boton_clientes}" Content="Buscar contrato" HorizontalAlignment="Left" Margin="258,61,0,0" VerticalAlignment="Top" Width="100" Height="23"/>
         <Button x:Name="btn_buscarRut" Content=""  HorizontalAlignment="Left" Margin="201,177,0,0" VerticalAlignment="Top" Width="22" Height="24" Click="btn_buscarRut_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/BeLife;component/img/search.png"/>
@@ -71,16 +70,8 @@
         <Label Content="Prima Mensual:" HorizontalAlignment="Left" Margin="11,777,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbl_prima_mensual" Content="" HorizontalAlignment="Left" Margin="102,779,0,0" VerticalAlignment="Top" Width="108"/>
         <Button x:Name="btn_calcular_primas" Content="Calcular primas"  Style="{DynamicResource boton_clientes}" HorizontalAlignment="Left" Margin="258,757,0,0" VerticalAlignment="Top" Width="92" Height="30" Click="btn_calcular_primas_Click"/>
-        <Button x:Name="btn_buscarContrato" Content=""  HorizontalAlignment="Left" Margin="228,61,0,0" VerticalAlignment="Top" Width="22" Height="23" Click="btn_buscarContrato_Click">
-            <Button.Background>
-                <ImageBrush ImageSource="/BeLife;component/img/search.png"/>
-            </Button.Background>
-            <Button.Foreground>
-                <ImageBrush ImageSource="/BeLife;component/img/search.png"/>
-            </Button.Foreground>
-        </Button>
         <Button x:Name="btn_dar_de_baja" Content="Dar de baja"  Style="{DynamicResource boton_clientes}" HorizontalAlignment="Left" Margin="219,824,0,0" VerticalAlignment="Top" Width="92" Height="30" Click="btn_dar_de_baja_Click" Visibility="Hidden"/>
-        <TextBox x:Name="txt_anio_constru" HorizontalAlignment="Left" MaxLength = "7" Height="23" Margin="153,374,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Foreground="#FFAAA4A4" GotFocus="txt_codigoPostal_GotFocus" LostFocus="txt_codigoPostal_LostFocus"/>
+        <TextBox x:Name="txt_anio_constru" HorizontalAlignment="Left" MaxLength = "7" Height="23" Margin="153,374,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Foreground="#FFAAA4A4" LostFocus="txt_anio_constru_LostFocus"/>
 
     </Grid>
 </Window>
