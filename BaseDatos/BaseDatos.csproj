@@ -84,6 +84,7 @@
     <Compile Include="Controlador\Con_Sexo.cs" />
     <Compile Include="Controlador\Con_TipoContrato.cs" />
     <Compile Include="Controlador\Con_vehiculo.cs" />
+    <Compile Include="Controlador\Con_Vivienda.cs" />
     <Compile Include="EstadoCivil.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

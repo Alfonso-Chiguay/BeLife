@@ -26,6 +26,14 @@ namespace BaseDatos.Controlador
             }
         }
 
+        public Plan obtenerPlanPorId(string idplan)
+        {
+            using(BeLifeEntities entidades = new BeLifeEntities())
+            {
+                return entidades.Plan.Where(x => x.IdPlan.Equals(idplan)).FirstOrDefault();
+            }
+        }
+
         public class planTipoContrato
         {
             public int idContrato { get; set; }

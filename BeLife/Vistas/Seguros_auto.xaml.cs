@@ -147,7 +147,7 @@ namespace BeLife.Vistas
                                 contrato.Observaciones = txt_observaciones.Text;
                                 contrato.Vehiculo.Add(vehiculo_save);
 
-                                con.contratoVehiculo(contrato);
+                                con.generarContrato(contrato);
                                 // ------------- TESTEO DE INSERT A CONTRATO ------------------
                                 MessageBox.Show("DATOS GUARDADOS CORRECTAMENTE", "REGISTRO COMPLETO", MessageBoxButton.OK, MessageBoxImage.Information);
                                 this.Close();
@@ -188,7 +188,7 @@ namespace BeLife.Vistas
                                 contrato.Observaciones = txt_observaciones.Text;
                                 contrato.Vehiculo.Add(vehiculo_save);
 
-                                con.contratoVehiculo(contrato);
+                                con.generarContrato(contrato);
                                 // ------------- TESTEO DE INSERT A CONTRATO ------------------
                                 MessageBox.Show("DATOS GUARDADOS CORRECTAMENTE", "REGISTRO COMPLETO", MessageBoxButton.OK, MessageBoxImage.Information);
                                 this.Close();

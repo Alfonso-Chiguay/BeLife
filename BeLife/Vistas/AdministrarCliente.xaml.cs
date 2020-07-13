@@ -215,6 +215,10 @@ namespace BeLife.Vistas
                     btn_buscar_lista.IsEnabled = false;
                     txt_rut.IsEnabled = false;
                     txt_dv.IsEnabled = false;
+
+                    btn_generar.Visibility = Visibility.Visible;
+                    btn_cancelar_contrato.Visibility = Visibility.Visible;
+                    btn_eliminar.Visibility = Visibility.Visible;
                     
                    
                 }
