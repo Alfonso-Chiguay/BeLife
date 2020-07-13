@@ -418,13 +418,13 @@ namespace BeLife.Vistas
             if (Regex.IsMatch(txt_anho.Text, "^[0-9]{4}$"))
             {
                 int anho = Int32.Parse(txt_anho.Text);
-                if (anho >= 1980 || anho <=2020)
+                if (anho >= 1980 && anho <=2020)
                 {
                     if (anho == 2020)
                     {
                             calculo += 1.2;
                     }
-                    else if (anho < 2020 || anho >= 2015)
+                    else if (anho < 2020 && anho >= 2015)
                         {
                             calculo += 0.8;
                         }
@@ -433,7 +433,7 @@ namespace BeLife.Vistas
                           calculo += 0.4;
                         if (!validacion.MayorEdad(fecha_1))
                         {
-                            int edad = validacion.edadContratante(fecha_1);
+                            int edad = validacion.edadContratante(dp_FechaNacimiento.SelectedDate.Value);
                             if (edad >= 18 && edad <= 25)
                             {
                                 calculo += 1.2;
